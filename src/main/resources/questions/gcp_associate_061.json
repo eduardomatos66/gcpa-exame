@@ -1,0 +1,1 @@
+{"key": "061", "title": "61. Which database service requires that you configure a failover replica to make it highly available?", "alternatives": ["A. Cloud Spanner", "B. Cloud SQL", "C. BigQuery", "D. Cloud Datastore"], "answer": "Answer: B - https://cloud.google.com/sql/docs/mysql/configure-ha"}

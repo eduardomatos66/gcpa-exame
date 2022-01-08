@@ -1,0 +1,1 @@
+{"key": "045", "title": "45. What option does Cloud SQL offer to help with high availability?", "alternatives": ["A. Point-in-time recovery", "B. The AlwaysOn setting", "C. Snapshots", "D. Failover replicas"], "answer": "Answer: D - https://cloud.google.com/sql/docs/configure-ha#test"}

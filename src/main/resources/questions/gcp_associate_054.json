@@ -1,0 +1,1 @@
+{"key": "054", "title": "54. Which database services support standard SQL queries?", "alternatives": ["A. Cloud Bigtable and Cloud SQL", "B. Cloud Spanner and Cloud SQL", "C. Cloud SQL and Cloud Datastore", "D. Cloud SQL"], "answer": "Answer: B - https://cloud.google.com/products/storage/"}

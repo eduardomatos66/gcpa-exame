@@ -1,0 +1,1 @@
+{"key": "027", "title": "27. Regarding Cloud Storage, which option allows any user to access to a Cloud Storage resource for a limited time, using a specific URL?", "alternatives": ["A. Open Buckets", "B. Temporary Resources", "C. Signed URLs", "D. Temporary URLs"], "answer": "Answer: C - https://cloud.google.com/storage/docs/access-control/signed-urls"}

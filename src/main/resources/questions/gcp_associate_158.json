@@ -1,0 +1,1 @@
+{"key": "158", "title": "39. You want to persist logs for 10 years to comply with regulatory requirements. You want to follow Google recommended practices. Which Google Cloud Storage class should you use?", "alternatives": ["A. Coldline storage class", "B. Archive storage class", "C. Nearline storage class", "D. Standard storage class"], "answer": "Answer: B"}

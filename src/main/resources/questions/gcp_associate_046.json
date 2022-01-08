@@ -1,0 +1,1 @@
+{"key": "046", "title": "46. Regarding Compute Engine: when executing a startup script on a Linux server which user does the instance execute the script as?", "alternatives": ["A. ubuntu", "B. The Google provided \u201cgceinstance\u201d user", "C. Whatever user you specify in the console", "D. root"], "answer": "Answer: D - https://cloud.google.com/compute/docs/startupscript"}

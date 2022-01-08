@@ -1,0 +1,1 @@
+{"key": "038", "title": "38. Regarding Cloud Storage: which of the following allows for time-limited access to buckets and objects without a Google account?", "alternatives": ["A. Signed URLs", "B. gsutil", "C. Single sign-on", "D. Temporary Storage Accounts"], "answer": "Answer: A - https://cloud.google.com/storage/docs/access-control/signed-urls"}

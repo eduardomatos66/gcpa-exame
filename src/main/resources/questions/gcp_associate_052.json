@@ -1,0 +1,1 @@
+{"key": "052", "title": "52. Which is the fastest instance storage option that will still be available when an instance is stopped?", "alternatives": ["A. Local SSD", "B. Standard Persistent Disk", "C. SSD Persistent Disk", "D. RAM disk"], "answer": "Answer: C - https://cloud.google.com/compute/docs/disks/"}

@@ -1,0 +1,1 @@
+{"key": "067", "title": "67. Which of these tools can you use to copy data from AWS S3 to Cloud Storage? (Select 2 answers.)", "alternatives": ["A. Cloud Storage Transfer Service", "B. S3 Storage Transfer Service", "C. Cloud Storage Console", "D. gsutil"], "answer": "Answer: A D - https://cloud.google.com/storage/transfer/"}

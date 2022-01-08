@@ -1,0 +1,1 @@
+{"key": "036", "title": "36. Which of the following is not helpful for mitigating the impact of an unexpected failure or reboot?", "alternatives": ["A. Use persistent disks", "B. Configure tags and labels", "C. Use startup scripts to re-configure the system as needed", "D. Back up your data"], "answer": "Answer: B - https://cloud.google.com/compute/docs/tutorials/robustsystems"}

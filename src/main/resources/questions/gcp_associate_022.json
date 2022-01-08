@@ -1,0 +1,1 @@
+{"key": "022", "title": "22. Which of the following tasks would Nearline Storage be well suited for?", "alternatives": ["A. A mounted Linux file system", "B. Image assets for a high traffic website", "C. Frequently read files", "D. Infrequently read data backups"], "answer": "Answer: D - https://cloud.google.com/storage/docs/storage-classes#comparison_of_storage_classes"}

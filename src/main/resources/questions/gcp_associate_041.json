@@ -1,0 +1,1 @@
+{"key": "041", "title": "41. What type of firewall rule(s) does Google Cloud\u2019s networking support?", "alternatives": ["A. deny", "B. allow, deny & filtered", "C. allow", "D. allow & deny"], "answer": "Answer: A - https://cloud.google.com/compute/docs/networking"}

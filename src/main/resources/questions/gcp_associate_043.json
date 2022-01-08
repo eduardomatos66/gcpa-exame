@@ -1,0 +1,1 @@
+{"key": "043", "title": "43. Which of the following is not a valid metric for triggering autoscaling?", "alternatives": ["A. Google Cloud Pub/Sub queuing", "B. Average CPU utilization", "C. Stackdriver Monitoring metrics", "D. App Engine Task Queues"], "answer": "Answer: D - https://cloud.google.com/compute/docs/autoscaler/"}

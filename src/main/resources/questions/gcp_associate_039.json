@@ -1,0 +1,1 @@
+{"key": "039", "title": "39. Which of the following is a virtual machine instance that can be terminated by Compute Engine without warning?", "alternatives": ["A. A preemptible VM", "B. A shared-core VM", "C. A high-cpu VM", "D. A standard VM"], "answer": "Answer: A - https://cloud.google.com/compute/docs/instances/preemptible"}

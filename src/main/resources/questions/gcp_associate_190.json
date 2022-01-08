@@ -1,0 +1,1 @@
+{"key": "190", "title": "26. You want to list all the internal and external IP addresses of all compute instances. Which of the commands below should you run to retrieve this information?", "alternatives": ["A. gcloud compute instances list.", "B. gcloud compute networks list.", "C. gcloud compute networks list-ip.", "D. gcloud compute instances list-ip."], "answer": "Answer: A"}
