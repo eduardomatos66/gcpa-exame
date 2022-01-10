@@ -1,0 +1,173 @@
+1. Which page in Google Cloud Console would you use to create a single instance of a VM?
+
+A. Compute Engine
+
+B. App Engine
+
+C. Kubernetes Engine
+
+D. Cloud Functions
+2. You view a list of Linux VM instances in the console. All have public IP addresses assigned. You notice that the SSH option is disabled for one of the instances. Why might that be the case?
+
+A. The instance is preemptible and therefore does not support SSH.
+
+B. The instance is stopped.
+
+C. The instance was configured with the No SSH option.
+
+D. The SSH option is never disabled.
+3. You have noticed unusually slow response time when issuing commands to a Linux server, and you decide to reboot the machine. Which command would you use in the console to reboot?
+
+A. Reboot
+
+B. Reset
+
+C. Restart
+
+D. Shutdown followed by Startup
+4. In the console, you can filter the list of VM instances by which of the following?
+
+A. Labels only
+
+B. Member of managed instance group only
+
+C. Labels, status, or members of managed instance group
+
+D. Labels and status only
+5. You will be building a number of machine learning models on an instance and attaching GPU to the instance. When you run your machine learning models they take an unusually long time to run. It appears that GPU is not being used. What could be the cause of this?
+
+A. GPU libraries are not installed.
+
+B. The operating system is based on Ubuntu.
+
+C. You do not have at least eight CPUs in the instance.
+
+D. There isn’t enough persistent disk space available.
+6. When you add a GPU to an instance, you must ensure that:
+
+A. The instance is set to terminate during maintenance.
+
+B. The instance is preemptible.
+
+C. The instance does not have nonboot disks attached.
+
+D. The instance is running Ubuntu 14.02 or later.
+7. You are using snapshots to save copies of a 100GB disk. You make a snapshot and then add 10GB of data. You create a second snapshot. How much storage is used in total for the two snapshots (assume no compression)?
+
+A. 210 GB, with 100GB for the first and 110GB for the second
+
+B. 110 GB, with 100GB for the first and 10GB for the second
+
+C. 110 GB, with 110 for the second (the first snapshot is deleted automatically)
+
+D. 221 GB, with 100GB for the first, 110GB for the second, plus 10 percent of the second snapshot (11 GB) for metadata overhead
+8. You have decided to delegate the task of making backup snapshots to a member of your team. What role would you need to grant to your team member to create snapshots?
+
+A. Compute Image Admin
+
+B. Storage Admin
+
+C. Compute Snapshot Admin
+
+D. Compute Storage Admin
+9. The
+
+A. Only disks
+source of an image may be:
+
+B. Snapshots or disks only
+
+C. Disks, snapshots, or another image
+
+D. Disks, snapshots, or any database export file
+10. You have built images using Ubuntu 14.04 and now want users to start using Ubuntu 16.04. You don’t want to just delete images based on Ubuntu 14.04, but you want users to know they should start using Ubuntu 16.04. What feature of images would you use to accomplish this?
+
+A. Redirection
+B. Deprecated
+C. Unsupported
+D. Migration
+11. You want to generate a list of VMs in your inventory and have the results in JSON format. What command would you use?
+
+A. gcloud compute instances list
+
+B. gcloud compute instances describe
+
+C. gcloud compute instances list --format json
+D. gcloud compute instances list --output json
+12. You would like to understand details of how GCP starts a virtual instance. Which optional
+parameter would you use when starting an instance to display those details?
+
+A. --verbose
+B. --async
+
+C. --describe
+D. --details
+13. Which command will delete an instance named ch06-instance-3?
+
+A. gcloud compute instances delete instance=ch06-instance-3
+B. gcloud compute instance stop ch06-instance-3
+
+C. gcloud compute instances delete ch06-instance-3
+
+D. gcloud compute delete ch06-instance-3
+14. You are about to delete an instance named ch06-instance-1 but want to keep its boot disk. You do not want to keep other attached disks. What gcloud command would you use?
+
+A. gcloud compute instances delete ch06-instance-1 ––keep-disks=boot
+
+B. gcloud compute instances delete ch06-instance-1 ––save-disks=boot
+
+C. gcloud compute instances delete ch06-instance-1 ––keep-disks=filesystem
+D. gcloud compute delete ch06-instance-1 ––keep-disks=filesystem
+15. You want to view a list of fields you can use to sort a list of instances. What command would you use to see the field names?
+
+A. gcloud compute instances list
+
+B. gcloud compute instances describe
+
+C. gcloud compute instances list --detailed
+
+D. gcloud compute instances describe --detailed
+16. You are deploying an application that will need to scale and be highly available. Which of these Compute Engine components will help achieve scalability and high availability?
+
+A. Preemptible instances
+
+B. Instance groups
+
+C. Cloud Storage
+
+D. GPUs
+17. Before creating an instance group, you need to create what?
+
+A. Instances in the instance group
+
+B. Instance group template
+
+C. Boot disk image
+
+D. Source snapshot
+18. How would you delete an instance group template using the command line?
+A. gcloud compute instances instance-template delete
+
+B. glcoud compute instance-templates delete
+
+C. gcloud compute delete instance-template
+
+D. gcloud compute delete instance-templates
+19. What can be the basis for scaling up an instance group?
+
+A. CPU utilization and operating system updates
+
+B. Disk usage and CPU utilization only
+
+C. Network latency, load balancing capacity, and CPU utilization
+
+D. Disk usage and operating system updates only
+20. An architect is moving a legacy application to Google Cloud and wants to minimize the changes to the existing architecture while administering the cluster as a single entity. The legacy application runs on a load-balanced cluster that runs nodes with two different configurations. The two configurations are required because of design decisions made several years ago. The load on the application is fairly consistent, so there is rarely a need to scale up or down. What GCP Compute Engine resource would you recommended using?
+
+A. Preemptible instances
+
+B. Unmanaged instance groups
+
+C. Managed instance groups
+
+D. GPUs

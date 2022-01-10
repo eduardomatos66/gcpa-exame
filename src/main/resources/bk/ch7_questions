@@ -1,0 +1,165 @@
+1. A new engineer is asking for clarification about when it is best to use Kubernetes and when to use instance groups. You point out that Kubernetes uses instance groups. What purpose do instance groups play in a Kubernetes cluster?
+
+A. They monitor the health of instances.
+
+B. They create pods and deployments.
+
+C. They create sets of VMs that can be managed as a unit.
+
+D. They create alerts and notification channels.
+2. What kinds of instances are required to have a Kubernetes cluster?
+
+A. A cluster master and nodes to execute workloads.
+
+B. A cluster master, nodes to execute workloads, and Stackdriver nodes to monitor node health.
+
+C. Kubernetes nodes; all instances are the same.
+
+D. Instances with at least four vCPUs.
+3. What is a pod in Kubernetes?
+
+A. A set of containers
+
+B. Application code deployed in a Kubernetes cluster
+
+C. A single instance of a running process in a cluster
+
+D. A controller that manages communication between clients and Kubernetes services
+4. You have developed an application that calls a service running in a Kubernetes cluster. The service runs in pods that can be terminated if they are unhealthy and replaced with other pods that might have a different IP address. How should you code your application to ensure it functions properly in this situation?
+
+A. Query Kubernetes for a list of IP addresses of pods running the service you use.
+
+B. Communicate with Kubernetes services so applications do not have to be coupled to
+specific pods.
+
+C. Query Kubernetes for a list of pods running the service you use.
+
+D. Use a gcloud command to get the IP addresses needed.
+5. You have noticed that an application’s performance has degraded significantly. You have recently made some configuration changes to resources in your Kubernetes cluster and suspect that those changes have alerted the number of pods running in the cluster. Where would you look for details on the number of pods that should be running?
+
+A. Deployments
+B. Stackdriver
+C. ReplicaSet
+D. Jobs
+6. You are deploying a high availability application in Kubernetes Engine. You want to main- tain availability even if there is a major network outage in a data center. What feature of Kubernetes Engine would you employ?
+
+A. Multiple instance groups
+B. Multizone/region cluster
+C. Regional deployments
+D. Load balancing
+7. You want to write a script to deploy a Kubernetes cluster with GPUs. You have deployed clusters before, but you are not sure about all the required parameters. You need to deploy this script as quickly as possible. What is one way to develop this script quickly?
+
+A. Use the GPU template in the Kubernetes Engine cloud console to generate the gcloud command to create the cluster
+
+B. Search the Web for a script
+
+C. Review the documentation on gcloud parameters for adding GPUs
+
+D. Use an existing script and add parameters for attaching GPUs
+8. What gcloud command will create a cluster named ch07-cluster-1 with four nodes?
+A. gcloud beta container clusters create ch07-cluster-1 --num-nodes=4
+B. gcloud container beta clusters create ch07-cluster-1 --num-nodes=4
+C. gcloud container clusters create ch07-cluster-1 --num-nodes=4
+
+D. gcloud beta container clusters create ch07-cluster-1 4
+9. When using Create Deployment from Cloud Console, which of the following cannot be
+specified for a deployment?
+
+A. Container image
+
+B. Application name
+
+C. Time to live (TTL)
+
+D. Initial command
+10. Deployment configuration files created in Cloud Console use what type of file format?
+A. CSV
+
+B. YAML
+C. TSV
+D. JSON
+11. What command is used to run a Docker image on a cluster?
+A. gcloud container run
+
+B. gcloud beta container run
+
+C. kubectl run
+
+D. kubectl beta run
+12. What command would you use to have 10 replicas of a deployment named
+ch07-app-deploy?
+
+A. kubectl upgrade deployment ch07-app-deploy --replicas=5
+B. gcloud containers deployment ch07-app-deploy --replicas=5
+C. kubectl scale deployment ch07-app-deploy --replicas=10
+
+D. kubectl scale deployment ch07-app-deploy --pods=5
+13. Stackdriver is used for what operations on Kubernetes clusters?
+
+A. Notifications only
+
+B. Monitoring and notifications only
+
+C. Logging only
+
+D. Notifications, monitoring, and logging
+14. Before monitoring a Kubernetes cluster, what must you create with Stackdriver?
+A. Log
+
+B. Workspace
+C. Pod
+
+D. ReplicaSet
+15. What kind of information is provided in the Details page about an instance in Stackdriver?
+
+A. CPU usage only
+
+B. Network traffic only
+
+C. Disk I/O, CPU usage, and network traffic
+
+D. CPU usage and disk I/O
+16. When creating an alerting policy, what can be specified?
+
+A. Conditions, notifications, and time to live
+
+B. Conditions, notifications, and documentation
+
+C. Conditions only
+
+D. Conditions, documentation, and time to live
+17. Your development team needs to be notified if there is a problem with applications running on several Kubernetes clusters. Different team members prefer different notification methods in addition to Stackdriver alerting. What is the most efficient way to send notifications and meet your team’s requests?
+
+A. Set up SMS text messaging, Slack, and email notifications on an alert.
+
+B. Create a separate alert for each notification channel.
+
+C. Create alerts with email notifications and have those notification emails forwarded to other notification systems.
+
+D. Use a single third-party notification mechanism.
+18. A new engineer is trying to set up alerts for a Kubernetes cluster. The engineer seems to be creating a large number of alerts and you are concerned this is not the most efficient way and will lead to more maintenance work than required. You explain that a more efficient way is to create alerts and apply them to what?
+
+A. One instance only
+
+B. An instance or entire group
+
+C. A group only
+
+D. Apod
+19. You are attempting to execute commands to initiate a deployment on a Kubernetes cluster.
+The commands are not having any effect. You suspect that a Kubernetes component is not functioning correctly. What component could be the problem?
+
+A. The Kubernetes API
+
+B. A StatefulSet
+
+C. Cloud SDK gcloud commands
+
+D. ReplicaSet
+20. You have deployed an application to a Kubernetes cluster. You have noticed that several pods are starved for resources for a period of time and the pods are shut down. When resources are available, new instantiations of those pods are created. Clients are still able to connect to pods even though the new pods have different IP addresses from the pods that were terminated. What Kubernetes component makes this possible?
+
+A. Services
+B. ReplicaSet
+C. Alerts
+
+D. StatefulSet

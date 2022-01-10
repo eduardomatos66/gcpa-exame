@@ -1,0 +1,180 @@
+1. You have just opened the GCP console at console.google.com. You have authenticated with the user you want to use. What is one of the first things you should do before perform- ing tasks on VMs?
+
+A. Open Cloud Shell.
+
+B. Verify you can SSH into a VM.
+
+C. Verify that the selected project is the one you want to work with.
+
+D. Review the list of running VMs.
+2. What is a one-time task you will need to complete before using the console?
+
+A. Set up billing
+
+B. Create a project
+
+C. Create a storage bucket
+
+D. Specify a default zone
+3. A colleague has asked for your assistance setting up a test environment in Google Cloud. They have never worked in GCP. You suggest starting with a single VM. Which of the following is the minimal set of information you will need?
+
+A. A name for the VM and a machine type
+
+B. A name for the VM, a machine type, a region, and a zone
+
+C. A name for the VM, a machine type, a region, a zone, and a CIDR block
+
+D. A name for the VM, a machine type, a region, a zone, and an IP address
+4. An architect has suggested a particular machine type for your workload. You are in the console creating a VM and you don’t see the machine type in the list of available machine types. What could be the reason for this?
+
+A. You have selected the incorrect subnet.
+
+B. That machine type is not available in the zone you specified.
+
+C. You have chosen an incompatible operating system.
+
+D. You have not specified a correct memory configuration.
+5. Your manager asks for your help with understanding cloud computing costs. Your team runs dozens of VMs for three different applications. Two of the applications are for use by the marketing department and one is use by the finance department. Your manager wants a way to bill each department for the cost of the VMs used for their applications. What would you suggest to help solve this problem?
+
+A. Access controls
+
+B. Persistent disks
+
+C. Labels and descriptions
+
+D. Descriptions only
+6. If you wanted to set the preemptible property using Cloud Console, in which section of the
+Create An Instance page would you find the option?
+A. Availability Policy
+
+B. Identity And API Access
+
+C. Sole Tenancy
+
+D. Networking
+7. You need to set up a server with a high level of security. You want to be prepared in case of attacks on your server by someone trying to inject a rootkit (a kind of malware that can alter the operating system). Which option should you select when creating a VM?
+
+A. Firewall
+
+B. Shield VM
+
+C. Project-wide SSH keys
+
+D. Boot disk integrity check
+8. All of the following parameters can be set when adding an additional disk through Google Cloud Console, except one. Which one?
+
+A. Disk type
+
+B. Encryption key management
+C. Block size
+
+D. Source image for the disk
+9. You lead a team of cloud engineers who maintain cloud resources for several departments in your company. You’ve noticed a problem with configuration drift. Some machine config- urations are no longer in the same state as they were when created. You can’t find notes or documentation on how the changes were made or why. What practice would you implement to solve this problem?
+
+A. Have all cloud engineers use only command-line interface in Cloud Shell.
+
+B. Write scripts using gcloud commands to change configuration and store those scripts in
+a version control system.
+
+C. Take notes when making changes to configuration and store them in Google Drive.
+
+D. Limit privileges so only you can make changes so you will always know when and why configurations were changed.
+10. When using the Cloud SDK command-line interface, which of the following is part of commands for administering resources in Compute Engine?
+
+A. gcloud compute instances
+
+B. gcloud instances
+
+C. gcloud instances compute
+
+D. None of the above
+Review Questions 115 11. A newly hired cloud engineer is trying to understand what VMs are running in a particular
+project. How could the engineer get summary information on each VM running in a project?
+
+A. Execute the command gcloud compute list
+
+B. Execute the command gcloud compute instances list
+
+C. Execute the command gcloud instances list
+
+D. Execute the command gcloud list instances
+12. When creating a VM using the command line, how should you specify labels for the VM?
+
+A. Use the --labels option with labels in the format of KEYS:VALUES.
+
+B. Use the --labels option with labels in the format of KEYS=VALUE.
+
+C. Use the --labels option with labels in the format of KEYS,VALUES.
+
+D. This is not possible in the command line.
+13. In the boot disk advanced configuration, which operations can you specify when creating a
+new VM?
+
+A. Add a new disk, reformat an existing disk, attach an existing disk
+
+B. Add a new disk and reformat an existing disk
+
+C. Add a new disk and attach an existing disk
+
+D. Reformat an existing disk and attach an existing disk
+14. You have acquired a 10 GB data set from a third-party research firm. A group of data scientists would like to access this data from their statistics programs written in R. R works well with Linux and Windows file systems, and the data scientists are familiar with file operations in R. The data scientists would each like to have their own dedicated VM with the data available in the VM’s file system. What is a way to make this data readily available on a VM and minimize the steps the data scientists will have to take?
+
+A. Store the data in Cloud Storage.
+
+B. Create VMs using a source image created from a disk with the data on it.
+C. Store the data in Google Drive.
+
+D. Load the data into BigQuery.
+15. The Network tab of the create VM form is where you would perform which of the follow- ing operations?
+
+A. Set the IP address of the VM
+
+B. Add a network interface to the VM
+
+C. Specify a default router
+
+D. Change firewall configuration rules
+16. You want to create a VM using the gcloud command. What parameter would you include
+to specify the type of boot disk?
+
+A. boot-disk-type
+B. boot-disk
+
+C. disk-type
+
+D. type-boot-disk
+17. Which of the following commands will create a VM with four CPUs that is named web- server-1?
+
+A. gcloud compute instances create --machine-type=n1-standard-4 web-server-1
+
+B. gcloud compute instances create --cpus=4 web-server-1
+
+C. gcloud compute instances create --machine-type=n1-standard-4 –instance- name web-server-1
+
+D. gcloud compute instances create --machine-type=n1-4-cpu web-server-1
+18. Which of the following commands will stop a VM named web-server-1?
+A. gcloud compute instances halt web-server-1
+
+B. gcloud compute instances --terminate web-server1
+
+C. gcloud compute instances stop web-server-1
+
+D. gcloud compute stop web-server-1
+19. You have just created an Ubuntu VM and want to log into the VM to install some software
+packages. Which network service would you use to access the VM?
+A. FTP
+
+B. SSH
+
+C. RDP
+
+D. ipconfig
+20. Your management team is considering three different cloud providers. You have been asked to summarize billing and cost information to help the management team compare cost structures between clouds. Which of the following would you mention about the cost of VMs in GCP?
+
+A. VMs are billed in 1-second increments, cost varies with the number of CPUs and amount of memory in a machine type, you can create custom machine types, preemptible VMs cost up to 80 percent less than standard VMs, and Google offers discounts for sustained usage.
+
+B. VMs are billed in 1-second increments and VMs can run up to 24 hours before they will be be shut down.
+
+C. Google offers discounts for sustained usage in only some regions, cost varies with the number of CPUs and amount of memory in a machine type, you can create custom machine types, preemptible VMs cost up to 80 percent less than standard VMs.
+
+D. VMs are charged for a minimum of 1 hour of use and cost varies with the number of CPUs and amount of memory in a machine type.

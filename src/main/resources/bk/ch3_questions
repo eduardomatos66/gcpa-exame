@@ -1,0 +1,170 @@
+1. You are designing cloud applications for a healthcare provider. The records management application will manage medical information for patients. Access to this data is limited to a small number of employees. The billing department application will have insurance and payment information. Another group of employees will have access billing information. In addition, the billing system will have two components: a private insurance billing system and a government payer billing system. Government regulations require that software used to bill the government must be isolated from other software systems. Which of the follow- ing resource hierarchies would meet these requirements and provide the most flexibility to adapt to changing requirements?
+
+A. One organization, with folders for records management and billing. The billing folder would have private insurer and government payer folders within it. Common constraints would be specified in organization-level policies. Other policies would be defined at the appropriate folder.
+
+B. One folder for records management, one for billing, and no organization. Policies defined at the folder level.
+
+C. One organization, with folders for records management, private insurer, and govern- ment payer below the organization. All constraints would be specified in organization- level policies. All folders would have the same policy constraints.
+
+D. None of the above.
+2. When you create a hierarchy, you can have more than one of which structure?
+
+A. Organization only
+
+B. Folder only
+
+C. Folder and project
+
+D. Project only
+3. You are designing an application that uses a series of services to transform data from its original form into a format suitable for use in a data warehouse. Your transformation appli- cation will write to the message queue as it processes each input file. You don’t want to give users permission to write to the message queue. You could allow the application to write to the message queue by using which of the following?
+
+A. Billing account
+
+B. Service account
+
+C. Messaging account
+
+D. Folder
+4. Your company has a number of policies that need to be enforced for all projects. You decide to apply policies to the resource hierarchy. Not long after you apply the policies, an engineer finds that an application that had worked prior to implementing policies is no lon- ger working. The engineer would like you to create an exception for the application. How can you override a policy inherited from another entity in the resource hierarchy?
+
+A. Inherited policies can be overridden by defining a policy at a folder or project level.
+
+B. Inherited policies cannot be overridden.
+
+C. Policies can be overridden by linking them to service accounts.
+
+D. Policies can be overridden by linking them to billing accounts.
+5. Constraints are used in resource hierarchy policies. Which of the following are types of constraints allowed?
+
+A. Allow a specific set of values
+
+B. Deny a specific set of values
+
+C. Deny a value and all its child values
+
+D. Allow all allowed values
+E. All of the above
+6. A team with four members needs you to set up a project that needs only general permissions for all resources. You are granting each person a primitive role for different levels of access, depending on their responsibilities in the project. Which of the following are not included as primitive roles in Google Cloud Platform?
+
+A. Owner
+B. Publisher
+C. Editor
+
+D. Viewer
+7. You are deploying a new custom application and want to delegate some administration tasks to DevOps engineers. They do not need all the privileges of a full application admin- istrator, but they do need a subset of those privileges. What kind of role should you use to grant those privileges?
+
+A. Primitive
+B. Predefined
+C. Advanced
+D. Custom
+8. An app for a finance company needs access to a database and a Cloud Storage bucket. There is no predefined role that grants all the needed permissions without granting some permissions that are not needed. You decide to create a custom role. When defining custom roles, you should follow which of the following principles?
+
+A. Rotation of duties
+
+B. Least principle
+
+C. Defense in depth
+D. Least privilege
+9. How many organizations can you create in a resource hierarchy?
+A. 1
+
+B. 2
+
+C. 3
+
+D. Unlimited
+10. You are contacted by the finance department of your company for advice on how to auto- mate payments for GCP services. What kind of account would you recommend setting up?
+
+A. Service account
+B. Billing account
+C. Resource account
+D. Credit account
+11. You are experimenting with GCP for your company. You do not have permission to incur costs. How can you experiment with GCP without incurring charges?
+
+A. You can’t; all services incur charges.
+
+B. You can use a personal credit card to pay for charges.
+
+C. You can use only free services in GCP.
+
+D. You can use only serverless products, which are free to use.
+12. Your DevOps team has decided to use Stackdriver monitoring and logging. You have been asked to set up Stackdriver workspaces. When you set up a Stackdriver workspace, what kind of resource is it associated with?
+
+A. A Compute Engine instance only
+
+B. A Compute Engine instance or Kubernetes Engine cluster only
+
+C. A Compute Engine instance, Kubernetes Engine cluster, or App Engine app
+
+D. A project
+13. A large enterprise is planning to use GCP across a number of subdivisions. Each subdivision is managed independently and has its own budget. Most subdivisions plan to spend tens
+of thousands of dollars per month. How would you recommend they set up their billing account(s)?
+
+A. Use a single self-service billing account.
+
+B. Use multiple self-service billing accounts.
+
+C. Use a single invoiced billing account.
+
+D. Use multiple invoiced billing accounts.
+14.
+An application administrator is responsible for managing all resources in a project. She wants to delegate responsibility for several service accounts to another administrator. If additional service accounts are created, the other administrator should manage those as well. What is the best way to delegate privileges needed to manage the service accounts?
+
+A. Grant iam.serviceAccountUser to the administrator at the project level.
+
+B. Grant iam.serviceAccountUser to the administrator at the service account level.
+
+C. Grant iam.serviceProjectAccountUser to the administrator at the project level.
+
+D. Grant iam.serviceProjectAccountUser to the administrator at the service account level.
+You work for a retailer with a large number of brick and mortar stores. Every night the stores upload daily sales data. You have been tasked with creating a service that verifies the uploads every night. You decide to use a service account. Your manager questions the security of your proposed solution, particularly about authenticating the service account. You explain the authentication mechanism used by service accounts. What authentication mechanism is used?
+
+A. Username and password
+
+B. Two-factor authentication
+
+C. Encrypted keys
+
+D. Biometrics
+15.
+16. What objects in GCP are sometimes treated as resources and sometimes as identities?
+A. Billing accounts
+
+B. Service accounts
+
+C. Projects
+
+D. Roles
+17. You plan to develop a web application using products from the GCP that already include established roles for managing permissions such as read-only access or the ability to delete old versions. Which of the following roles offers these capabilities?
+
+A. Primitive roles
+B. Predefined roles
+C. Custom roles
+
+D. Application roles
+18. You are reviewing a new GCP account created for use by the finance department. An auditor has questions about who can create projects by default. You explain who has privileges to create projects by default. Who is included?
+
+A. Only project administrators
+
+B. All users
+
+C. Only users without the role resourcemanager.projects.create
+
+D. Only billing account users
+19. How many projects can be created in an account?
+A. 10
+
+B. 25
+
+C. There is no limit.
+
+D. Each account has a limit determined by Google.
+20. You are planning how to grant privileges to users of your company’s GCP account. You need to document what each user will be able to do. Auditors are most concerned about a role called Organization IAM roles. You explain that users with that role can perform a number of tasks, which include all of the following except which one?
+
+A. Defining the structure of the resource hierarchy
+
+B. Determining what privileges a user should be assigned
+
+C. Defining IAM policies over the resource hierarchy
+
+D. Delegating other management roles to other users
