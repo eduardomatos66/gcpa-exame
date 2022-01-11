@@ -28,12 +28,12 @@ public class JsonQuestionLoader extends AbstractLoader {
 
     @Override
     protected void loadQuestions() {
-        this.questionBuilder(
-                new File(this.questionsPath)
-        );
+        for (File f : Objects.requireNonNull(new File(this.questionsPath).listFiles())) {
+            this.questionBuilder(f);
+        }
     }
 
-    protected Question questionBuilder(File file) {
+    protected void questionBuilder(File file) {
         Question question = new Question();
         JSONParser parser = new JSONParser();
 
@@ -54,13 +54,11 @@ public class JsonQuestionLoader extends AbstractLoader {
             question.setQuestionOptionList(buildQuestionOptions(answers, companyList));
 
             if (validateQuestionBeforeSave(question)) {
-                return question;
+                this.questions.add(question);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return null;
     }
 
     private static boolean validateQuestionBeforeSave(Question question) {

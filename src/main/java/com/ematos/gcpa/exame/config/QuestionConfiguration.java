@@ -26,10 +26,10 @@ public class QuestionConfiguration {
     void loadQuestions() {
         List<Question> questions = new ArrayList<>();
 
-        //JsonQuestionLoader jsonQuestionLoader = new JsonQuestionLoader();
+        JsonQuestionLoader jsonQuestionLoader = new JsonQuestionLoader();
         BookQuestionLoader bookQuestionLoader = new BookQuestionLoader();
 
-        //questions.addAll(jsonQuestionLoader.getQuestions());
+        questions.addAll(jsonQuestionLoader.getQuestions());
         questions.addAll(bookQuestionLoader.getQuestions());
 
         this.questionRepository.saveAll(questions);

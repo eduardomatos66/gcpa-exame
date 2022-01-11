@@ -5,7 +5,6 @@ import com.ematos.gcpa.exame.model.Question;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public abstract class AbstractLoader {
 
@@ -23,7 +22,7 @@ public abstract class AbstractLoader {
 
     protected abstract void loadQuestions();
 
-    protected abstract Question questionBuilder(File file);
+    protected abstract void questionBuilder(File file);
 
     public List<Question> getQuestions() {
         return questions;

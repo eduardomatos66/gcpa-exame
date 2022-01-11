@@ -4,8 +4,6 @@ import com.ematos.gcpa.exame.exception.NotEnoughAlternativesException;
 import com.ematos.gcpa.exame.exception.QuestionNotExistentException;
 import com.ematos.gcpa.exame.model.Question;
 import com.ematos.gcpa.exame.model.QuestionOption;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -171,7 +169,7 @@ public class BookQuestionLoader extends AbstractLoader {
     }
 
     @Override
-    protected Question questionBuilder(File file) {
+    protected void questionBuilder(File file) {
         try {
             this.myReader = new Scanner(file);
             LineTypeEnum lineTypeEnum = LineTypeEnum.TITLE;
@@ -207,7 +205,6 @@ public class BookQuestionLoader extends AbstractLoader {
             System.out.println("An error occurred trying to open file.");
             e.printStackTrace();
         }
-        return null;
     }
 
     private void createQuestion(StringBuilder title, List<QuestionOption> alternatives) {
