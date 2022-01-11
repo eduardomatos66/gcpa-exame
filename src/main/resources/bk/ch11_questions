@@ -1,0 +1,169 @@
+1. You are tasked with defining lifecycle configurations on buckets in Cloud Storage. You need to consider all possible options for transitioning from one storage class to another. All of the following transitions are allowed except for one. Which one is that?
+
+A. Nearline to coldline
+
+B. Regional to nearline
+
+C. Multiregional to coldline
+
+D. Regional to multiregional
+2. Your manager has asked for your help in reducing Cloud Storage charges. You know that some of the files stored in Cloud Storage are rarely accessed. What kind of storage would you recommend for those files?
+
+A. Nearline
+
+B. Regional
+
+C. Coldline
+
+D. Multiregional
+3. You are working with a startup developing analytics software for IoT data. You have to be able to ingest large volumes of data consistently and store it for several months. The startup has several applications that will need to query this data. Volumes are expected to grow to petabyte volumes. Which database should you use?
+
+A. Cloud Spanner
+
+B. Bigtable
+
+C. BigQuery
+
+D. Datastore
+4. A software developer on your team is asking for your help improving the query performance of a database application. The developer is using a Cloud SQL MySQL, Second Generation instance. Which options would you recommend?
+
+A. Memorystore and SSD persistent disks
+
+B. Memorystore and HDD persistent disks
+
+C. Datastore and SSD persistent disks
+
+D. Datastore and HDD persistent disks
+5. You are creating a set of persistent disks to store data for exploratory data analysis. The disks will be mounted on a virtual machine in the us-west2-a zone. The data is historical data retrieved from Cloud Storage. The data analysts do not need peak performance
+and are more concerned about cost than performance. The data will be stored in a local relational database. Which type of storage would you recommend?
+
+A. SSDs
+
+B. HDDs
+
+C. Datastore
+D. Bigtable
+6. Which of the following statements about Cloud Storage is not true?
+
+A. Cloud Storage buckets can have retention periods.
+
+B. Lifecycle configurations can be used to change storage class from regional to multiregional.
+
+C. Cloud Storage does not provide block-level access to data within files stored in buckets.
+
+D. Cloud Storage is designed for high durability.
+7. When using versioning on a bucket, what is the latest version of the object called?
+
+A. Live version
+
+B. Top version
+
+C. Active version
+
+D. Safe version
+8. A product manager has asked for your advice on which database services might be options for a new application. Transactions and support for tabular data are important. Ideally, the database would support common query tools. What databases would you recommend the product manager consider?
+
+A. BigQuery and Spanner
+B. Cloud SQL and Spanner
+C. Cloud SQL and Bigtable
+D. Bigtable and Spanner
+9. The Cloud SQL service provides fully managed relational databases. What two types of databases are available in Cloud SQL?
+
+A. SQL Server and MySQL
+
+B. SQL Server and PostgreSQL
+
+C. PostgreSQL and MySQL
+
+D. MySQL and Oracle
+10. Which of the following Cloud Spanner configurations would have the highest hourly cost?
+
+A. Located in us-central1
+
+B. Located in nam3
+
+C. Located in us-west1-a
+
+D. Located in nam-eur-asia1
+11. Which of the following are database services that do not require you to specify configuration information for VMs?
+
+A. BigQuery only
+
+B. Datastore only
+
+C. Firebase and Datastore
+
+D. BigQuery, Datastore, and Firebase
+12. What kind of data model is used by Datastore?
+A. Relational
+
+B. Document
+
+C. Wide-column
+D. Graph
+13. You have been tasked with creating a data warehouse for your company. It must support tens of petabytes of data and use SQL for a query language. Which managed database service would you choose?
+
+A. BigQuery
+
+B. Bigtable
+
+C. Cloud SQL
+
+D. SQL Server
+14. A team of mobile developers is developing a new application. It will require synchronizing data between mobile devices and a backend database. Which database service would you recommend?
+
+A. BigQuery
+B. Firestore
+C. Spanner
+D. Bigtable
+15. A product manager is considering a new set of features for an application that will require additional storage. What features of storage would you suggest the product manager consider?
+
+A. Read and write patterns only
+
+B. Cost only
+
+C. Consistency and cost only
+
+D. None, they are all relevant considerations.
+16. What is the maximum size of a Memorystore cache?
+A. 100GB
+
+B. 300GB
+C. 400GB
+D. 50GB
+17. Once a bucket has its storage class set to coldline, what are other storage classes it can transition to?
+
+A. Regional
+
+B. Nearline
+
+C. Multi-regional
+
+D. None of the above
+18. Before you can start storing data in BigQuery, what must you create?
+
+A. A data set
+
+B. A bucket
+
+C. A persistent disk
+
+D. An entity
+19. What features can you configure when running a Second Generation MySQL database in Cloud SQL?
+
+A. Machine type
+
+B. Maintenance windows
+
+C. Failover replicas
+
+D. All of the above
+20. A colleague is wondering why some storage charges are so high. They explain that they have moved all their storage to nearline and coldline storage. They routinely access most of the object on any given day. What is one possible reason the storage costs are higher than expected?
+
+A. Nearline and coldline incur access charges.
+
+B. Transfer charges.
+
+C. Multiregional coldline is more expensive.
+
+D. Regional coldline is more expensive.
