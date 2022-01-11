@@ -23,6 +23,12 @@ public class QuestionController extends AbstractController {
         return this.questionService.getQuestions();
     }
 
+    @GetMapping(path="/amount")
+    @ResponseStatus(value = HttpStatus.OK)
+    public int getQuestionsAmount() {
+        return this.questionService.getQuestions().size();
+    }
+
     @GetMapping(path="/{id}")
     @ResponseStatus(value = HttpStatus.OK)
     public Question getQuestionById(@PathVariable("id")  Long id) {
