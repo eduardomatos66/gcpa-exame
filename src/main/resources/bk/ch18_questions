@@ -1,0 +1,169 @@
+1. What Stackdriver service is used to generate alerts when the CPU utilization of a VM exceeds 80 percent?
+
+A. Logging
+
+B. Monitoring
+C. Cloud Trace
+D. Cloud Debug
+2. You have just created a virtual machine, and you’d like Stackdriver Monitoring to alert you via email whenever the CPU average utilization exceeds 75 percent for 5 minutes. What do you need to do to the VM to have this happen?
+
+A. Install a Stackdriver workspace
+
+B. Install the Stackdriver monitoring agent on the VM
+
+C. Edit the VM configuration in Cloud Console and check the Monitor With Stackdriver checkbox
+
+D. Set a notification channel
+3. Stackdriver can be used to monitor resources where?
+
+A. In Google Cloud Platform only
+
+B. In Google Cloud Platform and Amazon Web Services only
+
+C. In Google Cloud Platform and on premises data centers
+
+D. In Google Cloud Platform, Amazon Web Services, and on premises data centers
+4. Grouping a set of metrics that arrive in a period of time into regular-sized buckets is called what?
+
+A. Aggregation
+B. Alignment
+
+C. Minimization
+D. Consolidation
+5. You have created a condition of CPU utilization, and you want to receive notifications. Which of the following are options?
+
+A. Email only
+
+B. PagerDuty only
+
+C. Hipchat and PagerDuty
+
+D. Email, PagerDuty, and Hipchat
+6. When you create a policy to notify you of a potential problem with your infrastructure, you can specify optional documentation. Why would you bother putting documentation in that form?
+
+A. It is saved to Cloud Storage for future use.
+
+B. It can help you or a colleague understand the purpose of the policy.
+
+C. It can contain information that would help someone diagnose and correct the problem.
+
+D. Options B and
+C.
+7. What is alert fatigue, and why is it a problem?
+
+A. Too many alert notifications are sent for events that do not require human intervention, and eventually DevOps engineers begin to pay less attention to notifications.
+
+B. Too many alerts put unnecessary load on your systems.
+
+C. Too few alerts leave DevOps engineers uncertain of the state of your applications and
+infrastructure.
+
+D. Too many false alerts
+8. How long is log data stored in Stackdriver Logging?
+A. 7 days
+
+B. 15 days
+C. 30 days
+D. 60 days
+9. You need to store log entries for a longer period of time than Stackdriver Logging retains them. What is the best option for preserving log data?
+
+A. There is no option; once the data retention period passes, Stackdriver Logging deletes the data.
+
+B. Create a log sink and export the log data using Stackdriver Logging’s export functionality.
+
+C. Write a Python script to use the Stackdriver API to write the data to Cloud Storage.
+
+D. Write a Python script to use the Stackdriver API to write the data to BigQuery.
+10. Which of the following are options for logging sinks?
+
+A. Cloud Storage bucket only
+
+B. BigQuery dataset and Cloud Storage bucket only
+
+C. Cloud Pub/Sub topic only
+
+D. Cloud Storage bucket, BigQuery dataset, and Cloud Pub/Sub topic
+11. Which of the following can be used to filter log entries when viewing logs in Stackdriver
+Logging?
+
+A. Label or text search only
+
+B. Resource type and log type only
+
+C. Time and resource type only
+
+D. Label or text search, resource type, log type, and time
+12. Which of the following is not a standard log level that can be used to filter log viewings?
+A. Critical
+
+B. Halted
+C. Warning
+D. Info
+13. You are viewing log entries and spot one that looks suspicious. You are not familiar with the kind of log entry, and you want to see the complete details of the log entry as quickly as possible. What would you do?
+
+A. Drill down one by one into each structure in the log entry.
+
+B. Click Expand all to show all details.
+
+C. Write a Python script to reformat the log entry.
+
+D. Click the Show Detail link next to the log entry.
+14. What Stackdriver service is best for identifying where bottlenecks exist in your application?
+A. Monitoring
+
+B. Logging
+C. Trace
+D. Debug
+15. There is a bug in a microservice. You have reviewed application outputs but cannot identify the problem. You decide you need to step through the code. What Stackdriver service would you use to give you insight into the status of the services at particular points in execution?
+
+A. Monitoring
+B. Logging
+
+C. Trace
+
+D. Debug
+16. You believe there may be a problem with BigQuery in the us-central zone. Where would you go to check the status of the BigQuery service for the quickest access to details?
+
+A. Email Google Cloud Support.
+
+B. Check https://status.cloud.google.com/.
+
+C. Check https://bigquery.status.cloud.google.com/.
+
+D. Call Google tech support.
+17. You would like to estimate the cost of GCP resources you will be using. Which services would
+require you to have information on the virtual machines you will be using?
+A. Compute Engine and BigQuery
+
+B. Compute Engine and Kubernetes Engine
+
+C. BigQuery and Kubernetes Engine
+
+D. BigQuery and Cloud Pub/Sub
+18. You are generating an estimate of the cost of using BigQuery. One of the parameters is
+Query Pricing. You have to specify a value in TB units. What is the value you are specifying?
+
+A. The amount of data stored in BigQuery
+
+B. The amount of data returned by the query
+
+C. The amount of data scanned by the query
+
+D. The amount of data in Cloud Storage bucket
+19. Why do you need to specify the operating system to be used when estimating the cost of
+a VM?
+
+A. All operating systems are charged a fixed rate.
+
+B. Some operating systems incur a cost.
+
+C. It’s not necessary; it is only included for documentation.
+
+D. To estimate the cost of Bring Your Own License configurations.
+20. You want to create a custom metric for use in Stackdriver Monitoring but do not want to use the low-level Stackdriver API. What is an alternative open source option for working with custom metrics?
+
+A. Prometheus
+B. OpenCensus
+C. Grafana
+
+D. Nagios

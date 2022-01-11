@@ -1,0 +1,172 @@
+1. Virtual private clouds have a __________ scope.
+
+A. Zonal
+
+B. Regional
+
+C. Super-regional
+D. Global
+2. You have been tasked with defining CIDR ranges to use with a project. The project includes 2 VPCs with several subnets in each VP
+C. How many CIDR ranges will you need to define?
+
+A. One for each VPC
+
+B. One for each subnet
+
+C. One for each region
+
+D. One for each zone
+3. The legal department needs to isolate its resources on its own VP
+C. You want to have network provide routing to any other service available on the global network. The VPC network has not learned global routes. What parameter may have been missed when creating the VPC subnets?
+
+A. DNS server policy
+
+B. Dynamic routing
+
+C. Static routing policy
+
+D. Systemic routing policy
+4. The command to create a VPC from the command line is:
+A. gcloud compute networks create
+
+B. gcloud networks vpc create
+
+C. gsutil networks vpc create
+
+D. gcloud compute create networks
+5. You have created several subnets. Most of them are sending logs to Stackdriver. One subnet is not sending logs. What option may have been misconfigured when creating the subnet that is not forwarding logs?
+
+A. Flow Logs
+
+B. Private IP Access
+
+C. Stackdriver Logging
+
+D. Variable-Length Subnet Masking
+6. At what levels of the resource hierarchy can a shared VPC be created?
+A. Folders and resources
+
+B. Organizations and project
+
+C. Organizations and folders
+
+D. Folders and subnets
+7. You are using Cloud Console to create a VM that you want to exist in a custom subnet you just created. What section of the Create Instance form would you use to specify the custom subnet?
+
+A. Networking tab of the Management, Security, Disks, Networking, Sole Tenancy section
+B. Management tab of the Management, Security, Disks, Networking, Sole Tenancy section
+C. Sole Tenancy tab of Management, Security, Disks, Networking, Sole Tenancy
+
+D. Sole Tenancy tab of Management, Security, Disks, Networking
+8. You want to implement interproject communication between VPCs. Which feature of VPCs would you use to implement this?
+
+A. VPC peering
+
+B. Interproject peering
+C. VPN
+
+D. Interconnect
+9. You want to limit traffic to a set of instances. You decide to set a specific network tag on each instance. What part of a firewall rule can reference the network tag to determine the set of instances affected by the rule?
+
+A. Action
+
+B. Target
+
+C. Priority
+D. Direction
+10. What part of a firewall rule determines whether a rule applies to incoming or outgoing traffic?
+
+A. Action
+
+B. Target
+
+C. Priority
+D. Direction
+11. You want to define a CIDR range that applies to all destination addresses. What IP address would you specify?
+
+A. 0.0.0.0/0
+
+B. 10.0.0.0/8
+
+C. 172.16.0.0/12
+D. 192.168.0.0/16
+12. You are using gcloud to create a firewall rule. Which command would you use?
+A. gcloud network firewall-rules create
+
+B. gcloud compute firewall-rules create
+
+C. gcloud network rules create
+
+D. gcloud compute rules create
+13. You are using gcloud to create a firewall rule. Which parameter would you use to specify
+the subnet it should apply to?
+
+A. ––subnet
+
+B. ––network
+
+C. ––destination
+D. ––source-ranges
+14. Anapplicationdevelopmentteamisdeployingasetofspecializedserviceendpointsand wants to limit traffic so that only traffic going to one of the endpoints is allowed through by firewall rules. The service endpoints will accept any UDP traffic and each endpoint will use a port in the range of 20000–30000. Which of the following commands would you use?
+
+A. gcloud compute firewall-rules create fwr1 --allow=udp:20000-30000 --direction=ingress
+
+B. gcloud network firewall-rules create fwr1 --allow=udp:20000-30000 --direction=ingress
+
+C. gcloud compute firewall-rules create fwr1 --allow=udp
+
+D. gcloud compute firewall-rules create fwr1 --direction=ingress
+15. You have a rule to allow inbound traffic to a VM. You want it to apply only if there is not another rule that would deny that traffic. What priority should you give this rule?
+
+A. 0
+
+B. 1
+
+C. 1000
+D. 65535
+16. You want to create a VPN using Cloud Console. What section of Cloud Console should you use?
+
+A. Compute Engine
+
+B. App Engine
+
+C. Hybrid Connectivity
+
+D. IAM & Admin
+17. You are using Cloud Console to create a VPN. You want to configure the GCP end of the
+VPN. What section of the Create VPN form would you use?
+A. Tunnels
+
+B. Routing Options
+
+C. Google Compute Engine VPN
+
+D. IKE Version
+18. You want the router on a tunnel you are creating to learn routes from all GCP regions on
+the network. What feature of GCP routing would you enable?
+
+A. Global dynamic routing
+
+B. Regional routing
+
+C. VPC
+
+D. Firewall rules
+19. When you create a cloud router, what kind of unique identifier do you need to assign for the BGP protocol?
+
+A. IP address
+
+B. ASN
+
+C. Dynamic load routing ID
+
+D. None of the above
+20. You are using gcloud to create a VPN. Which command would you use?
+
+A. gcloud compute target-vpn-gateways only
+
+B. gcloud compute forwarding-rule and gcloud compute target-vpn-gateways only
+
+C. gcloud compute vpn-tunnels only
+
+D. gcloud compute forwarding-rule, gcloud compute target-vpn-gateways, and gcloud compute vpn-tunnels

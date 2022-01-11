@@ -1,0 +1,175 @@
+1. Which of the following commands is used to create buckets in Cloud Storage?
+
+A. gcloud storage buckets create
+
+B. gsutil storage buckets create
+
+C. gsutil mb
+
+D. gcloud mb
+2. You need to copy files from your local device to a bucket in Cloud Storage. What command
+would you use? Assume you have Cloud SDK installed on your local computer.
+
+A. gsutil copy
+
+B. gsutil cp
+
+C. gcloud cp
+
+D. gcloud storage objects copy
+3. You are migrating a large number of files from a local storage system to Cloud Storage. You want to use the Cloud Console instead of writing a script. Which of the following Cloud Storage operations can you perform in the console?
+
+A. Upload files only
+
+B. Upload folders only
+
+C. Upload files and folders
+
+D. Compare local files with files in the bucket using the diff command
+4. A software developer asks for your help exporting data from a Cloud SQL database. The developer tells you which database to export and which bucket to store the export file in, but hasn’t mentioned which file format should be used for the export file. What are the options for the export file format?
+
+A. CSV and XML
+
+B. CSV and JSON
+
+C. JSON and SQL
+
+D. CSV and SQL
+5. A database administrator has asked for an export of a MySQL database in Cloud SQL. The database administrator will load the data into another relational database and would to do it with the least amount of work. Specifically, the loading method should not require the data- base administrator to define a schema. What file format would you recommend for this task?
+
+A. SQL
+B. CSV
+C. XML
+D. JSON
+6. Which command will export a MySQL database called ace-exam-mysql1 to a file called
+ace-exam-mysql-export.sql in a bucket named ace-exam-buckete1?
+
+A. gcloud storage export sql ace-exam-mysql1 gs://ace-exam-buckete1/ace-
+exam-mysql-export.sql \ ––database=mysql
+
+B. gcloud sql export ace-exam-mysql1 gs://ace-exam-buckete1/ace-exam- mysql-export.sql \ ––database=mysql
+
+C. gcloud sql export sql ace-exam-mysql1 gs://ace-exam-buckete1/ace-exam- mysql-export.sql \ ––database=mysql
+
+D. gcloud sql export sql ace-exam-mysql1 gs://ace-exam-mysql-export.sql/ ace-exam-buckete1/ \ ––database=mysql
+7. As part of a compliance regimen, your team is required to back up data from your Datastore database to an object storage system. Your data is stored in the default namespace. What command would you use to export the default namespace from Datastore to a bucket called ace-exam-bucket1?
+
+A. gcloud datastore export ––namespaces="(default)" gs://ace-exam-bucket1
+B. gcloud datastore export ––namespaces="(default)" ace-exam-bucket1
+
+C. gcloud datastore dump ––namespaces="(default)" gs://ace-exam-bucket1
+D. gcloud datastore dump ––namespaces="(default)" ace-exam-bucket1
+8. As required by your company’s policy, you need to back up your Datastore database at least once per day. An auditor is questioning whether or not Datastore export is sufficient. You explain that the Datastore export command produces what outputs?
+
+A. A single entity file
+
+B. A metadata file
+
+C. A metadata file and a folder with the data
+
+D. A metadata file, an entity file, and a folder with the data
+9. Which of the following file formats is not an option for an export file when exporting from BigQuery?
+
+A. CSV
+B. XML
+C. Avro
+D. JSON
+10. Which of the following file formats is not supported when importing data into BigQuery?
+A. CSV
+
+B. Parquet
+C. Avro
+D. YAML
+11. You have received a large data set from an Internet of Things (IoT) system. You want to use BigQuery to analyze the data. What command-line command would you use to make data available for analysis in BigQuery?
+
+A. bq load ––autodetect ––source_format=[FORMAT] [DATASET].[TABLE] [PATH_TO_SOURCE]
+
+B. bq import ––autodetect ––source_format=[FORMAT] [DATASET].[TABLE] [PATH_TO_SOURCE]
+
+C. gloud BigQuery load ––autodetect ––source_format=[FORMAT] [DATASET]. [TABLE] [PATH_TO_SOURCE]
+
+D. gcloud BigQuery load ––autodetect ––source_format=[FORMAT] [DATASET]. [TABLE] [PATH_TO_SOURCE]
+12. You have set up a Cloud Spanner process to export data to Cloud Storage. You notice that each time the process runs you incur charges for another GCP service, which you think is related to the export process. What other GCP service might be incurring charges during the Cloud Spanner export?
+
+A. Dataproc
+B. Dataflow
+C. Datastore
+D. bq
+13. As a developer on a project using Bigtable for an IoT application, you will need to export data from Bigtable to make some data available for analysis with another tool. What would you use to export the data, assuming you want to minimize the amount of effort required on your part?
+
+A. A Java program designed for importing and exporting data from Bigtable
+
+B. gcloud bigtable table export
+
+C. bq bigtable table export
+
+D. An import tool provided by the analysis tool
+14. You
+
+A. Data in Spark DataFrames
+
+B. All tables in the Spark database
+
+C. Configuration data about the cluster
+
+D. All tables in the Hadoop database
+15. A team of data scientists has requested access to data stored in Bigtable so that they can train machine learning models. They explain that Bigtable does not have the features required to build machine learning models. Which of the following GCP services are they most likely to use to build machine learning models?
+
+A. Datastore
+
+B. Dataflow
+
+C. Dataproc
+
+D. DataAnalyze
+16. The correct command to create a Pub/Sub topic is which of the following?
+A. gcloud pubsub topics create
+
+B. gcloud pubsub create topics
+
+C. bq pubsub create topics
+
+D. cbt pubsub topics create
+17. Which of the following commands will create a subscription on the topic
+ace-exam-topic1?
+
+A. gcloud pubsub create ––topic=ace-exam-topic1 ace-exam-sub1
+
+B. gcloud pubsub subscriptions create ––topic=ace-exam-topic1
+
+C. gcloud pubsub subscriptions create ––topic=ace-exam-topic1 ace-exam-sub1
+D. gsutil pubsub subscriptions create ––topic=ace-exam-topic1 ace-exam-sub1
+18. What is one of the direct advantages of using a message queue in distributed systems?
+
+A. It increases security.
+
+B. It decouples services, so if one lags, it does not cause other services to lag.
+
+C. It supports more programming languages.
+
+D. It stores messages until they are read by default.
+19. To ensure you have installed beta gcloud commands, which command should you run?
+A. gcloud components beta install
+
+B. gcloud components install beta
+
+C. gcloud commands install beta
+
+D. gcloud commands beta install
+20. What parameter is used to tell BigQuery to automatically detect the schema of a file on
+import?
+
+A. ––autodetect
+
+B. ––autoschema
+C. ––detectschema
+D. ––dry_run
+21. The compression options deflate and snappy are available for what file types when exporting from BigQuery?
+
+A. Avro
+
+B. CSV
+
+C. XML
+
+D. Thrift

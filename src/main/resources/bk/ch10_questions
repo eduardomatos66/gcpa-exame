@@ -1,0 +1,177 @@
+1. A product manager is proposing a new application that will require several backend ser- vices, three business logic services, and access to relational databases. Each service will provide a single function, and it will require several of these services to complete a business task. Service execution time is dependent on the size of input and is expected to take up to 30 minutes in some cases. Which GCP product is a good serverless option for running this related service?
+
+A. Cloud Functions
+
+B. Compute Engine
+
+C. App Engine
+
+D. Cloud Storage
+2. You have been asked to deploy a cloud function to reformat image files as soon as they are uploaded to Cloud Storage. You notice after a few hours that about 10 percent of the files are not processed correctly. After reviewing the files that failed, you realize they are all sub- stantially larger than average. What could be the cause of the failures?
+
+A. There is a syntax error in the function code.
+
+B. The wrong runtime was selected.
+
+C. The timeout is too low to allow enough time to process large files.
+
+D. There is a permissions error on the Cloud Storage bucket containing the files.
+3. When an action occurs in GCP, such as a file being written to Cloud Storage or a message being added to a Cloud Pub/Sub topic, that action is called what?
+
+A. An incident
+
+B. An event
+
+C. A trigger
+
+D. A log entry
+4. All of the following generate events that can be triggered using Cloud Functions, except which one?
+
+A. Cloud Storage
+
+B. Cloud Pub/Sub
+
+C. SSL
+
+D. Firebase
+5. Which runtimes are supported in Cloud Functions?
+
+A. Node.js 5, Node.js 6, and Node.js 8
+
+B. Node.js 8, Python, and Go
+
+C. Node.js 6, Node.js 8, and Python
+
+D. Node.js 8, Python, and Go
+6. An HTTP trigger can be invoked by making a request using which of the following?
+
+A. GET only
+
+B. POST and GET only
+
+C. DELETE, POST, and GET
+
+D. DELETE, POST, REVISE, and GET
+7. What types of events are available to Cloud Functions working with Cloud Storage?
+A. Upload or finalize and delete only
+
+B. Upload or finalize, delete, and list only
+
+C. Upload or finalize, delete, and metadata update only
+
+D. Upload or finalize, delete, metadata update, and archive
+8. You are tasked with designing a function to execute in Cloud Functions. The function will need more than the default amount of memory and should be applied only when a finalize event occurs after a file is uploaded to Cloud Storage. The function should only apply its logic to files with a standard image file type. Which of the following required features can- not be specified in a parameter and must be implemented in the function code?
+
+A. Cloud function name
+
+B. Memory allocated for the function
+
+C. File type to apply the function to
+
+D. Event type
+9. How much memory can be allocated to a Cloud Function?
+
+A. 128MB to 256MB
+
+B. 128MB to 512MB
+
+C. 128MB to 1GB
+
+D. 128MB to 2GB
+10. How long can a cloud function run by default before timing out?
+
+A. 30 seconds
+
+B. 1 minute
+
+C. 9 minutes
+
+D. 20 minutes
+11. You want to use the command line to manage Cloud Functions that will be written in Python. In addition to running the gcloud components update command, what com- mand should you run to ensure you can work with Python functions?
+
+A. gcloud component install
+
+B. gcloud components install beta
+C. gcloud components install python
+D. gcloud functions install beta
+12. You want to create a cloud function to transform audio files into different formats. The audio files will be uploaded into Cloud Storage. You want to start transformations as soon as the files finish uploading. Which trigger would you specify in the cloud function to cause it to execute after the file is uploaded?
+
+A. google.storage.object.finalize
+
+B. google.storage.object.upload
+
+C. google.storage.object.archive
+
+D. google.storage.object.metadataUpdate
+13. You are defining a cloud function to write a record to a database when a file in Cloud Stor- age is archived. What parameters will you have to set when creating that function?
+
+A. runtime only
+
+B. trigger-resource only
+
+C. runtime, trigger-resource, trigger-event only
+
+D. runtime, trigger-resource, trigger-event, file-type
+14. You’d like to stop using a cloud function and delete it from your project. Which command would you use from the command line to delete a cloud function?
+
+A. gcloud functions delete
+
+B. gcloud components function delete
+C. gcloud components delete
+
+D. gcloud delete functions
+15. You have been asked to deploy a cloud function to work with CloudPub/Sub.As you review the Python code, you notice a reference to a Python function called base64.b64decode. Why would a decode function be required in a Pub/Sub cloud function?
+
+A. It’s not required and should not be there.
+
+B. Messages in Pub/Sub topics are encoded to allow binary data to be used in places where text data is expected. Messages need to be decoded to access the data in the message.
+
+C. It is required to add padding characters to the end of the message to make all messages the same length.
+
+D. The decode function maps data from a dictionary data structure to a list data structure.
+16. Which of these commands will deploy a Python cloud function called
+pub_sub_function_test?
+
+A. gcloud functions deploy pub_sub_function_test
+
+B. gcloud functions deploy pub_sub_function_test --runtime python37
+
+C. gcloud functions deploy pub_sub_function_test --runtime python37 --trigger-topic gcp-ace-exam-test-topic
+
+D. gcloud functions deploy pub_sub_function_test --runtime python --trigger-topic gcp-ace-exam-test-topic
+17. When specifying a Cloud Storage cloud function, you have to specify an event type, such as finalize, delete, or archive. When specifying a Cloud Pub/Sub cloud function, you do not have to specify an event type. Why is this the case?
+
+A. Cloud Pub/Sub does not have triggers for event types.
+
+B. Cloud Pub/Sub has triggers on only one event type, when a message is published.
+
+C. Cloud Pub/Sub determines the correct event type by analyzing the function code.
+
+D. The statement in the question is incorrect; you do have to specify an event type with Cloud Pub/Sub functions.
+18. Your company has a web application that allows job seekers to upload résumé files. Some files are in Microsoft Word, some are PDFs, and others are text files. You would like to store all résumés as PDFs. How could you do this in a way that minimizes the time between upload and conversion and with minimal amounts of coding?
+
+A. Write an App Engine application with multiple services to convert all documents to PDF.
+
+B. Implement a Cloud Function on Cloud Storage to execute on a finalize event. The function checks the file type, and if it is not PDF, the function calls a PDF converter function and writes the PDF version to the bucket that has the original.
+
+C. Add the names of all files to a Cloud Pub/Sub topic and have a batch job run at regular intervals to convert the original files to PDF.
+
+D. Implement a Cloud Function on Cloud Pub/Sub to execute on a finalize event. The function checks the file type, and if it is not PDF, the function calls a PDF converter function and writes the PDF version to the bucket that has the original.
+19. What are options for uploading code to a cloud function?
+
+A. Inline editor
+
+B. Zip upload
+
+C. Cloud source repository
+
+D. All of the above
+20. What type of trigger allows developers to use HTTP POST, GET, and PUT calls to invoke a cloud function?
+
+A. HTTP
+
+B. Webhook
+
+C. Cloud HTTP
+
+D. None of the above

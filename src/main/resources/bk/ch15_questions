@@ -1,0 +1,179 @@
+1. What record type is used to specify the IPv4 address of a domain?
+
+A. AAAA
+
+B. A
+
+C. NS
+
+D. SOA
+2. The CEO of your startup just read a news report about a company that was attacked by something called cache poisoning. The CEO wants to implement additional security measures to reduce the risk of DNS spoofing and cache poisoning. What would you recommend?
+
+A. Using DNSSEC
+
+B. Adding SOA records
+
+C. Adding CNAME records
+
+D. Deleting CNAME records
+3. What do the TTL parameters specify in a DNS record?
+
+A. Time a record can exist in a cache before it should be queried again
+
+B. Time a client has to respond to a request for DNS information
+
+C. Time allowed to create a CNAME record
+
+D. Time before a human has to manually verify the information in the DNS record
+4. What command is used to create a DNS zone in the command line?
+A. gsutil dns managed-zones create
+
+B. gcloud beta dns managed-zones create
+
+C. gcloud beta managed-zones create
+
+D. gcloud beta dns create managed zones
+5. What parameter is used to make a DNS zone private?
+
+A. --private
+
+B. --visibility=private
+
+C. --private=true
+
+D. --status=private
+6. Which load balancers provide global load balancing?
+
+A. HTTP(S) only
+
+B. SSL Proxy and TCP Proxy only
+
+C. HTTP(S), SSL Proxy, and TCP Proxy
+
+D. Internal TCP/UDP, HTTP(S), SSL Proxy, and TCP Proxy
+7. Which regional load balancer allows for load balancing based on IP protocol, address,
+and port?
+
+A. HTTP(S)
+
+B. SSL Proxy
+
+C. TCP Proxy
+
+D. Network TCP/UDP
+8. You are configuring a load balancer and want to implement private load balancing. Which option would you select?
+
+A. Only Between My VMs
+
+B. Enable Private
+
+C. Disable Public
+
+D. Local Only
+9. What two components need to be configured when creating a TCP Proxy load balancer?
+
+A. Frontend and forwarding rule
+
+B. Frontend and backend
+
+C. Forwarding rule and backend only
+
+D. Backend and forwarding rule only
+10. A health check is used to check what resources?
+
+A. Load balancer
+
+B. VMs
+
+C. Storage buckets
+
+D. Persistent disks
+11. Where do you specify the ports on a TCP Proxy load balancer that should have their traffic
+forwarded?
+
+A. Backend
+
+B. Frontend
+
+C. Network Services section
+
+D. VPC
+12. What command is used to create a network load balancer at the command line?
+A. gcloud compute forwarding-rules create
+
+B. gcloud network forwarding-rules create
+
+C. gcloud compute create forwarding-rules
+
+D. gcloud network create forwarding-rules
+13. A team is setting up a web service for internal use. They want to use the same IP address for
+the foreseeable future. What type of IP address would you assign?
+
+A. Internal
+
+B. External
+
+C. Static
+
+D. Ephemeral
+14. You are starting up a VM to experiment with a new Python data science library. You’ll SSH via the server name into the VM, use the Python interpreter interactively for a while and then shut down the machine. What type of IP address would you assign to this VM?
+
+A. Ephemeral
+
+B. Static
+
+C. Permanent
+
+D. IPv8
+15. You have created a subnet called sn1 using 192.168.0.0 with 65,534 addresses. You realize that you will not need that many addresses, and you’d like to reduce that number to 254. Which of the following commands would you use?
+
+A. gcloud compute networks subnets expand-ip-range sn1 --prefix-length=24
+
+B. gcloud compute networks subnets expand-ip-range sn1 --prefix-length=-8
+
+C. gcloud compute networks subnets expand-ip-range sn1 --size=256
+
+D. There is no command to reduce the number of IP addresses available.
+16. You have created a subnet called sn1 using 192.168.0.0. You want it to have 14 addresses. What prefix length would you use?
+
+A. 32
+
+B. 28
+
+C. 20
+
+D. 16
+17. You want all your network traffic to route over the Google network and not traverse the public Internet. What level of network service should you choose?
+
+A. Standard
+
+B. Google-only
+C. Premium
+
+D. Non-Internet
+18. You have a website hosted on a Compute Engine VM. Users can access the website using the domain name you provided. You do some maintenance work on the VM and stop the server and restart it. Now users cannot access the website. No other changes have occurred on the subnet. What might be the cause of the problem?
+
+A. The restart caused a change in the DNS record.
+
+B. You used an ephemeral instead of a static IP address.
+
+C. You do not have enough addresses available on your subnet.
+D. Your subnet has changed.
+19. You are deploying a distributed system. Messages will be passed between Compute Engine VMs using a reliable UDP protocol. All VMs are in the same region. You want to use the load balancer that best fits these requirements. Which kind of load balancer would you use?
+
+A. Internal TCP/UDP
+
+B. TCP Proxy
+
+C. SSL Proxy
+
+D. HTTP(S)
+20. You want to use Cloud Console to review the records in a DNS entry. What section of Cloud Console would you navigate to?
+
+A. Compute Engine
+
+B. Network Services
+
+C. Kubernetes Engine
+
+D. Hybrid Connectivity
