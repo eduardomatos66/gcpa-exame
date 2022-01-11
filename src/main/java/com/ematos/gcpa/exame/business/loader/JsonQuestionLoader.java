@@ -28,17 +28,17 @@ public class JsonQuestionLoader extends AbstractLoader {
 
     @Override
     protected void loadQuestions() {
-        this.buildQuestion(
+        this.questionBuilder(
                 new File(this.questionsPath)
         );
     }
 
-    protected Question questionBuilder(File jsonFile) {
+    protected Question questionBuilder(File file) {
         Question question = new Question();
         JSONParser parser = new JSONParser();
 
         try {
-            Object obj = parser.parse(new FileReader(jsonFile));
+            Object obj = parser.parse(new FileReader(file));
 
             JSONObject jsonObject = (JSONObject) obj;
 

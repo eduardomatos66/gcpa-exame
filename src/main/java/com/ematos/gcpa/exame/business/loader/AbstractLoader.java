@@ -25,15 +25,6 @@ public abstract class AbstractLoader {
 
     protected abstract Question questionBuilder(File file);
 
-    protected void buildQuestion(File resourceFolder) {
-        for (File f : Objects.requireNonNull(resourceFolder.listFiles())) {
-            Question q = this.questionBuilder(f);
-            if (q != null) {
-                this.questions.add(q);
-            }
-        }
-    }
-
     public List<Question> getQuestions() {
         return questions;
     }
@@ -41,5 +32,4 @@ public abstract class AbstractLoader {
     protected void setQuestions(List<Question> questions) {
         this.questions = questions;
     }
-
 }

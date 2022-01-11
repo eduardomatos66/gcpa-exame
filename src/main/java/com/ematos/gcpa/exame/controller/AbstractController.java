@@ -16,7 +16,7 @@ import static org.springframework.http.ResponseEntity.ok;
  */
 public class AbstractController {
 
-    private final Logger logger = Logger.getLogger("CapelloAppController");
+    private final Logger logger = Logger.getLogger("AbstractController");
 
     /**
      * Creates a {@link ResponseEntity}.
@@ -120,7 +120,7 @@ public class AbstractController {
     private String getCurrentClassAndMethodName() {
         final StackTraceElement[] stacks = Thread.currentThread().getStackTrace();
         StackTraceElement e = getEnclosingStackTraceElement(stacks);
-        String className = "CapelloService";
+        String className = "AbstractService";
         String methodName = "";
         if (e != null) {
             className = e.getClassName();
