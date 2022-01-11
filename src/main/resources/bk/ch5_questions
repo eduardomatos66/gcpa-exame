@@ -88,7 +88,8 @@ B. gcloud instances
 C. gcloud instances compute
 
 D. None of the above
-Review Questions 115 11. A newly hired cloud engineer is trying to understand what VMs are running in a particular
+
+11. A newly hired cloud engineer is trying to understand what VMs are running in a particular
 project. How could the engineer get summary information on each VM running in a project?
 
 A. Execute the command gcloud compute list

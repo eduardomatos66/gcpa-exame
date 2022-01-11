@@ -107,8 +107,7 @@ B. Use multiple self-service billing accounts.
 C. Use a single invoiced billing account.
 
 D. Use multiple invoiced billing accounts.
-14.
-An application administrator is responsible for managing all resources in a project. She wants to delegate responsibility for several service accounts to another administrator. If additional service accounts are created, the other administrator should manage those as well. What is the best way to delegate privileges needed to manage the service accounts?
+14. An application administrator is responsible for managing all resources in a project. She wants to delegate responsibility for several service accounts to another administrator. If additional service accounts are created, the other administrator should manage those as well. What is the best way to delegate privileges needed to manage the service accounts?
 
 A. Grant iam.serviceAccountUser to the administrator at the project level.
 
@@ -117,7 +116,8 @@ B. Grant iam.serviceAccountUser to the administrator at the service account leve
 C. Grant iam.serviceProjectAccountUser to the administrator at the project level.
 
 D. Grant iam.serviceProjectAccountUser to the administrator at the service account level.
-You work for a retailer with a large number of brick and mortar stores. Every night the stores upload daily sales data. You have been tasked with creating a service that verifies the uploads every night. You decide to use a service account. Your manager questions the security of your proposed solution, particularly about authenticating the service account. You explain the authentication mechanism used by service accounts. What authentication mechanism is used?
+
+15. You work for a retailer with a large number of brick and mortar stores. Every night the stores upload daily sales data. You have been tasked with creating a service that verifies the uploads every night. You decide to use a service account. Your manager questions the security of your proposed solution, particularly about authenticating the service account. You explain the authentication mechanism used by service accounts. What authentication mechanism is used?
 
 A. Username and password
 
@@ -126,7 +126,7 @@ B. Two-factor authentication
 C. Encrypted keys
 
 D. Biometrics
-15.
+
 16. What objects in GCP are sometimes treated as resources and sometimes as identities?
 A. Billing accounts
 

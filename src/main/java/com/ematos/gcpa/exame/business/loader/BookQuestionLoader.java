@@ -18,7 +18,7 @@ public class BookQuestionLoader extends AbstractLoader {
     private static final String QUESTION_TITLE_REGEX = "^\\d+\\..*";
     private static final String ALTERNATIVES_REGEX = "^[ABCD]\\..*";
     private static final String ANSWER_REGEX = "^(\\d+\\.) ([ABCD]\\.)(.*)";
-    private static final String QUESTION_FILE_PATTERN = "(bk-.*)_questions";
+    private static final String QUESTION_FILE_PATTERN = "(.*)_questions";
 
     protected Scanner myReader;
 
@@ -101,7 +101,7 @@ public class BookQuestionLoader extends AbstractLoader {
         List<String> correctAlternatives = this.extractAlternativesFromAnswer(answer);
 
         if (question == null) {
-            throw new QuestionNotExistentException(String.format("Funking question not found: %s", answer));
+            throw new QuestionNotExistentException(String.format("Question not found: %s", answer));
         }
 
         for (String correctAlternative : correctAlternatives) {
@@ -182,7 +182,9 @@ public class BookQuestionLoader extends AbstractLoader {
                     lineTypeEnum = LineTypeEnum.ALTERNATIVES;
                     alternatives.add(new QuestionOption(line, false));
 
-                } else if ((line.matches(QUESTION_TITLE_REGEX) && lineTypeEnum == LineTypeEnum.ALTERNATIVES) || !myReader.hasNextLine()) {
+                }
+
+                if ((line.matches(QUESTION_TITLE_REGEX) && lineTypeEnum == LineTypeEnum.ALTERNATIVES) || !myReader.hasNextLine()) {
                     this.createQuestion(title, alternatives);
 
                     // Reset entries
