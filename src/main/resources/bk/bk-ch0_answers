@@ -1,0 +1,54 @@
+1. A. Machine type, boot disk image or container image, zone, and labels are all
+configuration parameters or attributes of a VM and therefore would be included in an
+instance group configuration that creates those VMs.
+2. B. gsutil is the command line for accessing and manipulating Cloud Storage from the
+command line. mb is the specific command for creating, or making, a bucket.
+3. D. The lifecycle configuration policy allows administrators to specify criteria for migrating
+data to other storage systems without having to concern themselves with running jobs to
+actually execute the necessary steps. The other options are inefficient or do not exist.
+4. A. gsutil is the command-line tool for working with Cloud Storage. rsync is the specific
+command in gsutil for synchronizing buckets.
+5. C. Google operates a global network, and VPCs are resources that can span that global
+network.
+6. B. gcloud by default will retry a failed network operation and will wait a long time
+before each retry. The time to wait is calculated using a truncated binary exponential
+back-off strategy.
+7. C. Firewall rules do not have TTL parameters. Direction of traffic, action on match, and
+protocol are all components of firewall rules.
+8. C. IAM policy violations do not trigger changes in the size of clusters. All other options
+can be used to trigger a change in cluster size.
+9. A. Only Spanner and Cloud SQL databases support transactions and have a SQL interface.
+Datastore has transactions but does not support fully compliant SQL; it has a SQL-like
+query language. Cloud Storage does not support transactions or SQL.
+10. C. App Engine is a PaaS that allows developers to deploy full applications without having
+to manage servers or clusters. Compute Engine and Kubernetes Engine require management
+of servers. Cloud Functions is suitable for short-running Node.js or Python functions but
+not full applications.
+11. B. BigQuery is designed for petabyte-scale analytics and provides a SQL interface.
+12. B. Cloud Dataflow allows for stream and batch processing of data and is well suited for
+this kind of ETL work. Dataproc is a managed Hadoop and Spark service that is used for
+big data analytics. Cloud Endpoints is an API service, and Cloud Interconnect is a network
+service.
+13. C. If a preemptible machine has not been shut down within 24 hours, Google will stop
+the instance.
+14. A. Organizations, folders, and projects are the components used to manage an organizational
+hierarchy. Buckets, directories, and subdirectories are used to organize storage.
+15. B. gcloud is the command-line tool for working with IAM, and list-grantable-roles is
+the correct command.
+16. A. gcloud is the command-line tool for manipulating compute resources, and zones
+describe is the correct command.
+17. C. iam.roles.create is correct; the other roles do not exist.
+18. B. The /22 suffix produces 1,022 usable IP addresses.
+19. A. Cloud Dataproc is the managed Spark service. Cloud Dataflow is for stream and batch
+processing of data, BigQuery is for analytics, and Cloud Hadoop is not a GCP service.
+20. D. Cloud Functions responds to events in Cloud Storage, making them a good choice for
+taking an action after a file is loaded.
+21. B. Google Cloud Interconnect – Dedicated is the only option for a dedicated connection
+between a customer’s data center and a Google data center.
+22. A. Enabling the Google Cloud KMS API and setting up billing are steps common to using
+GCP services.
+23. D. A node pool is a subset of node instances within a cluster that all have the same
+configuration.
+24. C. The GCP service for storing and managing Docker containers is Container Registry.
+Cloud Build is for creating images. The others are not GCP services.
+25. A. Node.js 6, Node.js 8, and Python are the languages supported by Cloud Functions.

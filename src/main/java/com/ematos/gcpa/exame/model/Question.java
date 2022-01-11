@@ -25,6 +25,8 @@ public class Question {
     @Column(length = 3000)
     private String title;
     private String subject;
+    @Column(length = 3000)
+    private String explanation;
 
     @ElementCollection
     private List<QuestionOption> questionOptionList;

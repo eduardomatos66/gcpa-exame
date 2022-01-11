@@ -75,7 +75,7 @@ public class QuestionService {
     public List<Question> getAmountQuestions(Integer questionsNumber) {
         List<Question> allQuestions = this.questionRepository.findAll();
         if (allQuestions.size() < questionsNumber) {
-            throw new NotEnoughQuestionsException("There is not enough questions as requested: " + questionsNumber);
+            throw new NotEnoughQuestionsException("There is not enough answers as requested: " + questionsNumber);
         }
 
         Collections.shuffle(allQuestions);

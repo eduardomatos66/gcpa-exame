@@ -1,0 +1,181 @@
+1. Instance templates are used to create a group of identical VMs. The instance templates
+include:
+A. Machine type, boot disk image or container image, zone, and labels
+B. Cloud Storage bucket definitions
+C. A load balancer description
+D. App Engine configuration file
+
+2. The command-line command to create a Cloud Storage bucket is:
+A. gcloud mb
+B. gsutil mb
+C. gcloud mkbucket
+D. gsutil mkbucket
+
+3. Your company has an object management policy that requires that objects stored in Cloud
+Storage be migrated from regional storage to nearline storage 90 days after the object is
+created. The most efficient way to do this is to:
+A. Create a cloud function to copy objects from regional storage to nearline storage.
+B. Set the MigrateObjectAfter property on the stored object to 90 days.
+C. Copy the object to persistent storage attached to a VM and then copy the object to a
+bucket created on nearline storage.
+D. Create a lifecycle management configuration policy specifying an age of 90 days and
+SetStorageClass as nearline.
+
+4. An education client maintains a site where users can upload videos, and your client needs to
+assure redundancy for the files; therefore, you have created two buckets for Cloud Storage.
+Which command do you use to synchronize the contents of the two buckets?
+A. gsutil rsync
+B. gcloud cp sync
+C. gcloud rsync
+D. gsutil cp sync
+
+5. VPCs are resources.
+A. Regional
+B. Zonal
+C. Global
+D. Subnet
+
+6. A remote component in your network has failed, which results in a transient network error.
+When you submit a gsutil command, it fails because of a transient error. By default, the
+command will:
+A. Terminate and log a message to Stackdriver
+B. Retry using a truncated binary exponential back-off strategy
+C. Prompt the user to decide to retry or quit
+D. Terminate and log a message to Cloud Shell
+
+7. All of the following are components of firewall rules except which one?
+A. Direction of traffic
+B. Action on match
+C. Time to live (TTL)
+D. Protocol
+
+8. Adding virtual machines to an instance group can be triggered in an autoscaling policy by
+all of the following, except which one?
+A. CPU utilization
+B. Stackdriver metrics
+C. IAM policy violation
+D. Load balancing serving capacity
+
+9. Your company’s finance department is developing a new account management application
+that requires transactions and the ability to perform relational database operations using
+fully compliant SQL. Data store options in GCP include:
+A. Spanner and Cloud SQL
+B. Datastore and Bigtable
+C. Spanner and Cloud Storage
+D. Datastore and Cloud SQL
+
+10. The marketing department in your company wants to deploy a web application but does
+not want to have to manage servers or clusters. A good option for them is:
+A. Compute Engine
+B. Kubernetes Engine
+C. App Engine
+D. Cloud Functions
+
+11. Your company is building an enterprise data warehouse and wants SQL query capabilities
+over petabytes of data, but does not want to manage servers or clusters. A good option for
+them is:
+A. Cloud Storage
+B. BigQuery
+C. Bigtable
+D. Datastore
+
+12. You have been hired as a consultant to a startup in the Internet of Things (IoT) space. The
+startup will stream large volumes of data into GCP. The data needs to be filtered, transformed,
+and analyzed before being stored in GCP Datastore. A good option for the stream
+processing component is:
+A. Dataproc
+B. Cloud Dataflow
+C. Cloud Endpoints
+D. Cloud Interconnect
+
+13. Preemptible virtual machines may be shut down at any time but will always be shut down
+after running:
+A. 6 hours
+B. 12 hours
+C. 24 hours
+D. 48 hours
+
+14. You have been tasked with designing an organizational hierarchy for managing departments
+and their cloud resources. What organizing components are available in GCP?
+A. Organization, folders, projects
+B. Buckets, directories, subdirectories
+C. Organizations, buckets, projects
+D. Folders, buckets, projects
+
+15. During an incident that has caused an application to fail, you suspect some resource may
+not have appropriate roles granted. The command to list roles granted to a resource is:
+A. gutil iam list-grantable-roles
+B. gcloud iam list-grantable-roles
+C. gcloud list-grantable-roles
+D. gcloud resources grantable-roles
+
+16. The availability of CPU platforms can vary between zones. To get a list of all CPU types
+available in a particular zone, you should use:
+A. gcloud compute zones describe
+B. gcloud iam zones describe
+C. gutil zones describe
+D. gcloud compute regions list
+
+17. To create a custom role, a user must possess which role?
+A. iam.create
+B. compute.roles.create
+C. iam.roles.create
+D. Compute.roles.add
+
+18. You have been asked to create a network with 1,000 IP addresses. In the interest of
+minimizing unused IP addresses, which CIDR suffix would you use to create a network
+with at least 1,000 addresses but no more than necessary?
+A. /20
+B. /22
+C. /28
+D. /32
+
+19. A team of data scientists have asked for your help setting up an Apache Spark cluster.
+You suggest they use a managed GCP service instead of managing a cluster themselves on
+Compute Engine. The service they would use is:
+A. Cloud Dataproc
+B. Cloud Dataflow
+C. Cloud Hadoop
+D. BigQuery
+
+20. You have created a web application that allows users to upload files to Cloud Storage.
+When files are uploaded, you want to check the file size and update the user’s total storage
+used in their account. A serverless option for performing this action on load is:
+A. Cloud Dataflow
+B. Cloud Dataproc
+C. Cloud Storage
+D. Cloud Functions
+
+21. Your company has just started using GCP, and executives want to have a dedicated connection
+from your data center to the GCP to allow for large data transfers. Which networking
+service would you recommend?
+A. Google Cloud Carrier Internet Peering
+B. Google Cloud Interconnect – Dedicated
+C. Google Cloud Internet Peering
+D. Google Cloud DNS
+
+22. You want to have GCP manage cryptographic keys, so you’ve decided to use Cloud Key
+Management Services. Before you can start creating cryptographic keys, you must:
+A. Enable Google Cloud Key Management Service (KMS) API and set up billing
+B. Enable Google Cloud KMS API and create folders
+C. Create folders and set up billing
+D. Give all users grantable roles to create keys
+
+23. In Kubernetes Engine, a node pool is:
+A. A subset of nodes across clusters
+B. A set of VMs managed outside of Kubernetes Engine
+C. A set of preemptible VMs
+D. A subset of node instances within a cluster that all have the same configuration
+
+24. The GCP service for storing and managing Docker containers is:
+A. Cloud Source Repositories
+B. Cloud Build
+C. Container Registry
+D. Docker Repository
+
+25. Code for Cloud Functions can be written in:
+A. Node.js and Python
+B. Node.js, Python, and Go
+C. Python and Go
+D. Python and C
+
