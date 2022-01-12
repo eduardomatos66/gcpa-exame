@@ -28,6 +28,7 @@
 
   >
    <div class="question-counter">
+      <span style="font-size: 28px;"><strong>{{countDownDisplay}} </strong></span><br>
       Question No.{{currentQuestion + 1}} of {{backQuestions.length}}
     </div>
     <br>
@@ -44,9 +45,6 @@
     <div class="answer-section">
       <b-button :key="index" v-for="(option, index) in backQuestions[currentQuestion].questionOptionList" @click="handleAnswerClick(option.correct)" class="ans-option-btn" variant="primary">{{option.optionDescription}}</b-button>
     </div>
-    <b-card-text>
-      <span style="font-size: 40px;"><strong>{{countDown}} </strong></span>
-    </b-card-text>
   </b-card>
   </span>
   </div>
@@ -61,10 +59,11 @@ export default {
             showScore: false,
             score:0,
             countDown : 120,
+            countDownDisplay: "",
             timer:null,
             startQuiz: false,
             backQuestions: [],
-            questions : [],
+            questions: [],
        }
     },
 
@@ -105,13 +104,17 @@ export default {
                 if(this.countDown > 0) {
                     this.timer = setTimeout(() => {
                         this.countDown -= 1
+                        var min = Math.floor(this.countDown / 60)
+                        var sec = this.countDown - (min * 60)
+                        
+                        this.countDownDisplay = min + 'min ' + sec + 's'
                         this.countDownTimer()
                     }, 1000)
                 }
                 else{
                     this.handleAnswerClick(false)
                 }
-            }
+            },
     },
      created() {
         //  alert(this.$store.state.questionAttended)
