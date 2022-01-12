@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping(path="question")
 @AllArgsConstructor
+@CrossOrigin
 public class QuestionController extends AbstractController {
 
     private final QuestionService questionService;
