@@ -1,11 +1,11 @@
 <template>
-  <div class="d-flex justify-content-center">
+  <div class="d-flex justify-content-center quizcard">
 
     <div v-if="showScore">
         <b-card
         title="Results"
         style="max-width: 20rem;">
-        You Scored {{score}} of {{questions.length}}
+        You Scored {{score}} of {{backQuestions.length}}
         </b-card>
     </div>
     <div class="card-q" v-else>
@@ -28,7 +28,7 @@
 
   >
    <div class="question-counter">
-      Question No.{{currentQuestion + 1}} of {{questions.length}}
+      Question No.{{currentQuestion + 1}} of {{backQuestions.length}}
     </div>
     <br>
    <b-progress
@@ -38,20 +38,18 @@
         height="4px"
       ></b-progress>
 
-
     <div class="question-title">
-      {{questions[currentQuestion].questionText}}
+      {{backQuestions[currentQuestion].title}}
     </div>
     <div class="answer-section">
-    <b-button :key="index" v-for="(option, index) in questions[currentQuestion].answerOptions" @click="handleAnswerClick(option.isCorrect)" class="ans-option-btn" variant="primary">{{option.answerText}}</b-button>
+      <b-button :key="index" v-for="(option, index) in backQuestions[currentQuestion].questionOptionList" @click="handleAnswerClick(option.correct)" class="ans-option-btn" variant="primary">{{option.optionDescription}}</b-button>
     </div>
     <b-card-text>
       <span style="font-size: 40px;"><strong>{{countDown}} </strong></span>
     </b-card-text>
   </b-card>
-    </span>
+  </span>
   </div>
-  <div> {{backQuestions}} </div>
   </div>
 </template>
 
@@ -66,59 +64,16 @@ export default {
             timer:null,
             startQuiz: false,
             backQuestions: [],
-            questions : [
-		{
-			questionText: 'Which one is used for two-way binding?',
-			answerOptions: [
-				{ answerText: 'v-on', isCorrect: false },
-                { answerText: 'v-bind', isCorrect: false },
-				{ answerText: 'v-model', isCorrect: true },
-				{ answerText: 'v-if', isCorrect: false },
-			],
-		},
-		{
-			questionText: 'Who is the creator of vueJS ?',
-			answerOptions: [
-				{ answerText: 'Jeff Bezos', isCorrect: false },
-				{ answerText: 'Elon Musk', isCorrect: false },
-				{ answerText: 'Evan You', isCorrect: true },
-				{ answerText: 'Tony Stark', isCorrect: false },
-			],
-		},
-		{
-			questionText: 'Vue is used in the backend. - True or False?',
-			answerOptions: [
-				{ answerText: 'True', isCorrect: false },
-				{ answerText: 'False', isCorrect: true },
-			],
-		},
-		{
-			questionText: 'Which version of Vue is Launched on 2020?',
-			answerOptions: [
-				{ answerText: 'Vue 2', isCorrect: false },
-				{ answerText: 'Vue 1', isCorrect: false },
-				{ answerText: 'Vue 4', isCorrect: false },
-				{ answerText: 'Vue 3', isCorrect: true },
-			],
-        },
-        {
-			questionText: 'Is vue an OpenSource Library?',
-			answerOptions: [
-				{ answerText: 'True', isCorrect: true },
-				{ answerText: 'False', isCorrect: false },
-			],
-        },
-    ],
-
-
-        }
+            questions : [],
+       }
     },
 
     methods:{
         async getData() {
           try {
-            let response = await fetch("http://localhost:8080/question/20");
+            let response = await fetch("http://localhost:8080/question/exam/20");
             this.backQuestions = await response.json();
+            this.countDown = 120 * this.backQuestions.length;
           } catch (error) {
             console.log(error);
           }
@@ -133,12 +88,11 @@ export default {
             if(isCorrect){
                 this.score = this.score + 1;
             }
-            if(nextQuestion < this.questions.length){
+            if(nextQuestion < this.backQuestions.length){
             this.currentQuestion = nextQuestion;
             // this.$store.state.questionAttended = this.currentQuestion;
             // localStorage.setItem('qattended', this.currentQuestion)
 
-            this.countDown = 120;
             this.countDownTimer();
             }
             else{
@@ -146,7 +100,6 @@ export default {
                 this.showScore = true;
                 // localStorage.setItem('testComplete',this.showScore)
             }
-
         },
         countDownTimer() {
                 if(this.countDown > 0) {
@@ -187,6 +140,7 @@ export default {
 
     .answer-section {
       width: 100%;
+      align-items: center;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -209,7 +163,7 @@ export default {
     }
 
     .ans-option-btn {
-      width: 100%;
+      width: 80%;
       font-size: 16px;
       color: #ffffff;
       background-color: #252d4a;
@@ -221,14 +175,21 @@ export default {
       border: 5px solid #234668;
       cursor: pointer;
       margin: 5px;
+      padding-left: 5%;
     }
 
     .question-counter {
       font-size: 14px;
       text-align: right;
     }
+
     .question-title {      
       font-size: 20px;
       margin-bottom: 25px;
+    }
+
+    .quizcard {
+      padding-left: 15%;
+      padding-right: 15%;
     }
 </style>

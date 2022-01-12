@@ -59,7 +59,7 @@ public class QuestionController extends AbstractController {
         this.questionService.updateQuestion(questionId, title, description, options);
     }
 
-    @GetMapping(path = "exame/{questionsNumber}")
+    @GetMapping(path = "exam/{questionsNumber}")
     @ResponseStatus(value = HttpStatus.OK)
     public List<Question> getAmountQuestions(@PathVariable("questionsNumber") Integer questionsNumber) {
         return this.questionService.getAmountQuestions(questionsNumber);

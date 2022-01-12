@@ -1,5 +1,5 @@
 <template>
-  <div class="quiz-questions">
+  <div class="quiz-questions" style="padding=250px">
     <img style="opacity: 0.75; max-width: 20%; height: auto;" alt="GCPA logo" src="../assets/logo-gcpa.png">
     <QuizQuestions />
   </div>
