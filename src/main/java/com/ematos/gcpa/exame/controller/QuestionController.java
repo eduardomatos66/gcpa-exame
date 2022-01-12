@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping(path="question")
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:8082", maxAge = 3600)
 public class QuestionController extends AbstractController {
 
     private final QuestionService questionService;
