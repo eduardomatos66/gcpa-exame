@@ -1,24 +1,20 @@
 <template>
   <v-container fluid id="googleCloudExam">
-    <v-card fluid class="v-card-margin-bottom">
-      <div style="padding: 10px">This is under construction</div>
-    </v-card>
 
-    <v-card v-if="this.questions.length" fluid class="v-card-margin-bottom">
-      <Question :question="this.questions[400]" @selectedOption="printSelected" />
-    </v-card>
+    <v-main>
+      <Quiz></Quiz>
+    </v-main>
 
   </v-container>
 </template>
 
 <script>
-import QuestionService from "../services/QuestionService";
-import Question from "@/components/question/Question";
+import Quiz from "@/views/Quiz";
 
 export default {
   name: "GoogleCloudExam",
   components: {
-    Question
+    Quiz,
   },
   data: () => ({
     questions: {},
@@ -27,21 +23,10 @@ export default {
   computed: {
   },
   mounted: function () {
-    this.getQuestions();
+
   },
   methods: {
-    /**
-     * Gets all the issues from the database.
-     */
-    async getQuestions() {
-      const {data} = await QuestionService.getQuestions();
-      this.questions = data;
-      this.loading = false;
-    },
 
-    printSelected(selectedOption) {
-      console.log("This is the selected option: " + selectedOption.correct);
-    }
   }
 
 }
