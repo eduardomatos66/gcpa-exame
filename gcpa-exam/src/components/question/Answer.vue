@@ -1,5 +1,5 @@
 <template>
-  <p>{{ option }}</p>
+  <span class="question-padding-left">{{ option }}</span>
 </template>
 
 <script>
@@ -13,5 +13,7 @@ export default {
 </script>
 
 <style scoped>
-
+.question-padding-left {
+  padding-left: 10px;
+}
 </style>

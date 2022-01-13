@@ -2,9 +2,9 @@
     <v-app id="gcpa-exam">
         <Header/>
 
-        <v-content id="main" fluid class="fill-height">
+        <v-main id="main" fluid class="fill-height">
             <router-view/>
-        </v-content>
+        </v-main>
         <Footer/>
     </v-app>
 </template>

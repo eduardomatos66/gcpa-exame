@@ -7,10 +7,21 @@ import http from "../http-common";
 class QuestionService {
     /**
      * Gets all the questions present on the database.
+     *
      * @returns {*} a list containing all the questions present on the database.
      */
-    getQuestions() {
+    getAllQuestions() {
         return http.get("/");
+    }
+
+    /**
+     * Gets a fixed number of questions.
+     *
+     * @param amount the total number of questions to get.
+     * @returns {*} the list of questions with the amount specified.
+     */
+    getQuestions(amount) {
+        return http.get("/exam/" + amount)
     }
 
     /**

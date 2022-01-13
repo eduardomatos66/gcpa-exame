@@ -181,10 +181,11 @@ public class BookQuestionLoader extends AbstractLoader {
                 if (line.matches(ALTERNATIVES_REGEX)) {
                     lineTypeEnum = LineTypeEnum.ALTERNATIVES;
                     alternatives.add(new QuestionOption(line, false));
-
                 }
 
-                if ((line.matches(QUESTION_TITLE_REGEX) && lineTypeEnum == LineTypeEnum.ALTERNATIVES) || !myReader.hasNextLine()) {
+                if ((line.matches(QUESTION_TITLE_REGEX) && lineTypeEnum == LineTypeEnum.ALTERNATIVES)
+                        || !myReader.hasNextLine()) {
+
                     this.createQuestion(title, alternatives);
 
                     // Reset entries
@@ -194,8 +195,10 @@ public class BookQuestionLoader extends AbstractLoader {
 
                 } else if (lineTypeEnum == LineTypeEnum.ALTERNATIVES) {
                     int lastPos = alternatives.size() - 1;
-                    alternatives.get(lastPos).setOptionDescription(
-                            String.format("%s %s", alternatives.get(lastPos).getOptionDescription(), line.trim()));
+                    if (!alternatives.get(lastPos).getOptionDescription().contains(line.trim())) {
+                        alternatives.get(lastPos).setOptionDescription(
+                                String.format("%s %s", alternatives.get(lastPos).getOptionDescription(), line.trim()));
+                    }
 
                 } else if (line.matches(QUESTION_TITLE_REGEX) || lineTypeEnum == LineTypeEnum.TITLE) {
                     title.append(" ").append(line.trim());
