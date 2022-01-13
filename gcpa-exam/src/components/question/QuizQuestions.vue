@@ -1,5 +1,5 @@
 <template>
-  <v-container class="d-flex justify-content-center quiz-card">
+  <v-container class="d-flex justify-content-center my-md-n16 quiz-card">
 
     <div v-if="showScore">
       <b-card
