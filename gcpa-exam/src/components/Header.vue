@@ -4,6 +4,9 @@
     <v-app-bar app clipped-left :color="getHeaderColor">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"/>
       <v-toolbar-title v-text="pageTitle" class="white--text" />
+      <a class="navbar-brand" href="#" style="position: absolute; left: 95%;">
+        <img src="../assets/logo-gcpa.png" height="50">
+      </a>
     </v-app-bar>
   </div>
 </template>
@@ -22,7 +25,7 @@ export default {
   }),
   computed: {
     getHeaderColor: function() {
-      let colorArray = ["orange", "blue", "red", "green"];
+      let colorArray = ["blue"];
 
       function getRandomIntInclusive(min, max) {
         min = Math.ceil(min);
