@@ -27,19 +27,19 @@
             class="mb-2 gcpa-card"
         >
           <div class="question-counter">
-            <span style="font-size: 28px;">
+            <span style="font-size: 14px; position: absolute; left: 10%">            
+              Question No.{{ currentQuestion + 1 }} of {{ questions.length }}
+            </span>
+            <span style="font-size: 16px; position: absolute; left: 75%;">
               <strong>{{ countDownDisplay }}</strong>
-            </span><br>
-            Question No.{{ currentQuestion + 1 }} of {{ questions.length }}
+            </span>            
           </div>
-
           <br>
 
           <b-progress
-              variant="warning"
               :max="120"
               :value="countDown"
-              height="4px"
+              height="8px"
           ></b-progress>
 
           <div class="question-title">
@@ -164,13 +164,14 @@ export default {
 }
 
 .timer-text {
-  background: rgb(230, 153, 12);
+  background: rgb(12, 143, 230);
   padding: 15px;
-  margin-top: 20px;
   margin-right: 20px;
-  border: 5px solid rgb(255, 189, 67);
+  border: 5px solid rgb(4, 0, 255);
   border-radius: 15px;
   text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .card-img, .card-img-top {
@@ -196,7 +197,7 @@ export default {
 
 .question-counter {
   font-size: 14px;
-  text-align: right;
+  text-align: left;
 }
 
 .question-title {
