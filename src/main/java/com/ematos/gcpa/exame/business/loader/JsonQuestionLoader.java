@@ -78,7 +78,7 @@ public class JsonQuestionLoader extends AbstractLoader {
         list.forEach(o -> {
             String title = o.toString();
             boolean isCorrect = answers.contains(title.substring(0, 1));
-            questionOptionList.add(new QuestionOption(title.substring(2), isCorrect));
+            questionOptionList.add(new QuestionOption(title, isCorrect));
         });
 
         return questionOptionList;
