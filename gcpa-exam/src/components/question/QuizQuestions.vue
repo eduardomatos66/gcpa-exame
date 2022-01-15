@@ -7,6 +7,8 @@
           class="gcpa-card">
         <span>You Scored {{ score }} of {{ questions.length }}</span>
       </b-card>
+      
+      <Report :questions="questions" />
     </div>
 
     <div class="card-q" v-else>
@@ -47,7 +49,7 @@
           </div>
 
           <div class="answer-section">
-            <b-button :key="index" v-for="(option, index) in questions[currentQuestion].questionOptionList" @click="handleAnswerClick(option.correct)" class="ans-option-btn" variant="primary">{{option.optionDescription}}</b-button>
+            <b-button :key="index" v-for="(option, index) in questions[currentQuestion].questionOptionList" @click="handleAnswerClick(option.correct, index)" class="ans-option-btn" variant="primary">{{option.optionDescription}}</b-button>
           </div>
         </b-card>
       </span>
@@ -57,19 +59,22 @@
 
 <script>
 import QuestionService from "@/services/QuestionService";
+import Report from "@/components/question/Report";
 
 export default {
   data: () => ({
     currentQuestion: 0,
     showScore: false,
-    score:0,
+    score: 0,
     countDown : 120,
     countDownDisplay: "",
     timer:null,
     startQuiz: false,
-    questions: [],
+    questions: []
   }),
-
+  components: {
+    Report,
+  },
   methods: {
     async getQuestions() {
       try {
@@ -87,15 +92,15 @@ export default {
       this.countDownTimer()
     },
 
-    handleAnswerClick(isCorrect) {
-      let nextQuestion = this.currentQuestion + 1;
-
+    handleAnswerClick(isCorrect, choosed) {
+      let nextQuestionNum = this.currentQuestion + 1;
+      this.questions[this.currentQuestion]["choosed"] = choosed;
       if(isCorrect) {
         this.score = this.score + 1;
       }
 
-      if(nextQuestion < this.questions.length) {
-        this.currentQuestion = nextQuestion;
+      if(nextQuestionNum < this.questions.length) {
+        this.currentQuestion = nextQuestionNum;
         // this.$store.state.questionAttended = this.currentQuestion;
         // localStorage.setItem('qattended', this.currentQuestion)
       }
@@ -123,7 +128,7 @@ export default {
         }, 1000)
       }
       else {
-        this.handleAnswerClick(false)
+        this.handleAnswerClick(false, -1)
       }
     },
   },
