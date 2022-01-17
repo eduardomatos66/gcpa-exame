@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.transaction.Transactional;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -80,5 +81,13 @@ public class QuestionService {
 
         Collections.shuffle(allQuestions);
         return allQuestions.subList(0, questionsNumber);
+    }
+
+    public List<Question> getQuestionsWithMultipleResponse() {
+
+        return this.questionRepository.findAll().stream()
+                .filter(question -> question.getQuestionOptionList()
+                .stream().filter(QuestionOption::isCorrect).count() > 1)
+                .collect(Collectors.toList());
     }
 }

@@ -3,12 +3,11 @@
 
     <div v-if="showScore">
       <b-card
-          title="Results"
+          :title="'Results (with remaining time: ' + this.lastCountDown + ')'"
           class="gcpa-card">
         <span>You Scored {{ score }} of {{ questions.length }}</span>
+        <Report :questions="questions" />
       </b-card>
-      
-      <Report :questions="questions" />
     </div>
 
     <div class="card-q" v-else>
@@ -68,6 +67,7 @@ export default {
     score: 0,
     countDown : 120,
     countDownDisplay: "",
+    lastCountDown: "",
     timer:null,
     startQuiz: false,
     questions: []
@@ -107,6 +107,7 @@ export default {
       else {
         // localStorage.removeItem('qattended')
         this.showScore = true;
+        this.lastCountDown = this.countDownDisplay;
         clearTimeout(this.timer);
         // localStorage.setItem('testComplete',this.showScore)
       }
