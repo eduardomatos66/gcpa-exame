@@ -18,7 +18,8 @@
             img-top
             title="Google Cloud Platform Associate - Practice Exam"
             class="mb-2 gcpa-card">
-          <b-button @click="startQuizFunc()">Start Quiz</b-button>
+          <b-button @click="startQuizFunc()">Start Exam </b-button>
+          <div style="margin-top: 20px"><p>Number of questions:</p> <input :value="this.numberOfQuestions" style="text-align: center; font-size: 20px;"/></div>
         </b-card>
       </span>
 
@@ -62,6 +63,7 @@ import Report from "@/components/question/Report";
 
 export default {
   data: () => ({
+    numberOfQuestions: 50,
     currentQuestion: 0,
     showScore: false,
     score: 0,
@@ -78,7 +80,7 @@ export default {
   methods: {
     async getQuestions() {
       try {
-        const {data} = await QuestionService.getQuestions(50)
+        const {data} = await QuestionService.getQuestions(this.numberOfQuestions)
         this.questions = data;
         console.log(this.questions);
         this.countDown = 120 * this.questions.length;
@@ -88,6 +90,8 @@ export default {
     },
 
     startQuizFunc() {
+      this.getQuestions()
+      
       this.startQuiz = true
       this.countDownTimer()
     },
