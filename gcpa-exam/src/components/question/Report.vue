@@ -1,12 +1,12 @@
 <template>
     <v-card>
-        <div :key="index" v-for="(quest, index) in questions" class="question-padding-left">
-            <div class="question-title">{{ quest.title }}</div>
+        <div :key="index" v-for="(question, index) in questions" class="question-padding-left">
+            <div class="question-title">{{ question.title }}</div>
 
-            <b-button :key="index2" v-for="(option, index2) in quest.questionOptionList" class="ans-option-btn" 
-            v-bind:style="option.correct ? {backgroundColor: '#076b00'} : quest.choosed === index2  ? {backgroundColor: '#bd2600'} : {backgroundColor: '#6a84e3'}" variant="primary">{{option.optionDescription}}</b-button>
+            <b-button :key="index2" v-for="(option, index2) in question.questionOptionList" class="ans-option-btn"
+            v-bind:style="option.correct ? {backgroundColor: '#076b00'} : question.chosen === index2  ? {backgroundColor: '#bd2600'} : {backgroundColor: '#6a84e3'}" variant="primary">{{option.optionDescription}}</b-button>
 
-            <div class="explanation-text"> {{quest.explanation}} </div>
+            <div class="explanation-text"> {{question.explanation}} </div>
         </div>
     </v-card>
 </template>
