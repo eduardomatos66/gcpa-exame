@@ -112,7 +112,6 @@ export default {
 
     handleAnswerClick(isCorrect, chosen) {
       this.questions[this.currentQuestion]["chosen"] = chosen;
-      console.log(this.questions[this.currentQuestion]["chosen"])
       this.questions[this.currentQuestion]["correctlyAnswered"] = isCorrect;
     },
 
