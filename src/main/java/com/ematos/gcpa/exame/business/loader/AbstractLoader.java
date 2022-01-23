@@ -16,6 +16,7 @@ public abstract class AbstractLoader {
         this.classLoader = AbstractLoader.class.getClassLoader();
         this.loadPathConstants();
         this.loadQuestions();
+        this.analyzeQuestions();
     }
 
     protected abstract void loadPathConstants();
@@ -31,4 +32,9 @@ public abstract class AbstractLoader {
     protected void setQuestions(List<Question> questions) {
         this.questions = questions;
     }
+
+    private void analyzeQuestions() {
+        LabelRulesExecutor.executeRulesOnQuestion(this.questions);
+    }
+
 }

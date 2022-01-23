@@ -2,7 +2,9 @@ package com.ematos.gcpa.exame.model;
 
 import lombok.*;
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Data
@@ -30,4 +32,14 @@ public class Question {
 
     @ElementCollection
     private List<QuestionOption> questionOptionList;
+
+    @ElementCollection
+    private Set<String> labels;
+
+    public void addLabel(String label) {
+        if (this.labels == null) {
+            this.labels = new HashSet<>();
+        }
+        this.labels.add(label);
+    }
 }

@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @RequestMapping(path="question")
@@ -30,7 +32,7 @@ public class QuestionController extends AbstractController {
         return this.questionService.getQuestions().size();
     }
 
-    @GetMapping(path="/mr")
+    @GetMapping(path="/multipleResponseQuestions")
     @ResponseStatus(value = HttpStatus.OK)
     public List<Question> getQuestionsWithMultipleResponse() {
         return this.questionService.getQuestionsWithMultipleResponse();
@@ -60,14 +62,35 @@ public class QuestionController extends AbstractController {
     public void updateQuestion(@PathVariable("questionId") Long questionId,
                                @RequestParam(required = false) String title,
                                @RequestParam(required = false) String description,
-                               @RequestParam(required = false) List<QuestionOption> options) {
+                               @RequestParam(required = false) List<QuestionOption> options,
+                               @RequestParam(required = false) Set<String> labels) {
 
-        this.questionService.updateQuestion(questionId, title, description, options);
+        this.questionService.updateQuestion(questionId, title, description, options, labels);
     }
 
-    @GetMapping(path = "exam/{questionsNumber}")
+    @GetMapping(path = "labels")
     @ResponseStatus(value = HttpStatus.OK)
-    public List<Question> getAmountQuestions(@PathVariable("questionsNumber") Integer questionsNumber) {
-        return this.questionService.getAmountQuestions(questionsNumber);
+    public Set<String> getQuestionsLabel() {
+        return this.questionService.getQuestionsLabel();
+    }
+
+    @GetMapping(path = "exam")
+    @ResponseStatus(value = HttpStatus.OK)
+    public List<Question> getQuestionAmountWithLabel(@RequestParam Optional<String> label,
+                                                     @RequestParam Optional<Integer> questionsNumber) {
+        List<Question> questionList;
+
+        if (label.isPresent() && questionsNumber.isPresent()) {
+            questionList = this.questionService.getQuestionAmountWithLabel(label.get(), questionsNumber.get());
+        } else if (label.isPresent()) {
+            questionList = this.questionService.getAllQuestionsWithLabel(label.get());
+        } else if (questionsNumber.isPresent()) {
+            questionList = this.questionService.getAmountQuestions(questionsNumber.get());
+        } else {
+            // Default number of question on exam.
+            questionList = this.questionService.getAmountQuestions(50);
+        }
+
+        return questionList;
     }
 }

@@ -186,7 +186,7 @@ public class BookQuestionLoader extends AbstractLoader {
                 if ((line.matches(QUESTION_TITLE_REGEX) && lineTypeEnum == LineTypeEnum.ALTERNATIVES)
                         || !myReader.hasNextLine()) {
 
-                    this.createQuestion(title, alternatives);
+                    this.createQuestion(file.getName(), title, alternatives);
 
                     // Reset entries
                     title = new StringBuilder(line.trim());
@@ -212,7 +212,7 @@ public class BookQuestionLoader extends AbstractLoader {
         }
     }
 
-    private void createQuestion(StringBuilder title, List<QuestionOption> alternatives) {
+    private void createQuestion(String fileName, StringBuilder title, List<QuestionOption> alternatives) {
         if (alternatives.size() < 4) {
             throw new NotEnoughAlternativesException(
                     String.format("Question does not have enough alternatives: %s", title));
@@ -221,6 +221,7 @@ public class BookQuestionLoader extends AbstractLoader {
         Question question = new Question();
         question.setTitle(title.toString().trim());
         question.setQuestionOptionList(alternatives);
+        question.addLabel(fileName);
 
         this.questions.add(question);
     }

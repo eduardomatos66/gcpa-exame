@@ -47,7 +47,10 @@ public class JsonQuestionLoader extends AbstractLoader {
             question.setTitle(String.format("[%s] %s", key, title));
 
             String subject = (String) jsonObject.get("subject");
-            question.setSubject(subject);
+            if (subject != null) {
+                question.setSubject(subject);
+                question.addLabel(subject);
+            }
 
             List<String> answers = loadAnswers((String) jsonObject.get("answer"));
             JSONArray companyList = (JSONArray) jsonObject.get("alternatives");

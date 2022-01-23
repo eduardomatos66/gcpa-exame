@@ -54,7 +54,7 @@ public class QuestionService {
     }
 
     @Transactional
-    public void updateQuestion(Long questionId, String title, String subject, List<QuestionOption> options) {
+    public void updateQuestion(Long questionId, String title, String subject, List<QuestionOption> options, Set<String> labels) {
         Question question = this.getQuestionById(questionId);
 
         if (title != null &&
@@ -71,6 +71,7 @@ public class QuestionService {
         }
 
         question.setQuestionOptionList(options);
+        question.setLabels(labels);
     }
 
     public List<Question> getAmountQuestions(Integer questionsNumber) {
@@ -83,11 +84,33 @@ public class QuestionService {
         return allQuestions.subList(0, questionsNumber);
     }
 
+    public Set<String> getQuestionsLabel() {
+        Set<String> result = new HashSet<>();
+        this.questionRepository.findAll().forEach(question -> result.addAll(question.getLabels()));
+        return result;
+    }
+
+    public List<Question> getAllQuestionsWithLabel(String label) {
+        return this.questionRepository.findAll().stream()
+                .filter(question -> question.getLabels().contains(label))
+                .collect(Collectors.toList());
+    }
+
     public List<Question> getQuestionsWithMultipleResponse() {
 
         return this.questionRepository.findAll().stream()
                 .filter(question -> question.getQuestionOptionList()
-                .stream().filter(QuestionOption::isCorrect).count() > 1)
+                        .stream().filter(QuestionOption::isCorrect).count() > 1)
                 .collect(Collectors.toList());
+    }
+
+    public List<Question> getQuestionAmountWithLabel(String label, Integer questionsNumber) {
+        List<Question> questionList = this.getAllQuestionsWithLabel(label);
+        Collections.shuffle(questionList);
+
+        if (questionList.size() > questionsNumber) {
+            return questionList.subList(0, questionsNumber);
+        }
+        return questionList;
     }
 }
