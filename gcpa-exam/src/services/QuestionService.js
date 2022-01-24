@@ -21,7 +21,7 @@ class QuestionService {
      * @returns {*} the list of questions with the amount specified.
      */
     getQuestions(amount) {
-        return http.get("/exam/" + amount)
+        return http.get("/exam?questionsNumber=" + amount)
     }
 
     /**
