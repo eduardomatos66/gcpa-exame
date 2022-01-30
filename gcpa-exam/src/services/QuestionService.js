@@ -20,8 +20,11 @@ class QuestionService {
      * @param amount the total number of questions to get.
      * @returns {*} the list of questions with the amount specified.
      */
-    getQuestions(amount) {
-        return http.get("/exam?questionsNumber=" + amount)
+    getQuestions(amount, label) {
+        if (label == 'All') {
+            return http.get("/exam?questionsNumber=" + amount)
+        }
+        return http.get("/exam?questionsNumber=" + amount + "&label=" + label)
     }
 
     /**
@@ -32,6 +35,15 @@ class QuestionService {
      */
     getQuestion(questionId) {
         return http.get("/" + questionId + "/")
+    }
+
+    /**
+     * Gets questions labels available.
+     *
+     * @returns {*} the labels available for registered question.
+     */
+    getLabels() {
+        return http.get("/labels")
     }
 }
 

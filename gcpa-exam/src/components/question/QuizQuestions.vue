@@ -23,6 +23,10 @@
             <p>Number of questions:</p>
             <input v-model="numberOfQuestions" style="text-align: center; font-size: 20px;"/>
           </div>
+          <div style="margin-top: 20px">
+            <p>Label:</p>
+            <v-select  v-model="selectedLabel" :items="questionLabels" :options="this.questionLabels" />
+          </div>
         </b-card>
       </span>
 
@@ -87,17 +91,30 @@ export default {
     lastCountDown: "",
     timer:null,
     startQuiz: false,
-    questions: []
+    questions: [],
+    questionLabels: ['All'],
+    selectedLabel: 'All'
   }),
   components: {
-    Report,
+    Report
   },
   methods: {
     async getQuestions() {
       try {
-        const {data} = await QuestionService.getQuestions(this.numberOfQuestions)
+        const {data} = await QuestionService.getQuestions(this.numberOfQuestions, this.selectedLabel)
         this.questions = data;
         this.countDown = 120 * this.questions.length;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    async getLabels() {
+      try {
+        const {data} = await QuestionService.getLabels()
+        this.questionLabels = data
+        this.questionLabels = ['All'].concat(this.questionLabels)
+        this.questionLabels = this.questionLabels.sort()
       } catch (error) {
         console.log(error);
       }
@@ -174,7 +191,7 @@ export default {
   },
 
   mounted: function() {
-
+    this.getLabels();
   }
 }
 </script>
@@ -258,4 +275,5 @@ export default {
 .margin-right {
   margin-right: 20px;
 }
+
 </style>
