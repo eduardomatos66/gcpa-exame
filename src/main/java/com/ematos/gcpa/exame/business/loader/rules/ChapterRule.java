@@ -30,7 +30,7 @@ public class ChapterRule {
         for (int i = 0; i < labels.length; i++) {
             Matcher m = pattern.matcher(labels[i]);
             if (m.find()) {
-                labels[i] = String.format("Chapter%s", m.group(1));
+                labels[i] = String.format("Chapter %02d", Integer.valueOf(m.group(1)));
             }
         }
         question.setLabels(Sets.newHashSet(labels));
