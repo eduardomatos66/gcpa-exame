@@ -34,10 +34,4 @@ public class QuestionConfiguration {
 
         this.questionRepository.saveAll(questions);
     }
-
-    @Bean
-    void extractPathFromJson() {
-
-    }
-
 }
