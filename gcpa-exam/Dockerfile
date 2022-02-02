@@ -15,7 +15,8 @@ EXPOSE 8080
 CMD [ "http-server", "dist" ]
 
 #Agora vamos compilar a imagem Docker da nossa aplicação Vue:
-#docker build -t vuejs-gcpae/dockerize-vuejs-app .
+#docker build -t gcpae-exame/vuejs . | while read line ; do echo "$(date +"%T") > $line" ; done ;
 
-#Finalmente, vamos executar a aplicação Vue em um contêiner Docker:
-#docker run -d -p 8080:8080 --rm --name dockerize-vuejs-app-1 vuejs-gcpae/dockerize-vuejs-app
+#Finalmente, vamos executar a aplicação Vue em um container Docker:
+#docker run -d -p 8080:8080 --rm --name gcpae-front gcpae-exame/vuejs
+
