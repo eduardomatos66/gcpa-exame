@@ -19,4 +19,3 @@ CMD [ "http-server", "dist" ]
 
 #Finalmente, vamos executar a aplicação Vue em um container Docker:
 #docker run -d -p 8080:8080 --rm --name gcpae-front gcpae-exame/vuejs
-
