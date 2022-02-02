@@ -15,7 +15,7 @@ EXPOSE 8080
 CMD [ "http-server", "dist" ]
 
 #Agora vamos compilar a imagem Docker da nossa aplicação Vue:
-#docker build -t vuejs-cookbook/dockerize-vuejs-app .
+#docker build -t vuejs-gcpae/dockerize-vuejs-app .
 
 #Finalmente, vamos executar a aplicação Vue em um contêiner Docker:
-#docker run -it -p 8080:8080 --rm --name dockerize-vuejs-app-1 vuejs-cookbook/dockerize-vu
+#docker run -d -p 8080:8080 --rm --name dockerize-vuejs-app-1 vuejs-gcpae/dockerize-vuejs-app
