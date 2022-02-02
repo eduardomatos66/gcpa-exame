@@ -2,62 +2,73 @@ package com.ematos.gcpa.exame.business.loader;
 
 import com.ematos.gcpa.exame.model.Question;
 import com.ematos.gcpa.exame.model.QuestionOption;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.json.simple.parser.JSONParser;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
+import org.springframework.core.io.support.ResourcePatternUtils;
 
-import java.io.File;
-import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.io.IOException;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
 public class JsonQuestionLoader extends AbstractLoader {
 
-    protected String questionsPath;
+    public JsonQuestionLoader(ResourceLoader resourceLoader) {
+        super(resourceLoader);
+    }
 
     @Override
     protected void loadPathConstants() {
-        this.questionsPath = String.format("%s/%s",
-                        Objects.requireNonNull(classLoader.getResource(".")).getFile(),
-                        "questions");
+        try {
+            this.questionsResource = ResourcePatternUtils
+                    .getResourcePatternResolver(this.resourceLoader)
+                    .getResources("classpath:questions/*.json");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override
     protected void loadQuestions() {
-        for (File f : Objects.requireNonNull(new File(this.questionsPath).listFiles())) {
-            this.questionBuilder(f);
+        LOG.warning("Questions Path: " + this.questionsResource);
+        for (Resource resource : this.questionsResource) {
+            LOG.warning("Creating question for resource: " + resource.toString());
+            this.questionBuilder(resource);
         }
     }
 
-    protected void questionBuilder(File file) {
+    protected void questionBuilder(Resource resource) {
         Question question = new Question();
         JSONParser parser = new JSONParser();
 
         try {
-            Object obj = parser.parse(new FileReader(file));
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode jsonNode = mapper.readValue(resource.getInputStream(), JsonNode.class);
 
-            JSONObject jsonObject = (JSONObject) obj;
-
-            String key = (String) jsonObject.get("key");
-            String title = (String) jsonObject.get("title");
+            String key = jsonNode.get("key").asText();
+            String title = jsonNode.get("title").asText();
             question.setTitle(String.format("[%s] %s", key, title));
 
-            String subject = (String) jsonObject.get("subject");
+            JsonNode subject = jsonNode.get("subject");
             if (subject != null) {
-                question.setSubject(subject);
-                question.addLabel(subject);
+                question.setSubject(subject.asText());
+                question.addLabel(subject.asText());
             }
+            question.addLabel("site");
 
-            List<String> answers = loadAnswers((String) jsonObject.get("answer"));
-            JSONArray companyList = (JSONArray) jsonObject.get("alternatives");
+            List<String> answers = loadAnswers(jsonNode.get("answer").asText());
+            ArrayNode companyList = (ArrayNode) jsonNode.get("alternatives");
             question.setQuestionOptionList(buildQuestionOptions(answers, companyList));
 
             if (validateQuestionBeforeSave(question)) {
                 this.questions.add(question);
+            } else {
+                LOG.warning("QUESTION NOT CREATED: " + question.getId());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -75,11 +86,11 @@ public class JsonQuestionLoader extends AbstractLoader {
         return !question.getTitle().isEmpty() && hasAlternative.get();
     }
 
-    private static List<QuestionOption> buildQuestionOptions(List<String> answers, JSONArray list) {
+    private static List<QuestionOption> buildQuestionOptions(List<String> answers, JsonNode list) {
         List<QuestionOption> questionOptionList = new ArrayList<>();
 
         list.forEach(o -> {
-            String title = o.toString();
+            String title = o.asText();
             boolean isCorrect = answers.contains(title.substring(0, 1));
             questionOptionList.add(new QuestionOption(title, isCorrect));
         });
