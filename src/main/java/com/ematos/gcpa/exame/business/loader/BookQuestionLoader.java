@@ -4,9 +4,12 @@ import com.ematos.gcpa.exame.exception.NotEnoughAlternativesException;
 import com.ematos.gcpa.exame.exception.QuestionNotExistentException;
 import com.ematos.gcpa.exame.model.Question;
 import com.ematos.gcpa.exame.model.QuestionOption;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
+import org.springframework.core.io.support.ResourcePatternUtils;
 
-import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,39 +25,57 @@ public class BookQuestionLoader extends AbstractLoader {
 
     protected Scanner myReader;
 
-    protected String questionsPath;
-
+    public BookQuestionLoader(ResourceLoader resourceLoader) {
+        super(resourceLoader);
+    }
 
     @Override
     protected void loadPathConstants() {
-        this.questionsPath = String.format("%s/%s",
-                Objects.requireNonNull(classLoader.getResource(".")).getFile(),
-                "bk");
+        try {
+            this.questionsResource = ResourcePatternUtils
+                    .getResourcePatternResolver(this.resourceLoader)
+                    .getResources("classpath:bk/*");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     protected void loadQuestions() {
-        this.buildQuestion(
-                new File(this.questionsPath));
-    }
-
-    protected void buildQuestion(File resourceFolder) {
-        for (File f : Objects.requireNonNull(resourceFolder.listFiles())) {
-
-            String fileName = f.getName();
-            Pattern p = Pattern.compile(QUESTION_FILE_PATTERN);
-            Matcher m = p.matcher(fileName);
-
-            if (m.find()) {
-                this.questionBuilder(f);
-                this.readAnswersFile(new File(f.getAbsolutePath().replace("questions", "answers")));
-            }
+        LOG.warning("Questions Path: " + this.questionsResource);
+        for (Resource resource : this.questionsResource) {
+            LOG.warning("Creating question for resource: " + resource.toString());
+            this.buildQuestionsFromResource(resource);
         }
     }
 
-    private void readAnswersFile(File file) {
+    protected void buildQuestionsFromResource(Resource resource) {
+        String fileName = resource.getFilename();
+        Pattern p = Pattern.compile(QUESTION_FILE_PATTERN);
+        Matcher m = p.matcher(fileName);
+
+        if (m.find()) {
+            this.questionBuilder(resource);
+            Resource answerResourceFile = this.getAnwerResourceFile(resource.getFilename());
+            this.readAnswersFile(answerResourceFile);
+        }
+    }
+
+    private Resource getAnwerResourceFile(String filename) {
+        String desiredFileName = filename.replace("questions", "answers");
+
+        for (Resource resource : this.questionsResource) {
+            if (Objects.requireNonNull(resource.getFilename()).equals(desiredFileName)) {
+                return resource;
+            }
+        }
+        LOG.warning("NO ANSWER FILE has tem found");
+        return null;
+    }
+
+    private void readAnswersFile(Resource resource) {
         try {
-            this.myReader = new Scanner(file);
+            this.myReader = new Scanner(resource.getInputStream());
             StringBuilder answer = new StringBuilder();
             boolean canUpdate = false;
 
@@ -62,13 +83,13 @@ public class BookQuestionLoader extends AbstractLoader {
                 String line = myReader.nextLine();
 
                 if ((canUpdate && line.matches(ANSWER_REGEX)) || !myReader.hasNextLine()) {
-                    this.updateQuestion(this.getQuestionToken(file.getName()), answer.toString());
+                    this.updateQuestion(this.getQuestionToken(resource.getFilename()), answer.toString());
                     answer = new StringBuilder(line);
                     canUpdate = false;
                 }
 
                 if (!myReader.hasNextLine()) {
-                    this.updateQuestion(this.getQuestionToken(file.getName()), answer.toString());
+                    this.updateQuestion(this.getQuestionToken(resource.getFilename()), answer.toString());
                 } else if (!canUpdate && line.matches(ANSWER_REGEX)) {
                     answer = new StringBuilder(line.trim());
                     canUpdate = true;
@@ -80,6 +101,8 @@ public class BookQuestionLoader extends AbstractLoader {
 
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred trying to open file.");
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -169,9 +192,9 @@ public class BookQuestionLoader extends AbstractLoader {
     }
 
     @Override
-    protected void questionBuilder(File file) {
+    protected void questionBuilder(Resource resource) {
         try {
-            this.myReader = new Scanner(file);
+            this.myReader = new Scanner(resource.getInputStream());
             LineTypeEnum lineTypeEnum = LineTypeEnum.TITLE;
             StringBuilder title = new StringBuilder();
             List<QuestionOption> alternatives = new ArrayList<>();
@@ -186,7 +209,7 @@ public class BookQuestionLoader extends AbstractLoader {
                 if ((line.matches(QUESTION_TITLE_REGEX) && lineTypeEnum == LineTypeEnum.ALTERNATIVES)
                         || !myReader.hasNextLine()) {
 
-                    this.createQuestion(file.getName(), title, alternatives);
+                    this.createQuestion(resource.getFilename(), title, alternatives);
 
                     // Reset entries
                     title = new StringBuilder(line.trim());
@@ -208,6 +231,8 @@ public class BookQuestionLoader extends AbstractLoader {
 
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred trying to open file.");
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
