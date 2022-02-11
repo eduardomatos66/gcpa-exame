@@ -1,5 +1,6 @@
 package com.ematos.gcpa.exame.config;
 
+import com.ematos.gcpa.exame.business.loader.AbstractLoader;
 import com.ematos.gcpa.exame.business.loader.BookQuestionLoader;
 import com.ematos.gcpa.exame.business.loader.JsonQuestionLoader;
 import com.ematos.gcpa.exame.model.Question;
@@ -12,11 +13,13 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.util.*;
+import java.util.logging.Logger;
 
 
 @Configuration
 @EnableTransactionManagement
 public class QuestionConfiguration {
+    protected Logger LOG = Logger.getLogger(QuestionConfiguration.class.getName());
 
     @Autowired
     private ResourceLoader resourceLoader;
@@ -38,5 +41,6 @@ public class QuestionConfiguration {
         questions.addAll(bookQuestionLoader.getQuestions());
 
         this.questionRepository.saveAll(questions);
+        LOG.warning("QUESTIONS CREATED: " + questions.size());
     }
 }

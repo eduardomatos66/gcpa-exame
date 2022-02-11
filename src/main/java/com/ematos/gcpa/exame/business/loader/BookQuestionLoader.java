@@ -19,8 +19,8 @@ import java.util.stream.Collectors;
 public class BookQuestionLoader extends AbstractLoader {
 
     private static final String QUESTION_TITLE_REGEX = "^\\d+\\..*";
-    private static final String ALTERNATIVES_REGEX = "^[ABCD]\\..*";
-    private static final String ANSWER_REGEX = "^(\\d+\\.) ([ABCD]\\.)(.*)";
+    private static final String ALTERNATIVES_REGEX = "^[ABCDE]\\..*";
+    private static final String ANSWER_REGEX = "^(\\d+\\.) ([ABCDE]\\.)(.*)";
     private static final String QUESTION_FILE_PATTERN = "(.*)_questions";
 
     protected Scanner myReader;
@@ -56,12 +56,12 @@ public class BookQuestionLoader extends AbstractLoader {
 
         if (m.find()) {
             this.questionBuilder(resource);
-            Resource answerResourceFile = this.getAnwerResourceFile(resource.getFilename());
+            Resource answerResourceFile = this.getAnswerResourceFile(resource.getFilename());
             this.readAnswersFile(answerResourceFile);
         }
     }
 
-    private Resource getAnwerResourceFile(String filename) {
+    private Resource getAnswerResourceFile(String filename) {
         String desiredFileName = filename.replace("questions", "answers");
 
         for (Resource resource : this.questionsResource) {
