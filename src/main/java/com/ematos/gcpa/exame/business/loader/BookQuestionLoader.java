@@ -108,8 +108,9 @@ public class BookQuestionLoader extends AbstractLoader {
     }
 
     private String getQuestionToken(String name) {
+        String fileName = name.replace("answers", "questions");
         Pattern p = Pattern.compile(QUESTION_FILE_PATTERN);
-        Matcher m = p.matcher(name);
+        Matcher m = p.matcher(fileName);
         String result = "";
 
         if (m.find()) {
@@ -120,7 +121,7 @@ public class BookQuestionLoader extends AbstractLoader {
     }
 
     private void updateQuestion(String questionToken, String answer) {
-        Question question = this.searchForQuestion(this.extractQuestionNumberFromAnswer(answer));
+        Question question = this.searchForQuestion(this.extractQuestionNumberFromAnswer(answer), questionToken);
         List<String> correctAlternatives = this.extractAlternativesFromAnswer(answer);
 
         if (question == null) {
@@ -176,15 +177,17 @@ public class BookQuestionLoader extends AbstractLoader {
         return result.trim();
     }
 
-    private Question searchForQuestion(String answer) {
+    private Question searchForQuestion(String answer, String questionToken) {
         Question result = null;
         int counter = 0;
+        String questionLabel = String.format("%s_%s", questionToken, "questions");
+        List<Question> chapterQuestions = this.questions.stream().filter(question -> question.getLabels().contains(questionLabel)).collect(Collectors.toList());
 
-        while (result == null && counter < this.questions.size()) {
-            Question currentQuestion = this.questions.get(counter);
+        while (result == null && counter < chapterQuestions.size()) {
+            Question currentQuestion = chapterQuestions.get(counter);
 
             if (currentQuestion.getTitle().startsWith(answer)) {
-                result = this.questions.get(counter);
+                result = currentQuestion;
             }
             counter++;
         }
