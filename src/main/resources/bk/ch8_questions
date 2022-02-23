@@ -51,7 +51,7 @@ B. Cluster name
 C. Node pool name
 
 D. All of the above
-7. You
+7. You want to modify the number of pods in a cluster. What is the best way to do that?
 
 A. Modify pods directly
 
@@ -60,10 +60,8 @@ B. Modify deployments
 C. Modify node pools directly
 
 D. Modify nodes
-want to modify the number of pods in a cluster. What is the best way to do that?
-8. You
-menu would you select?
-want to see a list of deployments. Which option from the Kubernetes Engine navigation
+
+8. You want to see a list of deployments. Which option from the Kubernetes Engine navigation menu would you select?
 
 A. Clusters
 
