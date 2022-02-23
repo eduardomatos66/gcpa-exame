@@ -70,10 +70,9 @@ B. Storage Admin
 C. Compute Snapshot Admin
 
 D. Compute Storage Admin
-9. The
+9. The source of an image may be:
 
 A. Only disks
-source of an image may be:
 
 B. Snapshots or disks only
 
