@@ -104,7 +104,7 @@ B. gcloud bigtable table export
 C. bq bigtable table export
 
 D. An import tool provided by the analysis tool
-14. You
+14. You have just exported from a Dataproc cluster. What have you exported?
 
 A. Data in Spark DataFrames
 
