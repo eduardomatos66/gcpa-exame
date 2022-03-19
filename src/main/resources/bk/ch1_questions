@@ -41,7 +41,7 @@ B. 8KB
 C. 16KB
 
 D. Block size can vary.
-6. You have been asked to set up network security in a virtual private cloud. Your company wants to have multiple subnetworks and limit traffic between the subnetworks. Which net- work security control would you use to control the flow of traffic between subnets?
+6. You have been asked to set up network security in a virtual private cloud. Your company wants to have multiple subnetworks and limit traffic between the subnetworks. Which network security control would you use to control the flow of traffic between subnets?
 
 A. Identity access management
 
@@ -50,7 +50,7 @@ B. Router
 C. Firewall
 
 D. IP address table
-7. When you create a machine learning service to identify text in an image, what type of serv- ers should you choose to manage compute resources?
+7. When you create a machine learning service to identify text in an image, what type of servers should you choose to manage compute resources?
 
 A. VMs
 
@@ -68,7 +68,7 @@ B. A company can accurately predict server need for an extended period of time
 C. A company has a fixed IT budget
 
 D. A company has a variable IT budget
-9. Your company is based in X and will be running a virtual server for Y. What factor deter- mines the unit per minute cost?
+9. Your company is based in X and will be running a virtual server for Y. What factor determines the unit per minute cost?
 
 A. The time of day the VM is run
 B. The characteristics of the server

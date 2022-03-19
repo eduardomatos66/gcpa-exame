@@ -1,10 +1,10 @@
-1. You are designing cloud applications for a healthcare provider. The records management application will manage medical information for patients. Access to this data is limited to a small number of employees. The billing department application will have insurance and payment information. Another group of employees will have access billing information. In addition, the billing system will have two components: a private insurance billing system and a government payer billing system. Government regulations require that software used to bill the government must be isolated from other software systems. Which of the follow- ing resource hierarchies would meet these requirements and provide the most flexibility to adapt to changing requirements?
+1. You are designing cloud applications for a healthcare provider. The records management application will manage medical information for patients. Access to this data is limited to a small number of employees. The billing department application will have insurance and payment information. Another group of employees will have access billing information. In addition, the billing system will have two components: a private insurance billing system and a government payer billing system. Government regulations require that software used to bill the government must be isolated from other software systems. Which of the following resource hierarchies would meet these requirements and provide the most flexibility to adapt to changing requirements?
 
 A. One organization, with folders for records management and billing. The billing folder would have private insurer and government payer folders within it. Common constraints would be specified in organization-level policies. Other policies would be defined at the appropriate folder.
 
 B. One folder for records management, one for billing, and no organization. Policies defined at the folder level.
 
-C. One organization, with folders for records management, private insurer, and govern- ment payer below the organization. All constraints would be specified in organization- level policies. All folders would have the same policy constraints.
+C. One organization, with folders for records management, private insurer, and government payer below the organization. All constraints would be specified in organizationlevel policies. All folders would have the same policy constraints.
 
 D. None of the above.
 2. When you create a hierarchy, you can have more than one of which structure?
@@ -16,7 +16,7 @@ B. Folder only
 C. Folder and project
 
 D. Project only
-3. You are designing an application that uses a series of services to transform data from its original form into a format suitable for use in a data warehouse. Your transformation appli- cation will write to the message queue as it processes each input file. You don’t want to give users permission to write to the message queue. You could allow the application to write to the message queue by using which of the following?
+3. You are designing an application that uses a series of services to transform data from its original form into a format suitable for use in a data warehouse. Your transformation application will write to the message queue as it processes each input file. You don’t want to give users permission to write to the message queue. You could allow the application to write to the message queue by using which of the following?
 
 A. Billing account
 
@@ -25,7 +25,7 @@ B. Service account
 C. Messaging account
 
 D. Folder
-4. Your company has a number of policies that need to be enforced for all projects. You decide to apply policies to the resource hierarchy. Not long after you apply the policies, an engineer finds that an application that had worked prior to implementing policies is no lon- ger working. The engineer would like you to create an exception for the application. How can you override a policy inherited from another entity in the resource hierarchy?
+4. Your company has a number of policies that need to be enforced for all projects. You decide to apply policies to the resource hierarchy. Not long after you apply the policies, an engineer finds that an application that had worked prior to implementing policies is no longer working. The engineer would like you to create an exception for the application. How can you override a policy inherited from another entity in the resource hierarchy?
 
 A. Inherited policies can be overridden by defining a policy at a folder or project level.
 
@@ -51,7 +51,7 @@ B. Publisher
 C. Editor
 
 D. Viewer
-7. You are deploying a new custom application and want to delegate some administration tasks to DevOps engineers. They do not need all the privileges of a full application admin- istrator, but they do need a subset of those privileges. What kind of role should you use to grant those privileges?
+7. You are deploying a new custom application and want to delegate some administration tasks to DevOps engineers. They do not need all the privileges of a full application administrator, but they do need a subset of those privileges. What kind of role should you use to grant those privileges?
 
 A. Primitive
 B. Predefined
@@ -73,7 +73,7 @@ B. 2
 C. 3
 
 D. Unlimited
-10. You are contacted by the finance department of your company for advice on how to auto- mate payments for GCP services. What kind of account would you recommend setting up?
+10. You are contacted by the finance department of your company for advice on how to automate payments for GCP services. What kind of account would you recommend setting up?
 
 A. Service account
 B. Billing account

@@ -1,4 +1,4 @@
-1. You have designed a microservice that you want to deploy to production. Before it can be deployed, you have to review how you will manage the service lifecycle. The architect is particularly concerned about how you will deploy updates to the service with minimal dis- ruption. What aspect of App Engine components would you use to minimize disruptions during updates to the service?
+1. You have designed a microservice that you want to deploy to production. Before it can be deployed, you have to review how you will manage the service lifecycle. The architect is particularly concerned about how you will deploy updates to the service with minimal disruption. What aspect of App Engine components would you use to minimize disruptions during updates to the service?
 
 A. Services
 
@@ -15,7 +15,7 @@ B. Configure your app for basic scaling and specify max instances of 12 and min 
 
 C. Create a cron job to add instances just prior to peak periods and remove instances after the peak period is over.
 
-D. Configure your app for instance detection and do not specify a max or minimum num- ber of instances.
+D. Configure your app for instance detection and do not specify a max or minimum number of instances.
 3. In the hierarchy of App Engine components, what is the lowest-level component?
 A. Application
 
@@ -130,7 +130,7 @@ B. ––splits
 
 C. ––split-percent
 D. ––percent-split
-17. You have released a new version of a service. You have been waiting for approval from the product manager to start sending traffic to the new version. You get approval to route traf- fic to the new version. What parameter to gcloud app services set-traffic is used to specify that traffic should be moved to a newer version of the app?
+17. You have released a new version of a service. You have been waiting for approval from the product manager to start sending traffic to the new version. You get approval to route traffic to the new version. What parameter to gcloud app services set-traffic is used to specify that traffic should be moved to a newer version of the app?
 
 A. ––move-to-new
 
