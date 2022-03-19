@@ -49,7 +49,7 @@ B. You’ve navigated to a different subform of Cloud Launcher.
 C. Configuration properties are based on the application you are deploying and will be different depending on what application you are deploying.
 
 D. This cannot happen.
-7. You have been asked by your manager to deploy a WordPress site. You expect heavy traf- fic, and your manager wants to make sure the VM hosting the WordPress site has enough resources. Which resources can you configure when launching a WordPress site using Cloud Launcher?
+7. You have been asked by your manager to deploy a WordPress site. You expect heavy traffic, and your manager wants to make sure the VM hosting the WordPress site has enough resources. Which resources can you configure when launching a WordPress site using Cloud Launcher?
 
 A. Machine type
 B. Disk type
@@ -57,7 +57,7 @@ B. Disk type
 C. Disk size
 
 D. All of the above
-8. You would like to define as code the configuration of a set of application resources. The GCP service for creating resources using a configuration file made up of resource specifica- tions defined in YAML syntax is called what?
+8. You would like to define as code the configuration of a set of application resources. The GCP service for creating resources using a configuration file made up of resource specifications defined in YAML syntax is called what?
 
 A. Compute Engine
 
@@ -78,7 +78,7 @@ A. Deploy
 B. Resources
 C. Properties
 D. YAML
-11. Which of the following are used to define a resource in a Cloud Deployment Manager con- figuration file?
+11. Which of the following are used to define a resource in a Cloud Deployment Manager configuration file?
 
 A. type only
 

@@ -1,4 +1,4 @@
-1. You have just opened the GCP console at console.google.com. You have authenticated with the user you want to use. What is one of the first things you should do before perform- ing tasks on VMs?
+1. You have just opened the GCP console at console.google.com. You have authenticated with the user you want to use. What is one of the first things you should do before performing tasks on VMs?
 
 A. Open Cloud Shell.
 
@@ -69,7 +69,7 @@ B. Encryption key management
 C. Block size
 
 D. Source image for the disk
-9. You lead a team of cloud engineers who maintain cloud resources for several departments in your company. You’ve noticed a problem with configuration drift. Some machine config- urations are no longer in the same state as they were when created. You can’t find notes or documentation on how the changes were made or why. What practice would you implement to solve this problem?
+9. You lead a team of cloud engineers who maintain cloud resources for several departments in your company. You’ve noticed a problem with configuration drift. Some machine configurations are no longer in the same state as they were when created. You can’t find notes or documentation on how the changes were made or why. What practice would you implement to solve this problem?
 
 A. Have all cloud engineers use only command-line interface in Cloud Shell.
 
@@ -126,7 +126,7 @@ B. Create VMs using a source image created from a disk with the data on it.
 C. Store the data in Google Drive.
 
 D. Load the data into BigQuery.
-15. The Network tab of the create VM form is where you would perform which of the follow- ing operations?
+15. The Network tab of the create VM form is where you would perform which of the following operations?
 
 A. Set the IP address of the VM
 
@@ -144,13 +144,13 @@ B. boot-disk
 C. disk-type
 
 D. type-boot-disk
-17. Which of the following commands will create a VM with four CPUs that is named web- server-1?
+17. Which of the following commands will create a VM with four CPUs that is named web-server-1?
 
 A. gcloud compute instances create --machine-type=n1-standard-4 web-server-1
 
 B. gcloud compute instances create --cpus=4 web-server-1
 
-C. gcloud compute instances create --machine-type=n1-standard-4 –instance- name web-server-1
+C. gcloud compute instances create --machine-type=n1-standard-4 –instance-name web-server-1
 
 D. gcloud compute instances create --machine-type=n1-4-cpu web-server-1
 18. Which of the following commands will stop a VM named web-server-1?

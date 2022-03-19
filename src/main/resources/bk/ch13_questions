@@ -35,7 +35,7 @@ B. CSV and JSON
 C. JSON and SQL
 
 D. CSV and SQL
-5. A database administrator has asked for an export of a MySQL database in Cloud SQL. The database administrator will load the data into another relational database and would to do it with the least amount of work. Specifically, the loading method should not require the data- base administrator to define a schema. What file format would you recommend for this task?
+5. A database administrator has asked for an export of a MySQL database in Cloud SQL. The database administrator will load the data into another relational database and would to do it with the least amount of work. Specifically, the loading method should not require the database administrator to define a schema. What file format would you recommend for this task?
 
 A. SQL
 B. CSV
@@ -47,9 +47,9 @@ ace-exam-mysql-export.sql in a bucket named ace-exam-buckete1?
 A. gcloud storage export sql ace-exam-mysql1 gs://ace-exam-buckete1/ace-
 exam-mysql-export.sql \ ––database=mysql
 
-B. gcloud sql export ace-exam-mysql1 gs://ace-exam-buckete1/ace-exam- mysql-export.sql \ ––database=mysql
+B. gcloud sql export ace-exam-mysql1 gs://ace-exam-buckete1/ace-exam-mysql-export.sql \ ––database=mysql
 
-C. gcloud sql export sql ace-exam-mysql1 gs://ace-exam-buckete1/ace-exam- mysql-export.sql \ ––database=mysql
+C. gcloud sql export sql ace-exam-mysql1 gs://ace-exam-buckete1/ace-exam-mysql-export.sql \ ––database=mysql
 
 D. gcloud sql export sql ace-exam-mysql1 gs://ace-exam-mysql-export.sql/ ace-exam-buckete1/ \ ––database=mysql
 7. As part of a compliance regimen, your team is required to back up data from your Datastore database to an object storage system. Your data is stored in the default namespace. What command would you use to export the default namespace from Datastore to a bucket called ace-exam-bucket1?

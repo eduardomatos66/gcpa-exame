@@ -41,7 +41,7 @@ A. Deployments
 B. Stackdriver
 C. ReplicaSet
 D. Jobs
-6. You are deploying a high availability application in Kubernetes Engine. You want to main- tain availability even if there is a major network outage in a data center. What feature of Kubernetes Engine would you employ?
+6. You are deploying a high availability application in Kubernetes Engine. You want to maintain availability even if there is a major network outage in a data center. What feature of Kubernetes Engine would you employ?
 
 A. Multiple instance groups
 B. Multizone/region cluster

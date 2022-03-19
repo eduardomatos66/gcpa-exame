@@ -1,4 +1,4 @@
-1. A product manager is proposing a new application that will require several backend ser- vices, three business logic services, and access to relational databases. Each service will provide a single function, and it will require several of these services to complete a business task. Service execution time is dependent on the size of input and is expected to take up to 30 minutes in some cases. Which GCP product is a good serverless option for running this related service?
+1. A product manager is proposing a new application that will require several backend services, three business logic services, and access to relational databases. Each service will provide a single function, and it will require several of these services to complete a business task. Service execution time is dependent on the size of input and is expected to take up to 30 minutes in some cases. Which GCP product is a good serverless option for running this related service?
 
 A. Cloud Functions
 
@@ -7,7 +7,7 @@ B. Compute Engine
 C. App Engine
 
 D. Cloud Storage
-2. You have been asked to deploy a cloud function to reformat image files as soon as they are uploaded to Cloud Storage. You notice after a few hours that about 10 percent of the files are not processed correctly. After reviewing the files that failed, you realize they are all sub- stantially larger than average. What could be the cause of the failures?
+2. You have been asked to deploy a cloud function to reformat image files as soon as they are uploaded to Cloud Storage. You notice after a few hours that about 10 percent of the files are not processed correctly. After reviewing the files that failed, you realize they are all substantially larger than average. What could be the cause of the failures?
 
 A. There is a syntax error in the function code.
 
@@ -60,7 +60,7 @@ B. Upload or finalize, delete, and list only
 C. Upload or finalize, delete, and metadata update only
 
 D. Upload or finalize, delete, metadata update, and archive
-8. You are tasked with designing a function to execute in Cloud Functions. The function will need more than the default amount of memory and should be applied only when a finalize event occurs after a file is uploaded to Cloud Storage. The function should only apply its logic to files with a standard image file type. Which of the following required features can- not be specified in a parameter and must be implemented in the function code?
+8. You are tasked with designing a function to execute in Cloud Functions. The function will need more than the default amount of memory and should be applied only when a finalize event occurs after a file is uploaded to Cloud Storage. The function should only apply its logic to files with a standard image file type. Which of the following required features cannot be specified in a parameter and must be implemented in the function code?
 
 A. Cloud function name
 
@@ -87,7 +87,7 @@ B. 1 minute
 C. 9 minutes
 
 D. 20 minutes
-11. You want to use the command line to manage Cloud Functions that will be written in Python. In addition to running the gcloud components update command, what com- mand should you run to ensure you can work with Python functions?
+11. You want to use the command line to manage Cloud Functions that will be written in Python. In addition to running the gcloud components update command, what command should you run to ensure you can work with Python functions?
 
 A. gcloud component install
 
@@ -103,7 +103,7 @@ B. google.storage.object.upload
 C. google.storage.object.archive
 
 D. google.storage.object.metadataUpdate
-13. You are defining a cloud function to write a record to a database when a file in Cloud Stor- age is archived. What parameters will you have to set when creating that function?
+13. You are defining a cloud function to write a record to a database when a file in Cloud Storage is archived. What parameters will you have to set when creating that function?
 
 A. runtime only
 
