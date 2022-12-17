@@ -53,6 +53,7 @@ public class JsonQuestionLoader extends AbstractLoader {
             String key = jsonNode.get("key").asText();
             String title = jsonNode.get("title").asText();
             question.setTitle(String.format("[%s] %s", key, title));
+            question.setSource(resource.getFile().getParentFile().getName());
 
             JsonNode subject = jsonNode.get("subject");
             if (subject != null) {

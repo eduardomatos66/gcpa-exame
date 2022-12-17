@@ -1,12 +1,12 @@
 package com.ematos.gcpa.exame.business.loader.rules;
 
 import com.ematos.gcpa.exame.model.Question;
-import com.google.common.collect.Sets;
 import org.jeasy.rules.annotation.Action;
 import org.jeasy.rules.annotation.Condition;
 import org.jeasy.rules.annotation.Fact;
 import org.jeasy.rules.annotation.Rule;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -33,6 +33,6 @@ public class ChapterRule {
                 labels[i] = String.format("Chapter %02d", Integer.valueOf(m.group(1)));
             }
         }
-        question.setLabels(Sets.newHashSet(labels));
+        Arrays.stream(labels).forEach(question::addLabel);
     }
 }
