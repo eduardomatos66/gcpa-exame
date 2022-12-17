@@ -1,0 +1,138 @@
+1. A team of early career software engineers has been paired with an architect to work on
+a new software development project. The engineers are anxious to get started coding,
+but the architect objects to that course of action because there has been insufficient work
+prior to development. What steps should be completed before beginning development
+according to SDLC?
+A. Business continuity planning
+B. Analysis and design
+C. Analysis and testing
+D. Analysis and documentation
+
+2. In an analysis meeting, a business executive asks about research into COTS. What is this
+executive asking about?
+A. Research related to deciding to build versus buying a solution
+B. Research about a Java object relational mapper
+C. A disaster planning protocol
+D. Research related to continuous operations through storms (COTS), a business continuity
+practice
+
+3. Business decision-makers have created a budget for software development over the next three
+months. There are more projects proposed than can be funded. What measure might the
+decision-makers use to choose projects to fund?
+A. Mean time between failures (MTBF)
+B. Recovery time objectives (RTO)
+C. Return on investment (ROI)
+D. Marginal cost displacement
+
+4. A team of developers is working on a backend service to implement a new business process.
+They are debating whether to use arrays, lists, or hash maps. In what stage of the SDLC are
+these developers at present?
+A. Analysis
+B. High-level design
+C. Detailed design
+D. Maintenance
+
+5. An engineer is on call for any service-related issues with a service. In the middle of the night,
+the engineer receives a notification that a set of APIs is returning HTTP 500 error codes to
+most requests. What kind of documentation would the engineer turn to first?
+A. Design documentation
+B. User documentation
+C. Operations documentation
+D. Developer documentation
+
+6. As a developer, you write code in your local environment, and after testing it, you commit it
+or write it to a version control system. From there it is automatically incorporated with the
+baseline version of code in the repository. What is the process called?
+A. Software continuity planning
+B. Continuous integration (CI)
+C. Continuous development (CD)
+D. Software development lifecycle (SDLC)
+
+7. As a consulting architect, you have been asked to help improve the reliability of a distributed
+system with a large number of custom microservices and dependencies on third-party APIs
+running in a hybrid cloud architecture. You have decided that at this level of complexity, you
+can learn more by experimenting with the system than by studying documents and code listings. So, you start by randomly shutting down servers and simulating network partitions.
+This is an example of what practice?
+A. Irresponsible behavior
+B. Integration testing
+C. Load testing
+D. Chaos engineering
+
+8. There has been a security breach at your company. A malicious actor outside of your
+company has gained access to one of your services and was able to capture data that was
+passed into the service from clients. Analysis of the incident finds that a developer included
+a private key in a configuration file that was uploaded to a version control repository. The
+repository is protected by several defensive measures, including role-based access controls
+and network-level controls that require VPN access to reach the repository. As part of backup
+procedures, the repository is backed up to a cloud storage service. The folder that stores the
+backup was mistakenly granted public access privileges for up to three weeks before the error
+was detected and corrected. During the post-mortem analysis of this incident, one of the
+objectives should be to
+A. Identify the developer who uploaded the private key to a version control repository.
+They are responsible for this incident.
+B. Identify the system administrator who backed up the repository to an unsecured storage
+service. They are responsible for this incident.
+C. Identify the system administrator who misconfigured the storage system. They are
+responsible for this incident.
+D. Identify ways to better scan code checked into the repository for sensitive information
+and perform checks on cloud storage systems to identify weak access controls.
+
+9. You have just been hired as a cloud architect for a large financial institution with global
+reach. The company is highly regulated, but it has a reputation for being able to manage IT
+projects well. What practices would you expect to find in use at the enterprise level that you
+might not find at a startup?
+A. Agile methodologies
+B. SDLC
+C. ITIL
+D. Business continuity planning
+
+10. A software engineer asks for an explanation of the difference between business continuity
+planning and DR planning. What would you say is the difference?
+A. There is no difference; the terms are synonymous.
+B. They are two unrelated practices.
+C. DR is a part of business continuity planning, which includes other practices for
+continuing business operations in the event of an enterprise-level disruption of services.
+D. Business continuity planning is a subset of disaster recovery.
+
+11. In addition to ITIL, there are other enterprise IT process management frameworks. Which
+other standard might you reference when working on enterprise IT management issues?
+A. ISO/IEC 20000
+B. Java Coding Standards
+C. PEP-8
+D. ISO/IEC 27002
+
+12. A minor problem repeatedly occurs with several instances of an application that causes a
+slight increase in the rate of errors returned. Users who retry the operation usually succeed
+on the second or third attempt. By your company’s standards, this is considered a minor incident. Should you investigate this problem?
+A. No. The problem is usually resolved when users retry.
+B. No. New feature requests are more important.
+C. Yes. But only investigate if the engineering manager insists.
+D. Yes. Since it is a recurring problem, there may be an underlying bug in code or weakness
+in the design that should be corrected.
+
+13. A CTO of a midsize company hires you to consult on the company’s IT practices. During preliminary interviews, you realize that the company does not have a business continuity plan.
+What would you recommend they develop first with regard to business continuity?
+A. Recovery time objectives (RTO)
+B. An insurance plan
+C. A disaster plan
+D. A service management plan
+
+14. A developer codes a new algorithm and tests it locally. They then check the code into the
+team’s version control repository. This triggers an automatic set of unit and integration
+tests. The code passes, and it is integrated into the baseline code and included in the next
+build. The build is released and runs as expected for 30 minutes. A sudden spike in traffic
+causes the new code to generate a large number of errors. What might the team decide to do
+after the post-mortem analysis of this incident?
+A. Fire the developer who wrote the algorithm.
+B. Have at least two engineers review all of the code before it is released.
+C. Perform stress tests on changes to code that may be sensitive to changes in load.
+D. Ask the engineering manager to provide additional training to the engineer who revised
+the algorithm.
+
+15. Your company’s services are experiencing a high level of errors. Data ingest rates are dropping rapidly. Your data center is located in an area prone to hurricanes, and these events are
+occurring during peak hurricane season. What criteria do you use to decide to invoke your
+disaster recovery plan?
+A. When your engineering manager says to invoke the disaster recovery plan
+B. When the business owner of the service says to invoke the disaster recovery plan
+C. When the disaster plan criteria for invoking the disaster recovery plan are met
+D. When the engineer on call says to invoke the disaster recovery plan

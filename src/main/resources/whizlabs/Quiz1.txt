@@ -1,0 +1,324 @@
+> Question 1
+
+Domain: Configure access and security
+
+You are working on a project named whizlabs-ace, and want to list all the roles assigned to users in the project. Which of the following gcloud command would you use?
+A. gcloud iam list whizlabs-ace
+B. gcloud projects list whizlabs-ace
+C. gcloud projects get-iam-policy whizlabs-ace
+D. gcloud iam get-iam-policy whizlabs-ace
+
+Answer C
+
+
+> Question 2
+
+Domain: Setting up a cloud solution environment
+
+While working on a project, an application administrator (A) has been given the responsibility of managing all resources. He wants to delegate the responsibility of managing the existing service accounts to another administrator (B). That administrator (B) will also be responsible to manage the other service accounts that will be created. Which of the following is the best way to delegate the privileges required to manage all the service accounts?
+A. Granting iam.serviceAccountUser to the administrator at the project level
+B. Granting iam.serviceProjectAccountUser to the administrator at the project level
+C. Granting iam.serviceAccountUser to the administrator at the service account level
+D. Granting iam.serviceProjectAccountUser to the administrator at the service account level
+
+Answer A
+
+
+> Question 3
+
+Domain: Ensuring successful operation of a cloud solution
+
+You’re working for a company as a Cloud engineer. You have a managed instance group for which the autoscaling is enabled if CPU utilization is 70%. Right now there are 4 instances available in this instance group. When you connect to one of the instances, you see that the CPU utilization is 75% and there is no new instance is started in the group. What could be the possible reason for not starting another instance here?
+A. It will take 60 seconds to launch a new instance
+B. Autoscaling is not active
+C. The average CPU usage of the instance group is less than 70%
+D. None of the above
+
+Answer C.
+
+
+> Question 4
+
+Domain: Planning and configuring a cloud solution
+
+You are a Google Cloud Engineer and assigned to set up a project for the team of four members. You need to grant only general permissions for all the resources of the project. You decided to grant a primitive role to each person for different levels of access on the basis of their responsibilities in the project. What is not considered as a primitive role in the Google Cloud Platform console?
+A. Viewer
+B. Editor
+C. Owner
+D. Publisher
+
+Answer D
+
+
+> Question 5
+
+Domain: Deploying and implementing a cloud solution
+
+A VM instance is trying to read from a Cloud Storage bucket. IAM roles assigned to the VM service account allows the VM instance to read from the bucket. But the scopes assigned to the VM deny the reading bucket. What will happen when VM tries to read from the bucket?
+A. The application performing the read will drop the read operation
+B. The read will not execute as IAM roles and scopes both determine what operations will be performed
+C. The read will succeed because the most permissive permission is allowed
+D. The read operation will execute, but a message will be sent to the Stackdriver Logging
+
+Answer B
+
+
+> Question 6
+
+Domain: Ensuring successful operation of a cloud solution
+
+A cloud engineer has been assigned to work on a running project. He wants to know which VMs are running in the project. How could the cloud engineer get the information of the all VMs running in the project?
+A. Execute the command gcloud compute list
+B. Execute the command gcloud list instances
+C. Execute the command gcloud instances list
+D. Execute the command gcloud compute instances list
+
+Answer: Option D
+
+
+> Question 7
+
+Domain: Planning and configuring a cloud solution
+
+A cloud engineer wants to create a VM named whiz-server-1 with four CPUs. Which of the following commands would he use to create the VM whiz-server-1?
+A. gcloud compute instances create --machine-type=n1-standard-4 whiz-server-1
+B. gcloud compute instances create --cpus=4 whiz-server-1
+C. gcloud compute instances create --machine-type=n1-standard-4 –instancename&nbsp;whiz-server-1
+D. gcloud compute instances create --machine-type=n1-4-cpu whiz-server-1
+
+Answer – A
+
+
+> Question 8
+
+Domain: Planning and configuring a cloud solution
+
+What is the gcloud command to create a cluster named ch09-cluster-10 with four nodes?
+A. gcloud container clusters create ch09-cluster-10 4
+B. gcloud container clusters create ch09-cluster-10 --num-nodes=4
+C. gcloud clusters container create ch09-cluster-10 --num-nodes=4
+D. gcloud container beta clusters create ch09-cluster-10 --nodes-num=4
+
+Answer – Option B
+
+
+> Question 9
+
+Domain: Ensuring successful operation of a cloud solution
+
+You have deployed a Django 1.5 Python application to App Engine. This version of Django requires Python 3. Due to some issues, App Engine is trying to run the application using Python 2. Which of the following file would you check and modify (if required) to ensure that Python 3 is used with the application?
+A. app.config
+B. services.yaml
+C. app.yaml
+D. cron.yaml
+
+Answer – C
+
+
+> Question 10
+
+Domain: Deploying and implementing a cloud solution
+
+Which of the following command is used to create buckets in Cloud Storage?
+A. gcloud storage buckets create
+B. gsutil storage buckets create
+C. gsutil mb
+
+D. gcloud mb
+
+Answer – C
+
+
+> Question 11
+
+Domain: Planning and configuring a cloud solution
+
+Which of the following IP address would you specify to define a CIDR range that will apply to all the destination addresses?
+A. 0.0.0.0/0
+B. 172.16.0.0/12
+C. 192.168.0.0/16
+D. 10.0.0.0/8
+
+Answer A
+
+
+> Question 12
+
+Domain: Planning and configuring a cloud solution
+
+You have set a firewall rule that will permit inbound connections to a VM instance named whizserver-2. You want to apply this rule only if there is not another rule that would deny that traffic. What priority would you give to this rule?answer<ul>
+A. 1000
+B. 1
+C. 65535
+D. 0
+
+Answer C
+
+
+> Question 13
+
+Domain: Deploying and implementing a cloud solution
+
+You have created a subnet named subnetace1 with 16,382 addresses using 192.168.0.0. Later you realize that you won’t require too many addresses, and so you want to reduce addresses to 254. Which of the following command would you use?answer<ul>
+A. gcloud compute networks subnets expand-ip-range subnetace1 --prefix-length=28
+B. gcloud compute networks subnets expand-ip-range subnetace1 --size=248
+C. gcloud compute networks subnets expand-ip-range subnetace1 --prefix-length=-12
+D. There is no command in google cloud to reduce the number of available addresses in a subnet.
+
+Answer D
+
+
+> Question 14
+
+Domain: Deploying and implementing a cloud solution
+
+You have recently joined a startup who is migrating their infrastructure from AWS to Google Cloud. A junior was assigned the task of migrating one of their web server with Amazon Linux OS from AWS to GCP in a public subnet of custom VPC. He was able to migrate the instance successfully but is unable to get SSH access of migrated instance. What are the possible steps to look for? (Multiple Answer)
+A. Check if he has attached correct firewall rule with port udp:22 open to the instance.
+B. Ask if he has added SSH key to the instance while launching phase.
+C. Google Cloud does not support Amazon Linux images because of market competition.
+D. Make sure the firewall is attached to the instance with tcp port 22 open.
+
+Answers B and D.
+
+
+> Question 15
+
+Domain: Deploying and implementing a cloud solution
+
+You work for a retail company that has a busy online store. As you are approaching New Year, you find that your e-store is getting more and more traffic. You ensure that your web servers are behind a managed instance group. However, you notice that the web tier is frequently scaling, sometimes multiple times in an hour. You need to keep instance group from scaling up and down so rapidly. Which of the following options would help you to achieve this?
+A. Change the auto scaling metric to use multiple metrics instead of just one metric.
+B. Reduce the number of maximum instance count.
+C. Associate a health check with instance group.
+D. Increase the cool down period.
+
+Answer D.
+
+
+> Question 16
+
+Domain: Planning and configuring a cloud solution
+
+You have been asked to build backend using Clojure and host it on Google Cloud with full freedom of choosing OS, applications, libraries, etc. Which service will you prefer?
+A. Compute Engine
+B. App Engine Standard
+C. Cloud Function
+D. CloudRun
+
+Answer A
+
+
+> Question 17
+
+Domain: Planning and configuring a cloud solution
+
+You have been hired as a contractor by one of the travel technology company who is planning to containerize their existing applications in such a way that they can perform a lift and shift very easily in future if they plan to move away from Google Cloud. Which service will best suit this case?
+A. Cloud Function
+B. App Engine Standard
+C. Kubernetes Engine
+D. CloudRun
+
+Answer C
+
+
+> Question 18
+
+Domain: Configure access and security0
+
+Which is the correct command to bind an IAM policy to a service account at an organization level?
+A. gcloud organizations add-iam-policy-binding org_id --member serviceAccount:whizlab@whizlabs-prj.iam.gserviceaccount.com --role roles/viewer
+B. gcloud projects add-iam-policy-binding whizlabs-prj --member serviceAccount:whizlabswhizlabs-prj.iam.gserviceaccount.com --role roles/viewer
+C. gcloud iam service-accounts keys create whizlabs-prj --iam-account whizlabs@whizlabs-prj.iam.gserviceaccount.com
+D. gcloud organizations add-iam-policy-binding --member serviceAccount:whizlab@whizlabs-prj.iam.gserviceaccount.com --role roles/viewer
+
+Answer A
+
+
+> Question 19
+
+Domain: Setting up a cloud solution environment
+
+You are heading the Cloud &amp; DevOps department in a financial company and have been asked to create a custom role for one of your colleague who needs access to deploy an application to App Engine. Which permission will you use?"><ul>
+A. App Engine Editor
+B. App Engine Admin
+C. App Engine Deployer
+D. App Engine Viewer
+
+Answer C
+
+
+> Question 20
+
+Domain: Ensuring successful operation of a cloud solution
+
+You are about to start working on a micro-service deployment project using Google Kubernetes Engine service. The client needs everything on Google and want you to maintain both frontend and backend code on Google Cloud as well. Which service best suites this case?
+A. Cloud Storage
+B. Cloud Source Repository
+C. Google Container Registry
+D. GitHub
+
+Answer B
+
+
+> Question 21
+
+Domain: Ensuring successful operation of a cloud solution
+
+You are working as a System Administrator and have been asked to make sure that all images are patched up to date and developers are not allowed to use old images that are not up to date as per PCI compliance. How would you achieve this?answer
+A. Drop a mail to all the developers regarding which image to use whenever you patch images.
+B. Mark&nbsp;image as deprecated to prevent users from using the old image.
+C. Mark image as obsolete to prevent users from using the old image.
+D. None of the above.
+
+Answer C
+
+
+> Question 22
+
+Domain: Deploying and implementing a cloud solution
+
+You are building an architecture for one of your client with a requirement of streaming millions of requests with high availability and durability along with HIPAA compliance. Which managed service will you prefer?
+A. Cloud Function
+B. Cloud DataProc
+C. Cloud Pub/Sub
+D. RabbitMQ
+
+Answer C
+
+
+> Question 23
+
+Domain: Deploying and implementing a cloud solution
+
+You are planning to build a micro-service application with docker containers and want to host them on Google Cloud as stateless and serverless. Which service will help you serve the need?
+A. Cloud Function
+B. App Engine Standard
+C. App Engine Flexible
+D. CloudRun
+
+Answer D
+
+
+> Question 24
+
+Domain: Deploying and implementing a cloud solution
+
+You have been asked to deploy a highly available Kubernetes cluster using Google Kubernetes Engine by your manager. While spinning up the cluster you realize you do not see option of creating master. What can be the reason?
+A. GKE does not use master node to control child nodes.
+B. You need to spin up a compute instance and set it up as master node.
+C. Master node is created automatically by GKE.
+D. None of the above.
+
+Answer C
+
+
+> Question 25
+
+Domain: Deploying and implementing a cloud solution0
+
+You have been asked to automate the infrastructure deployment using Google Deployment Manager service. Which all formats do Deployment manager template supports?
+A. JSON
+B. Jinja2
+C. Powershell
+D. Python
+
+Answer B and D

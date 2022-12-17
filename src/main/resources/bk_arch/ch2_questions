@@ -1,0 +1,177 @@
+1. In the TerramEarth case study, the volume of data and compute load will be most affected by
+what characteristics of the TerramEarth systems?
+A. The number of dealers and customers
+B. The number of vehicles, the number of sensors on vehicles, network connectivity, and
+the types of data collected
+C. The type of storage used
+D. Compliance with regulations
+
+2. You have received complaints from customers about long wait times while loading application pages in their browsers, especially pages with several images. Your director has tasked
+you with reducing latency when accessing and transmitting data to a client device outside the
+cloud. Which of the following would you use? (Choose two.)
+A. Multiregional storage
+B. Coldline storage
+C. CDN
+D. Cloud Pub/Sub
+E. Cloud Dataflow
+
+3. Mountkirk Games will analyze game players’ usage patterns. This will require collecting
+time-series data including game state. What database would be a good option for doing this?
+A. BigQuery
+B. Bigtable
+C. Cloud Spanner
+D. Cloud Storage
+
+4. You have been hired to consult with a new data warehouse team. They are struggling to meet
+schedules because they repeatedly find problems with data quality and must write preprocessing scripts to clean the data. What managed service would you recommend for addressing
+these problems?
+A. Cloud Dataflow
+B. Cloud Dataproc
+C. Cloud Dataprep
+D. Cloud Datastore
+
+5. You have deployed an application that receives data from sensors on manufacturing equipment. Sometimes more data arrives than can be processed by the current set of Compute
+Engine instances. Business managers do not want to run additional VMs. What changes could
+you make to ensure that data is not lost because it cannot be processed as it is sent from the
+equipment? Assume that business managers want the lowest-cost solution.
+A. Write data to local SSDs on the Compute Engine VMs.
+B. Write data to Cloud Memorystore and have the application read data from the cache.
+C. Write data from the equipment to a Cloud Pub/Sub queue and have the application read
+data from the queue.
+D. Tune the application to run faster.
+
+6. Your company uses Apache Spark for data science applications. Your manager has asked you
+to investigate running Spark in the cloud. Your manager’s goal is to lower the overall cost of
+running and managing Spark. What would you recommend?
+A. Run Apache Spark in Compute Engine.
+B. Use Cloud Dataproc with preemptible virtual machines.
+C. Use Cloud Data Fusion.
+D. Use Cloud Memorystore with Apache Spark running in Compute Engine.
+
+7. You are working with a U.S. hospital to extract data from a legacy electronic health record
+(EHR) system. The hospital has offered to provide business requirements, but there is little
+information about regulations in the documented business requirements. What regulations
+would you look to for more guidance on complying with relevant regulations?
+A. GDPR
+B. SOX
+C. HIPAA
+D. PCI DSS
+
+8. What security control can be used to help detect changes to data?
+A. Firewall rules
+B. Message digests
+C. Authentication
+D. Authorization
+
+9. Your company has a data classification scheme for categorizing data as secret, sensitive,
+private, and public. There are no confidentiality requirements for public data. All other data
+must be encrypted at rest. Secret data must be encrypted with keys that the company controls. Sensitive and private data can be encrypted with keys managed by a third party. Data
+will be stored in GCP. What would you recommend to meet these requirements while minimizing cost and administrative overhead?
+A. Use Cloud KMS to manage keys for all data.
+B. Use Cloud KMS for secret data and Google default encryption for other data.
+C. Use Google default encryption for all data.
+D. Use a custom encryption algorithm for all data.
+
+10. You manage a service with several databases. The queries to the relational database are
+increasing in latency. Reducing the amount of data in tables will improve performance and
+reduce latency. The application administrator has determined that approximately 60 percent
+of the data in the database is more than 90 days old and has never been queried and does
+not need to be in the database. You are required to keep the data for five years in case it is
+requested by auditors. What would you propose to decrease query latency without increasing
+costs—or at least keeping any cost increases to a minimum?
+A. Horizontally scale the relational database.
+B. Vertically scale the relational database.
+C. Export data more than 90 days old, store it in Cloud Storage Archive class storage, and
+delete that data from the relational database.
+D. Export data more than 90 days old, store it in Cloud Storage multiregional class storage,
+and delete that data from the relational database.
+
+11. Your company is running several custom applications that were written by developers who
+are no longer with the company. The applications frequently fail. The DevOps team is paged
+more for these applications than any others. You propose replacing those applications with
+several managed services in GCP. A manager who is reviewing your cost estimates for using
+managed services in GCP notes that the cost of the managed services will be more than what
+they pay for internal servers. What would you recommend as the next step for the manager?
+A. Nothing. The manager is correct—the costs are higher. You should reconsider your recommendation.
+B. Suggest that the manager calculate total cost of ownership, which includes the cost to
+support the applications as well as infrastructure costs.
+C. Recommend running the custom applications in Compute Engine to lower costs.
+D. Recommend rewriting the applications to improve reliability.
+
+12. A director at an online gaming startup has asked for your recommendation on how to measure the success of the migration to GCP. The director is particularly interested in customer
+satisfaction. What KPIs would you recommend?
+A. Average revenue per customer per month
+B. Average time played per customer per week
+C. Average time played per customer per year
+D. Average revenue per customer per year
+
+13. Mountkirk Games is implementing a player analytics system. You have been asked to document requirements for a stream processing system that will ingest and preprocess data before
+writing it to the database. The preprocessing system will collect data about each player for
+one minute and then write a summary of statistics about that database. The project manager
+has provided the list of statistics to calculate and a rule for calculating values for missing
+data. What other business requirements would you ask of the project manager?
+A. How long to store the data in the database?
+B. What roles and permissions should be in place to control read access to data in the database?
+C. How long to wait for late-arriving data?
+D. A list of managed services that can be used in this project.
+
+14. A new data warehouse project is about to start. The data warehouse will collect data from
+14 different sources initially, but this will likely grow over the next 6 to 12 months. What
+managed GCP service would you recommend for managing metadata about the data warehouse sources?
+A. Data Catalog
+B. Cloud Dataprep
+C. Cloud Dataproc
+D. BigQuery
+
+15. You are consulting for a multinational company that is moving its inventory system to GCP.
+The company wants to use a managed database service, and it requires SQL and strong
+consistency. The database should be able to scale to global levels. What service would you
+recommend?
+A. Bigtable
+B. Cloud Spanner
+C. Cloud Datastore
+D. BigQuery
+
+16. TerramEarth has interviewed dealers to better understand their needs regarding data. Dealers
+would like to have access to the latest data available, and they would like to minimize the
+amount of data they have to store in their databases and object storage systems. How would
+you recommend that TerramEarth provide data to their dealers?
+A. Extract dealer data to a CSV file once per night during off-business hours and upload it
+to a Cloud Storage bucket accessible to the dealer.
+B. Create an API that dealers can use to retrieve specific pieces of data on an as-needed
+basis.
+C. Create a database dump using the database export tool so that dealers can use the database import tool to load the data into their databases.
+D. Create a user account on the database for each dealer and have them log into the database to run their own queries.
+
+17. Your company has large volumes of unstructured data stored on several network-attached
+storage systems. The maintenance costs are increasing, and management would like to consider alternatives. What GCP storage system would you recommend?
+A. Cloud SQL
+B. Cloud Storage
+C. Cloud Datastore
+D. Bigtable
+
+18. A customer-facing application is built using a microservices architecture. One of the services
+does not scale as fast as the service that sends it data. This causes the sending service to wait
+while the other service processes the data. You would like to change the integration to use
+asynchronous instead of synchronous calls. What is one way to do this?
+A. Create a Cloud Pub/Sub topic, have the sending service write data to the topic, and have
+the receiving service read from the topic.
+B. Create a Cloud Storage bucket, have the sending service write data to the topic, and
+have the receiving service read from the topic.
+C. Have the sending service write data to local drives, and have the receiving service read
+from those drives.
+D. Create a Bigtable database, have the sending service write data to the topic, and have the
+receiving service read from the topic.
+
+19. A key initiative at TerramEarth is to use the data that is collected from vehicles to predict
+when equipment will break down. What managed services would you recommend TerramEarth to consider?
+A. Bigtable
+B. Cloud Dataflow
+C. Cloud AutoML
+D. Cloud Spanner
+
+20. A team of data scientists is more proficient with statistics than with coding extraction, transformation and loading pipelines. The data scientists would like to use a managed service specifically designed for ETL. What GCP service would you recommend?
+A. Cloud Data Fusion
+B. Cloud BigQuery
+C. Cloud Data Catalog
+D. Cloud Pub/Sub

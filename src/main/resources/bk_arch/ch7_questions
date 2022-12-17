@@ -1,0 +1,152 @@
+1. A company is migrating an enterprise application to Google Cloud. When running onpremises, application administrators created user accounts that were used to run background
+jobs. There was no actual user associated with the account, but the administrators needed an
+identity with which to associate permissions. What kind of identity would you recommend
+using when running that application in GCP?
+A. Google-associated account
+B. Cloud Identity account
+C. Service account
+D. Batch account
+
+2. You are tasked with managing the roles and privileges granted to groups of developers,
+quality assurance testers, and site reliability engineers. Individuals frequently move between
+groups. Each group requires a different set of permissions. What is the best way to grant
+access to resources that each group needs?
+A. Create a group in Google Groups for each of the three groups: developers, quality
+assurance testers, and site reliability engineers. Add the identities of each user to their
+respective group. Assign predefined roles to each group.
+B. Create a group in Google Groups for each of the three groups: developers, quality
+assurance testers, and site reliability engineers. Assign permissions to each user and then
+add the identities to their respective group.
+C. Assign each user a Cloud Identity, and grant permissions directly to those identities.
+D. Create a G Suite group for each of the three groups: developers, quality assurance
+testers, and site reliability engineers. Assign permissions to each user and then add the
+identities to their respective group.
+
+3. You are making a presentation on Google Cloud security to a team of managers in your
+company. Someone mentions that to comply with regulations, the organization will have to
+follow several security best practices, including least privilege. They would like to know how
+GCP supports using least privilege. What would you say?
+A. GCP provides a set of three broad roles: owner, editor, and viewer. Most users will
+be assigned viewer unless they need to change configurations, in which case they will
+receive the editor role, or if they need to perform administrative functions, in which case
+they will be assigned owner.
+B. GCP provides a set of fine-grained permissions and predefined roles that are assigned
+those permissions. The roles are based on commonly grouped responsibilities. Users will
+be assigned only the predefined roles needed for them to perform their duties.
+C. GCP provides several types of identities. Users will be assigned a type of identity most
+suitable for their role in the organization.
+D. GCP provides a set of fine-grained permissions and custom roles that are created and
+managed by cloud users. Users will be assigned a custom role designed specifically for
+that user’s responsibilities.
+
+4. An online application consists of a front-end service, a back-end business logic service,
+and a relational database. The front-end service is stateless and runs in an instance group
+that scales between two and five servers. The back-end business logic runs in a Kubernetes
+Engine cluster. The database is implemented using Cloud SQL PostgreSQL. How many trust
+domains should be used for this application?
+A. 1.
+B. 2.
+C. 3.
+D. None. These services do not need trust domains.
+
+5. In the interest of separating duties, one member of your team will have permission to perform all actions on logs. You will also rotate the duty every 90 days. How would you grant
+the necessary permissions?
+A. Create a Google Group, assign roles/logging.admin to the group, add the identity
+of the person who is administering the logs at the start of the 90-day period, and remove
+the identity of the person who administered logs during the previous 90 days.
+B. Assign roles/logging.admin to the identity of the person who is administering the
+logs at the start of the 90-day period, and revoke the role from the identity of the person
+who administered logs during the previous 90 days.
+C. Create a Google Group, assign roles/logging.privateLogViewer to the group,
+add the identity of the person who is administering the logs at the start of the 90-day
+period, and remove the identity of the person who administered logs during the previous
+90 days.
+D. Assign roles/logging.privateLogViewer to the identity of the person who is
+administering the logs at the start of the 90-day period, and revoke the role from the
+identity of the person who administered logs during the previous 90 days.
+
+6. Your company is subject to several government and industry regulations that require
+all personal healthcare data to be encrypted when persistently stored. What must you
+do to ensure that applications processing protected data encrypt it when it is stored on
+disk or SSD?
+A. Configure a database to use database encryption.
+B. Configure persistent disks to use disk encryption.
+C. Configure the application to use application encryption.
+D. Nothing. Data is encrypted at rest by default.
+
+7. Data can be encrypted at multiple levels, such as at the platform, infrastructure, and device
+levels. Data may be encrypted multiple times before it is written to persistent storage. At the
+device level, how is data encrypted in GCP?
+A. AES256 or AES128 encryption
+B. Elliptic curve cryptography
+C. Data Encryption Standard (DES)
+D. Blowfish
+
+8. In GCP, each data chunk written to a storage system is encrypted with a data encryption key.
+The key is kept close to the data that it encrypts to ensure low latency when retrieving the
+key. How does GCP protect the data encryption key so that an attacker who gained access to
+the storage system storing the key could not use it to decrypt the data chunk?
+A. Writes the data encryption key to a hidden location on disk
+B. Encrypts the data encryption key with a key encryption key
+C. Stores the data encryption key in a secure Cloud SQL database
+D. Applies an elliptic curve encryption algorithm for each data encryption key
+
+9. Data can be encrypted at different layers of the OSI network stack. Google Cloud may
+encrypt network data at multiple levels. What protocol is used at layer 7?
+A. IPSec
+B. TLS
+C. ALTS
+D. ARP
+
+10. After reviewing security requirements with compliance specialists at your company, you
+determine that your company will need to manage its own encryption keys. Keys may be
+stored in the cloud. What GCP service would you recommend for storing keys?
+A. Cloud Datastore
+B. Cloud Firestore
+C. Cloud KMS
+D. Bigtable
+
+11. The finance department of your company has notified you that logs generated by any finance
+application will need to be stored for five years. It is not likely to be accessed, but it has to be
+available if needed. If it were needed, you would have up to three days to retrieve the data.
+How would you recommend storing that data?
+A. Keep it in Cloud Logging.
+B. Export it to Cloud Storage and store it in Archive class storage.
+C. Export it to BigQuery and partition it by year.
+D. Export it to Cloud Pub/Sub using a different topic for each year.
+
+12. The legal department in your company notified software development teams that if a
+developer can deploy to production, then that developer cannot be allowed to perform
+the final code review before deploying to production. This is an example of which security
+best practice?
+A. Defense in depth
+B. Separation of duties
+C. Least privilege
+D. Encryption at rest
+
+13. A startup has hired you to advise on security and compliance related to their new online
+game for children ages 10 to 14. Players will register to play the game, which includes collecting the name, age, and address of the player. Initially, the company will target customers in
+the United States. With which regulation would you advise them to comply?
+A. HIPAA/HITECH
+B. SOX
+C. COPPA
+D. GDPR
+
+14. The company for which you work is expanding from North America to set up operations in
+Europe, starting with Germany and the Netherlands. The company offers online services that
+collect data on users. With what regulation must your company comply?
+A. HIPAA/HITECH
+B. SOX
+C. COPPA
+D. GDPR
+
+15. Enterprise Self-Storage Systems is a company that recently acquired a startup software
+company that provides applications for small and midsize self-storage companies. The
+company is concerned that the business strategy of the acquiring company is not aligned
+with the software development practices of the software development teams of the acquired
+company. What IT framework would you recommend the company follow to better align
+business strategy with software development?
+A. ITIL
+B. TOGAF
+C. Porters Five Forces Model
+D. Ansoff Matrix

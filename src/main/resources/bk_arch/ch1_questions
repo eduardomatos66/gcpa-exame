@@ -1,0 +1,125 @@
+1. You have been tasked with interviewing line-of-business owners about their needs for a new
+cloud application. Which of the following do you expect to find?
+A. A comprehensive list of defined business and technical requirements
+B. That their business requirements do not have a one-to-one correlation with technical
+requirements
+C. Business and technical requirements in conflict
+D. Clear consensus on all requirements
+
+2. You have been asked by stakeholders to suggest ways to reduce operational expenses as part
+of a cloud migration project. Which of the following would you recommend?
+A. Managed services, preemptible machines, access controls
+B. Managed services, preemptible machines, autoscaling
+C. NoSQL databases, preemptible machines, autoscaling
+D. NoSQL databases, preemptible machines, access controls
+
+3. Some executives are questioning your recommendation to employ continuous integration/
+continuous delivery (CI/CD). What reasons would you give to justify your recommendation?
+A. CI/CD supports small releases, which are easier to debug and enable faster feedback.
+B. CI/CD is used only with preemptible machines and therefore saves money.
+C. CI/CD fits well with waterfall methodology but not agile methodologies.
+D. CI/CD limits the number of times code is released.
+
+4. The finance director has asked your advice about complying with a document retention regulation. What kind of service-level objective (SLO) would you recommend to ensure that the
+finance director will be able to retrieve sensitive documents for at least the next seven years?
+When a document is needed, the finance director will have up to seven days to retrieve it. The
+total storage required will be approximately 100 TB.
+A. High availability SLO
+B. Durability SLO
+C. Reliability SLO
+D. Scalability SLO
+
+5. You are facilitating a meeting of business and technical managers to solicit requirements for
+a cloud migration project. The term incident comes up several times. Some of the business
+managers are unfamiliar with this term in the context of IT. How would you describe
+an incident?
+A. A disruption in the ability of a DevOps team to complete work on time
+B. A disruption in the ability of the business managers to approve a project plan on
+schedule
+C. A disruption that causes a service to be degraded or unavailable
+D. A personnel problem on the DevOps team
+
+6. You have been asked to consult on a cloud migration project that includes moving private
+medical information to a storage system in the cloud. The project is for a company in
+the United States. What regulation would you suggest that the team review during the
+requirements-gathering stages?
+A. General Data Protection Regulations (GDPR)
+B. Sarbanes–Oxley (SOX)
+C. Payment Card Industry Data Security Standard (PCI DSS)
+D. Health Insurance Portability and Accountability Act (HIPAA)
+
+7. You are in the early stages of gathering business and technical requirements. You have
+noticed several references about needing up-to-date and consistent information regarding
+product inventory and support for SQL reporting tools. Inventory is managed on a global
+scale, and the warehouses storing inventory are located in North America, Africa, Europe,
+and Asia. Which managed database solution in Google Cloud would you include in your set
+of options for an inventory database?
+A. Cloud Storage
+B. BigQuery
+C. Cloud Spanner
+D. Microsoft SQL Server
+
+8. A developer at Mountkirk Games is interested in how architects decide which database to
+use. The developer describes a use case that requires a document store. The developer would
+rather not manage database servers or have to run backups. What managed service would
+you suggest the developer consider?
+A. Cloud Firestore
+B. Cloud Spanner
+C. Cloud Storage
+D. BigQuery
+
+9. Members of your company’s legal team are concerned about using a public cloud service
+because other companies, organizations, and individuals will be running their systems in
+the same cloud. You assure them that your company’s resources will be isolated and not
+network-accessible to others because of what networking resource in Google Cloud?
+A. CIDR blocks
+B. Direct connections
+C. Virtual private clouds
+D. Cloud Pub/Sub
+
+10. A startup has recently migrated to Google Cloud using a lift-and-shift migration. They are
+now considering replacing a self-managed MySQL database running in Compute Engine with
+a managed service. Which Google Cloud service would you recommend that they consider?
+A. Cloud Dataproc
+B. Cloud Dataflow
+C. Cloud SQL
+D. PostgreSQL
+
+11. Which of the following requirements from a customer make you think the application should
+run in Compute Engine and not App Engine?
+A. Dynamically scale up or down based on workload
+B. Connect to a database
+C. Run a hardened Linux distro on a virtual machine
+D. Don’t lose data
+
+12. Mountkirk Games wants to store player game data in a time-series database. Which Google
+Cloud managed database would you recommend?
+A. Bigtable
+B. BigQuery
+C. Cloud Storage
+D. Cloud Dataproc
+
+13. The original video captured during helicopter races by the Helicopter Racing League are
+transcoded and stored for frequent access. The original captured videos are not used for
+viewing but are stored in case they are needed for unanticipated reasons. The files require
+high durability but are not likely to be accessed more than once in a five-year period. What
+type of storage would you use for the original video files?
+A. BigQuery Long Term Storage
+B. BigQuery Active Storage
+C. Cloud Storage Nearline class
+D. Cloud Storage Archive class
+
+14. The game analytics platform for Mountkirk Games requires analysts to be able to query up
+to 10 TB of data. What is the best managed database solution for this requirement?
+A. Cloud Spanner
+B. BigQuery
+C. Cloud Storage
+D. Cloud Dataprep
+
+15. EHR Healthcare business requirements frequently discuss the need to improve observability
+in their systems. Which of the following Google Cloud Platform services could be used to
+help improve observability?
+A. Cloud Build and Artifact Registry
+B. Cloud Pub/Sub and Cloud Dataflow
+C. Cloud Monitoring and Cloud Logging
+D. Cloud Storage and Cloud Pub/Sub

@@ -1,0 +1,132 @@
+1. Your team has deployed a VPC with default subnets in all regions. The lead network architect
+at your company is concerned about possible overlap in the use of private addresses. How
+would you explain how you are dealing with the potential problem?
+A. You inform the network architect that you are not using private addresses at all.
+B. When default subnets are created for a VPC, each region is assigned a different IP
+address range.
+C. You have increased the size of the subnet mask in the CIDR block specification of the set
+of IP addresses.
+D. You agree to assign new IP address ranges on all subnets.
+
+2. A data warehouse service running in GCP has all of its resources in a single project. The
+e-commerce application has resources in another project, including a database with transaction data that will be loaded into the data warehouse. The data warehousing team would like
+to read data directly from the database using extraction, transformation, and load processes
+that run on Compute Engine instances in the data warehouse project. Which of the following
+network constructs could help with this?
+A. Shared VPC
+B. Regional load balancing
+C. Direct peering
+D. Cloud VPN
+
+3. An intern working with your team has changed some firewall rules. Prior to the change, all
+Compute Engine instances on the network could connect to all other instances on the network. After the change, some nodes cannot reach other nodes. What might have been the
+change that causes this behavior?
+A. One or more implied rules were deleted.
+B. The default-allow-internal rule was deleted.
+C. The default-all-icmp rule was deleted.
+D. The priority of a rule was set higher than 65535.
+
+4. The network administrator at your company has asked that you configure a firewall rule that
+will always take precedence over any other firewall rule. What priority would you assign?
+A. 0
+B. 1
+C. 65534
+D. 65535
+
+5. During a review of a GCP network configuration, a developer asks you to explain CIDR
+notation. Specifically, what does the 8 mean in the CIDR block 172.16.10.2/8?
+A. 8 is the number of bits used to specify a host address.
+B. 8 is the number of bits used to specify the subnet mask.
+C. 8 is the number of octets used to specify a host address.
+D. 8 is the number of octets used to specify the subnet mask.
+
+6. Several new firewall rules have been added to a VPC. Several users are reporting unusual
+problems with applications that did not occur before the firewall rule changes. You’d like
+to debug the firewall rules while causing the least impact on the network and doing so as
+quickly as possible. Which of the following options is best?
+A. Set all new firewall priorities to 0 so that they all take precedence over other rules.
+B. Set all new firewall priorities to 65535 so that all other rules take precedence over these
+rules.
+C. Disable one rule at a time to see whether that eliminates the problems. If needed, disable
+combinations of rules until the problems are eliminated.
+D. Remove all firewall rules and add them back one at a time until the problems occur and
+then remove the latest rule added back.
+
+7. An executive wants to understand what changes in the current cloud architecture are
+required to run compute-intensive machine learning workloads in the cloud and have the
+models run in production using on-premises servers. The models are updated daily. There is
+no network connectivity between the cloud and on-premises networks. What would you tell
+the executive?
+A. Implement additional firewall rules.
+B. Use global load balancing.
+C. Use hybrid-cloud networking.
+D. Use regional load balancing.
+
+8. To comply with regulations, you need to deploy a disaster recovery site that has the same
+design and configuration as your production environment. You want to implement the
+disaster recovery site in the cloud. Which topology would you use?
+A. Gated ingress topology
+B. Gated egress topology
+C. Handover topology
+D. Mirrored topology
+
+9. Network engineers have determined that the best option for linking the on-premises network
+to GCP resources is by using an IPSec VPN. Which GCP service would you use in the cloud?
+A. Cloud IPSec
+B. Cloud VPN
+C. Cloud Interconnect IPSec
+D. Cloud VPN IKE
+
+10. Network engineers have determined that a link between the on-premises network and GCP
+will require an 8 Gbps connection. Which option would you recommend?
+A. Cloud VPN
+B. Partner Interconnect
+C. Direct Interconnect
+D. Hybrid Interconnect
+
+11. Network engineers have determined that a link between the on-premises network and GCP
+will require a connection between 60 Gbps and 80 Gbps. Which hybrid-cloud networking
+services would best meet this requirement?
+A. Cloud VPN
+B. Cloud VPN and Direct Interconnect
+C. Direct Interconnect and Partner Interconnect
+D. Cloud VPN, Direct Interconnect, and Partner Interconnect
+
+12. The director of network engineering has determined that any links to networks outside of
+the company data center will be implemented at the level of BGP routing exchanges. What
+hybrid-cloud networking option should you use?
+A. Direct peering
+B. Indirect peering
+C. Global load balancing
+D. Cloud IKE
+
+13. A startup is designing a social site dedicated to discussing global political, social, and environmental issues. The site will include news and opinion pieces in text and video. The startup
+expects that some stories will be exceedingly popular, and others won’t be, but they want to
+ensure that all users have a similar experience with regard to latency, so they plan to replicate
+content across regions. What load balancer should they use?
+A. HTTP(S)
+B. SSL Proxy
+C. Internal TCP/UDP
+D. TCP Proxy
+
+14. As a developer, you foresee the need to have a load balancer that can distribute load using
+only private RFC 1918 addresses. Which load balancer would you use?
+A. Internal TCP/UDP
+B. HTTP(S)
+C. SSL Proxy
+D. TCP Proxy
+
+15. After a thorough review of the options, a team of developers and network engineers have
+determined that the SSL Proxy load balancer is the best option for their needs. What other
+GCP service must they have to use the SSL Proxy load balancer?
+A. Cloud Storage
+B. Cloud VPN
+C. Premium Tier networking
+D. TCP Proxy Load Balancing
+
+16. You want to connect to access Cloud Storage APIs from a Compute Engine VM that has only
+an internal IP address. What GCP service would you use to enable that access?
+A. Private Service Connect for Google APIs
+B. Dedicated Interconnect
+C. Partner Interconnect
+D. HA VPN
