@@ -1,0 +1,141 @@
+1. A team of developers is tasked with developing an enterprise application. They have interviewed stakeholders and collected requirements. They are now designing the system and plan
+to begin implementation next. After implementation, they will verify that the application
+meets specifications. They will not revise the design once coding starts. What application
+development methodology is this team using?
+A. Extreme programming
+B. Agile methodology
+C. Waterfall methodology
+D. Spiral methodology
+
+2. A team of developers is tasked with developing an enterprise application. They have interviewed stakeholders and set a scope of work that will deliver a subset of the functionality
+needed. Developers and stakeholders have identified risks and ways of mitigating them. They
+then proceed to gather requirements for the subset of functionalities to be implemented. That
+is followed by design, implementation, and testing. There is no collaboration between developers and stakeholders until after testing, when developers review results with stakeholders
+and plan the next iteration of development. What application development methodology is
+this team using?
+A. Extreme programming
+B. Agile methodology
+C. Waterfall methodology
+D. Spiral methodology
+
+3. A team of developers is tasked with developing an enterprise application. They meet daily
+with stakeholders to discuss the state of the project. The developers and stakeholders have
+identified a set of functionalities to be implemented over the next two weeks. After some
+design work, coding begins. A new requirement is discovered, and developers and stakeholders agree to prioritize implementing a feature to address this newly discovered requirement. As developers complete small functional units of code, they test it. If the code passes
+the tests, the code unit is integrated with the version-controlled codebase. What application
+development methodology is this team using?
+A. Continuous integration
+B. Agile methodology
+C. Waterfall methodology
+D. Spiral methodology
+
+4. You are a developer at a startup company that is planning to release its first version of a new
+mobile service. You have discovered a design flaw that generates and sends more data to
+mobile devices than is needed. This is increasing the latency of messages between mobile
+devices and backend services running in the cloud. Correcting the design flaw will delay the
+release of the service by at least two weeks. You decide to address the long latency problem
+by coding a workaround that does not send the unnecessary data. The design flaw is still
+there and is generating unnecessary data, but the service can ship under these conditions. This
+is an example of what?
+A. Incurring technical debt
+B. Paying down technical debt
+C. Shifting risk
+D. Improving security
+
+5. You are a developer at a startup company that has just released a new service. During
+development, you made suboptimal coding choices to keep the project on schedule. You are
+now planning your next two weeks of work, which you decide will include implementing
+a feature the product manager wanted in the initial release but was postponed to a release
+occurring soon after the initial release. You also include time to refactor code that was introduced to correct a bug found immediately before the planned release date. That code blocks
+the worst impact of the bug, but it does not correct the flaw. Revising that suboptimal code is
+an example of what?
+A. Incurring technical debt
+B. Paying down technical debt
+C. Shifting risk
+D. Improving security
+
+6. As a developer of a backend service for managing inventory, your manager has asked you to
+include a basic API for the inventory service. You plan to follow best-practice recommendations. What is the minimal set of API functions that you would include?
+A. Create, read, update, and delete
+B. List, get, create, update, and delete
+C. Create, delete, and list
+D. Create and delete
+
+7. A junior developer asks your advice about handling errors in API functions. The developer
+wants to know what kind of data and information should be in an API error message. What
+would you recommend?
+A. Return HTTP status 200 with additional error details in the payload.
+B. Return a status code form with the standard 400s and 500s HTTP status codes with no
+additional error details in the response body.
+C. Return error details in the payload, and do not return a code.
+D. Define your own set of application-specific error codes.
+
+8. A junior developer asks your advice about verifying authorizations in API functions. The
+developer wants to know how they can allow users of the API to make assertions about what
+they are authorized to do. What would you recommend?
+A. Use JSON Web Tokens (JWTs)
+B. Use API keys
+C. Use encryption
+D. Use HTTPS instead of HTTP
+
+9. Your startup has released a new online game that includes features that allow users to accumulate points by playing the game. Points can be used to make in-game purchases. You have
+discovered that some users are using bots to play the game programmatically much faster
+than humans can play the game. The use of bots is unauthorized in the game. You modify the
+game API to prevent more than 10 function calls per user, per minute. This is an example of
+what practice?
+A. Encryption
+B. Defense in depth
+C. Least privileges
+D. Resource limiting
+
+10. A team of developers is creating a set of tests for a new service. The tests are defined using a
+set of conditions or input values and expected output values. The tests are then executed by
+reading the test data source, and for each test the software being tested is executed, and the
+output is compared to the expected value. What kind of testing framework is this?
+A. Data-driven testing
+B. Hybrid testing
+C. Keyword-driven testing
+D. Model-based testing
+
+11. Your company is moving an enterprise application to Google Cloud. The application runs on
+a cluster of virtual machines, and workloads are distributed by a load balancer. Your team
+considered revising the application to use containers and the Kubernetes Engine, but they
+decide not to make any unnecessary changes before moving the application to the cloud. This
+is an example of what migration strategy?
+A. Lift and shift
+B. Move and improve
+C. Rebuild in the cloud
+D. End of life
+
+12. As a consultant to an insurance company migrating to the Google Cloud, you have been
+asked to lead the effort to migrate data from AWS S3 to Cloud Storage. Which transfer
+method would you consider first?
+A. Google Transfer Service
+B. gsutil command line
+C. Google Transfer Appliance
+D. Cloud Dataproc
+
+13. You are a consultant to an insurance company migrating to GCP. Five petabytes of businesssensitive data need to be transferred from the on-premises data center to Cloud Storage.
+You have a 10 GB network between the on-premises data center and Google Cloud. What
+transfer option would you recommend?
+A. gsutil
+B. gcloud
+C. Cloud Transfer Appliance
+D. Cloud Transfer Service
+
+14. You are migrating a data warehouse from an on-premises database to BigQuery. You would
+like to write a script to perform some of the migration steps. What component of the GCP
+SDK will you likely need to use to create the new data warehouse in BigQuery?
+A. cbt
+B. bq
+C. gsutil
+D. kubectl
+
+15. You are setting up a new laptop that is configured with a standard set of tools for developers
+and architects, including some GCP SDK components. You will be working extensively with
+the GCP SDK and want to know specifically which components are installed and up-to-date.
+What command would you run on the laptop?
+A. gsutil component list
+B. cbt component list
+C. gcloud component list
+D. bq component list

@@ -1,0 +1,84 @@
+1. As an SRE, you are assigned to support several applications. In the past, these applications
+have had significant reliability problems. You would like to understand the performance
+characteristics of the applications, so you create a set of dashboards. What kind of data
+would you display on those dashboards?
+A. Metrics and time-series data measuring key performance attributes, such as CPU utilization
+B. Detailed log data from syslog
+C. Error messages output from each application
+D. Results from the latest acceptance tests
+
+2. After determining the optimal combination of CPU and memory resources for nodes in a
+Kubernetes cluster, you want to be notified whenever CPU utilization exceeds 85 percent for
+5 minutes or when memory utilization exceeds 90 percent for 1 minute. What would you
+have to specify to receive such notifications?
+A. An alerting condition
+B. An alerting policy
+C. A logging message specification
+D. An acceptance test
+
+3. A compliance review team is seeking information about how your team handles high-risk
+administration operations, such as granting operating system users root privileges. Where
+could you find data that shows your team tracks changes to user privileges?
+A. In metric time-series data
+B. In alerting conditions
+C. In audit logs
+D. In ad hoc notes kept by system administrators
+
+4. Release management practices contribute to improving reliability by which one of the
+following?
+A. Advocating for object-oriented programming practices
+B. Enforcing waterfall methodologies
+C. Improving the speed and reducing the cost of deploying code
+D. Reducing the use of stateful services
+
+5. A team of software engineers is using release management practices. They want developers to
+check code into the central team code repository several times during the day. The team also
+wants to make sure that the code that is checked is functioning as expected before building
+the entire application. What kind of tests should the team run before attempting to build the
+application?
+A. Unit tests
+B. Stress tests
+C. Acceptance tests
+D. Compliance tests
+
+6. Developers have just deployed a code change to production. They are not routing any traffic
+to the new deployment yet, but they are about to send a small amount of traffic to servers
+running the new version of code. What kind of deployment are they using?
+A. Blue/Green deployment
+B. Before/After deployment
+C. Canary deployment
+D. Stress deployment
+
+7. You have been hired to consult with an enterprise software development that is starting to
+adopt Agile and DevOps practices. The developers would like advice on tools that they can
+use to help them collaborate on software development in the Google Cloud. What version
+control software might you recommend?
+A. Jenkins and Cloud Source Repositories
+B. Syslog and Cloud Build
+C. GitHub and Cloud Build
+D. GitHub and Cloud Source Repositories
+
+8. A startup offers a software-as-a-service solution for enterprise customers. Many of the components of the service are stateful, and the system has not been designed to allow incremental
+rollout of new code. The entire environment has to be running the same version of the
+deployed code. What deployment strategy should they use?
+A. Rolling deployment
+B. Canary deployment
+C. Stress deployment
+D. Blue/Green deployment
+
+9. A service is experiencing unexpectedly high volumes of traffic. Some components of the
+system are able to keep up with the workload, but others are unable to process the volume
+of requests. These services are returning a large number of internal server errors. Developers need to release a patch as soon as possible that provides some relief for an overloaded
+relational database service. Both memory and CPU utilization are near 100 percent. Horizontally scaling the relational database is not an option, and vertically scaling the database
+would require too much downtime. What strategy would be the fastest to implement?
+A. Shed load
+B. Increase connection pool size in the database
+C. Partition the workload
+D. Store data in a Pub/Sub topic
+
+10. A service has detected that a downstream process is returning a large number of errors. The
+service automatically slows down the number of messages it sends to the downstream process. This is an example of what kind of strategy?
+A. Load shedding
+B. Upstream throttling
+C. Rebalancing
+D. Partitioning

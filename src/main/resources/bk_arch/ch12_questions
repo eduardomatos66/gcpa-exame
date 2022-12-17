@@ -1,0 +1,118 @@
+1. Your midsize company has decided to assess the possibility of moving some or all of its
+enterprise applications to the cloud. As the CTO, you have been tasked with determining
+how much it would cost and what the benefits of a cloud migration would be. What would
+you do first?
+A. Take inventory of applications and infrastructure, document dependencies, and identify
+compliance and licensing issues.
+B. Create a request for proposal from cloud vendors.
+C. Discuss cloud licensing issues with enterprise software vendors.
+D. Interview department leaders to identify their top business pain points.
+
+2. You are working with a colleague on a cloud migration plan. Your colleague would like to
+start migrating data. You have completed an assessment but no other preparation work.
+What would you recommend before migrating data?
+A. Migrating applications
+B. Conducting a pilot project
+C. Migrating all identities and access controls
+D. Redesigning relational data models for optimal performance
+
+3. As the CTO of your company, you are responsible for approving a cloud migration plan for
+services that include a wide range of data. You are reviewing a proposed plan that includes a
+data migration plan. Network and security plans are being developed in parallel and are not
+yet complete. What should you look for as part of the data migration plan?
+A. Database configuration details, including IP addresses and port numbers
+B. Specific firewall rules to protect databases
+C. An assessment of data classifications and regulations relevant to the data to be migrated
+D. A detailed description of current backup operations
+
+4. A client of yours is prioritizing applications to move to the cloud. One system written in Java
+is a Tier 1 production system that must be available 24/7; it depends on three Tier 2 services
+that are running on premises, and two other Tier 1 applications depend on it. Which of these
+factors is least important from a risk assessment perspective?
+A. The application is written in Java.
+B. The application must be available 24/7.
+C. The application depends on three Tier 2 services.
+D. Two other Tier 1 applications depend on it.
+
+5. As part of a cloud migration, you will be migrating a relational database to the cloud. The
+database has strict SLAs, and it should not be down for more than a few seconds a month.
+The data stores approximately 500 GB of data, and your network has 100 Gbps bandwidth.
+What method would you consider first to migrate this database to the cloud?
+A. Use a third-party backup and restore application.
+B. Use the MySQL data export program and copy the export file to the cloud.
+C. Set up a replica of the database in the cloud, synchronize the data, and then switch
+traffic to the instance in the cloud.
+D. Transfer the data using the Google Transfer Appliance.
+
+6. Your company is running several third-party enterprise applications. You are reviewing the
+licenses and find that they are transferrable to the cloud, so you plan to take advantage of
+that option. This form of licensing is known as which one of the following?
+A. Compliant licensing
+B. Bring-your-own-license
+C. Pay-as-you-go license
+D. Metered pricing
+
+7. Your company is running several third-party enterprise applications. You are reviewing the
+licenses and find that they are not transferrable to the cloud. You research your options and
+see that the vendor offers an option to pay based on your level of use of the application in
+the cloud. What is this option called?
+A. Compliant licensing
+B. Bring-your-own-license
+C. Pay-as-you-go license
+D. Incremental payment licensing
+
+8. You have been asked to brief executives on the networking aspects of the cloud migration.
+You want to begin at the highest level of abstraction and then drill down into lower-level
+components. What topic would you start with?
+A. Routes
+B. Firewalls
+C. VPCs
+D. VPNs
+
+9. You have created a VPC in Google Cloud, and subnets were created automatically. What
+range of IP addresses would you not expect to see in use with the subnets?
+A. 10.0.0.0 to 10.255.255.255
+B. 172.16.0.0 to 172.31.255.255
+C. 192.168.0.0 to 192.168.255.255
+D. 201.1.1.0 to 201.2.1.0
+
+10. During migration planning, you learn that traffic to the subnet containing a set of databases
+must be restricted. What mechanism would you plan to use to control the flow of traffic
+to a subnet?
+A. IAM roles
+B. Firewall rules
+C. VPNs
+D. VPCs
+
+11. During migration planning, you learn that some members of the network management team
+will need the ability to manage all network components, but others on the team will only
+need read access to view the state of the network. What mechanism would you plan to use to
+control the user access?
+A. IAM roles
+B. Firewall rules
+C. VPNs
+D. VPCs
+
+12. Executives in your company have decided that the company should not route its GCP-only
+traffic over public internet networks. What Google Cloud service would you plan to use to
+geographically distribute the workload of an enterprise application?
+A. Global load balancing
+B. Simple network management protocol
+C. Content delivery network
+D. VPNs
+
+13. Executives in your company have decided to expand operations from just North America to
+Europe as well. Applications will be run in several regions. All users should be routed to the
+nearest healthy server running the application they need. What Google Cloud service would
+you plan to use to meet this requirement?
+A. Global load balancing
+B. Cloud Interconnect
+C. Content delivery network
+D. VPNs
+
+14. Executives in your company have decided that the company should expand its service offerings to a global market. Your company distributes educational video content online. Maintaining low latency is a top concern. What type of network service would you expect to use
+to ensure low-latency access to content from around the globe?
+A. Routes
+B. Firewall rules
+C. Content delivery network
+D. VPNs

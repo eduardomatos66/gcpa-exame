@@ -1,0 +1,197 @@
+1. You are consulting for a client that is considering moving some on-premises workloads to the
+Google Cloud Platform. The workloads are currently running on VMs that use a specially
+hardened operating system. Application administrators will need root access to the operating
+system as well. The client wants to minimize changes to the existing configuration. Which
+GCP compute service would you recommend?
+A. Compute Engine
+B. Kubernetes Engine
+C. App Engine Standard
+D. App Engine Flexible
+
+2. You have just joined a startup company that analyzes healthcare data and makes recommendations to healthcare providers to improve the quality of care while controlling costs. The
+company must comply with privacy regulations. A compliance consultant recommends that
+your company control its encryption keys used to encrypt data stored on cloud servers. You
+agree with the consultant but also want to minimize the overhead of key management. What
+GCP service should the company use?
+A. Use default encryption enabled on Compute Engine instances.
+B. Use Google Cloud Key Management Service to store keys that you create and use them
+to encrypt storage used with Compute Engine instances.
+C. Implement a trusted key store on premises, create the keys yourself, and use them to
+encrypt storage used with Compute Engine instances.
+D. Use an encryption algorithm that does not use keys.
+
+3. A colleague complains that the availability and reliability of GCP VMs is poor because their
+instances keep shutting down without them issuing shutdown commands. No instance has
+run for more than 24 hours without shutting down for some reason. What would you suggest your colleague check to understand why the instances may be shutting down?
+A. Make sure that the Cloud Operations agent is installed and collecting metrics.
+B. Verify that sufficient persistent storage is attached to the instance.
+C. Make sure that the instance availability is not set to preemptible.
+D. Ensure that an external IP address has been assigned to the instance.
+
+4. Your company is working on a government contract that requires all instances of VMs to
+have a virtual Trusted Platform Module. What Compute Engine configuration option would
+you enable or disable on your instance?
+A. Trusted Module Setting
+B. Shielded VMs
+C. Preemptible VMs
+D. Disable live migration
+
+5. You are leading a lift-and-shift migration to the cloud. Your company has several loadbalanced clusters that use VMs that are not identically configured. You want to make as few
+changes as possible when moving workloads to the cloud. What feature of GCP would you
+use to implement those clusters in the cloud?
+A. Managed instance groups
+B. Unmanaged instance groups
+C. Flexible instance groups
+D. Kubernetes clusters
+
+6. Your startup has a stateless web application written in Python3.7. You are not sure what
+kind of load to expect on the application. You do not want to manage servers or containers if
+you can avoid it. What GCP service would you use?
+A. Compute Engine
+B. App Engine
+C. Kubernetes Engine in Standard Mode
+D. Cloud Dataproc
+
+7. Your department provides audio transcription services for other departments in your
+company. Users upload audio files to a Cloud Storage bucket. Your application transcribes
+the audio and writes the transcript file back to the same bucket. Your process runs every day
+at midnight and transcribes all files in the bucket. Users are complaining that they are not
+notified if there is a problem with the audio file format until the next day. Your application
+has a program that can verify the quality of an audio file in less than two seconds. What
+changes would you make to the workflow to improve user satisfaction?
+A. Include more documentation about what is required to transcribe an audio file successfully.
+B. Use Cloud Functions to run the program to verify the quality of the audio file when the
+file is uploaded. If there is a problem, notify the user immediately.
+C. Create a Compute Engine instance and set up a cron job that runs every hour to check
+the quality of files that have been uploaded into the bucket in the last hour. Send notices
+to all users who have uploaded files that do not pass the quality control check.
+D. Use the App Engine Cron Service to set up a cron job that runs every hour to check the
+quality of files that have been uploaded into the bucket in the last hour. Send notices to
+all users who have uploaded files that do not pass the quality control check.
+
+8. You have inherited a monolithic C++ application that you need to keep running. There will
+be minimal changes, if any, to the code. The previous developer who worked with this application created a Dockerfile and image container with the application and needed libraries.
+You’d like to deploy this in a way that minimizes your effort to maintain it. How would you
+deploy this application?
+A. Create an instance in Compute Engine, install Docker, install the Cloud Monitoring
+agent, and then run the Docker image.
+B. Create an instance in Compute Engine, but do not use the Docker image. Install the
+application, Ruby, and needed libraries. Install the Cloud Monitoring agent. Run the
+application directly in the VM, not a container.
+C. Use App Engine Flexible to run the container image. App Engine will monitor as needed.
+D. Use App Engine Standard to run the container image. App Engine will monitor as
+needed.
+
+9. You have been asked to give a presentation on Kubernetes. How would you explain the
+difference between the cluster master and nodes?
+A. Cluster masters manage the cluster and run core services such as the controller manager,
+API server, scheduler, and etcd. Nodes run workload jobs.
+B. The cluster manager is an endpoint for API calls. All services needed to maintain a
+cluster are run on nodes.
+C. The cluster manager is an endpoint for API calls. All services needed to maintain a
+cluster are run on nodes, and workloads are run on a third kind of server, a runner.
+D. Cluster masters manage the cluster and run core services such as the controller manager,
+API server, scheduler, and etcd. Nodes monitor the cluster master and restart it if it fails.
+
+10. External services are not able to access services running in a Kubernetes cluster. You suspect a
+controller may be down. Which type of controller would you check?
+A. Pod
+B. Deployment
+C. Ingress Controller
+D. Service Controller
+
+11. You are planning to run stateful applications in Kubernetes Engine. What should you use to
+support stateful applications?
+A. Pods
+B. StatefulPods
+C. StatefulSets
+D. PersistentStorageSet
+
+12. Every time a database administrator logs into a Firebase database, you would like a message
+sent to your mobile device. Which compute service could you use that would minimize your
+work in deploying and running the code that sends the message?
+A. Compute Engine
+B. Kubernetes Engine
+C. Cloud Functions
+D. Cloud Dataflow
+
+13. Your team has been tasked with deploying infrastructure for development, test, staging,
+and production environments in region us-west1. You will likely need to deploy the same
+set of environments in two additional regions. What service would allow you to use an
+infrastructure-as-code (IaC) approach?
+A. Cloud Dataflow
+B. Deployment Manager
+C. Identity and Access Manager
+D. App Engine Flexible
+
+14. An IoT startup collects streaming data from industrial sensors and evaluates the data for
+anomalies using a machine learning model. The model scales horizontally. The data collected is buffered in a server for 10 minutes. Which of the following is a true statement about
+the system?
+A. It is stateful.
+B. It is stateless.
+C. It may be stateful or stateless; there is not enough information to determine.
+D. It is neither stateful nor stateless.
+
+15. Your team is designing a stream processing application that collects temperature and
+pressure measurements from industrial sensors. Someone on the team suggests using a Cloud
+Memorystore cache. What could that cache be used for?
+A. A SQL database
+B. As a memory cache to store state data outside of instances
+C. An extraction, transformation, and load service
+D. A persistent object storage system
+
+16. A distributed application is not performing as well as expected during peak load periods.
+The application uses three microservices. The first of the microservices has the ability to send
+more data to the second service than the second service can process and keep up with. This
+causes the first microservice to wait while the second service processes data. What can be
+done to decouple the first service from the second service?
+A. Run the microservices on separate instances.
+B. Run the microservices in a Kubernetes cluster.
+C. Write data from the first service to a Cloud Pub/Sub topic and have the second service
+read the data from the topic.
+D. Scale both services together using MIGs.
+
+17. A colleague has suggested that you use the Apache Beam framework for implementing a
+highly scalable workflow. Which Google Cloud service would you use?
+A. Cloud Dataproc
+B. Cloud Dataflow
+C. Cloud Dataprep
+D. Cloud Memorystore
+
+18. Your manager wants more data on the performance of applications running in Compute
+Engine, specifically, data on CPU and memory utilization. What Google Cloud service would
+you use to collect that data?
+A. Cloud Dataprep
+B. Cloud Monitoring
+C. Cloud Dataproc
+D. Cloud Memorystore
+
+19. You are receiving alerts that CPU utilization is high on several Compute Engine instances.
+The instances are all running a custom C++ application. When you receive these alerts, you
+deploy an additional instance running the application. A load balancer automatically distributes the workload across all of the instances. What is the best option to avoid having to add
+servers manually when CPU utilization is high?
+A. Always run more servers than needed to avoid high CPU utilization.
+B. Deploy the instances in a MIG, and use autoscaling to add and remove instances as
+needed.
+C. Run the application in App Engine Standard.
+D. Whenever you receive an alert, add two instances instead of one.
+
+20. A retailer has sales data streaming into a Cloud Pub/Sub topic from stores across the country.
+Each time a sale is made, data is sent from the point of sale to Google Cloud. The data needs
+to be transformed and aggregated before it is written to BigQuery. Which of the following
+services would you use to perform that processing and write data to BigQuery?
+A. Firebase
+B. Cloud Dataflow
+C. Cloud Memorystore
+D. Cloud Datastore
+
+21. Auditors have determined that several of the microservices deployed on Kubernetes clusters
+in your GCP and on-premises clusters do not perform authentication in ways that comply
+with security requirements. You want developers to be able to deploy microservices without
+having to spend a lot of time developing and testing authentication mechanisms. What
+managed service in GCP would you use to reduce the need for developers to implement
+authentication mechanisms with each new service?
+A. Kubernetes Services
+B. Anthos Service Mesh
+C. Kubernetes Ingress
+D. Anthos Config Management
