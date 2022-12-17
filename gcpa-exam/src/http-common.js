@@ -1,7 +1,7 @@
 import axios from "axios"
 
 function getBaseURL() {
-    const path = "question";
+    const path = "questions";
     let baseURL = "http://localhost:8000/{path}".replace("{path}", path);
     if (process.env.VUE_APP_ENVIRONMENT === "production") {
         baseURL = "http://{address}:{port}/{path}".replace("{address}", process.env.VUE_APP_ADDRESS)

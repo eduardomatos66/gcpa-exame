@@ -4,6 +4,7 @@ import com.ematos.gcpa.exame.exception.NotEnoughAlternativesException;
 import com.ematos.gcpa.exame.exception.QuestionNotExistentException;
 import com.ematos.gcpa.exame.model.Question;
 import com.ematos.gcpa.exame.model.QuestionOption;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.io.support.ResourcePatternUtils;
@@ -34,7 +35,7 @@ public class BookQuestionLoader extends AbstractLoader {
         try {
             this.questionsResource = ResourcePatternUtils
                     .getResourcePatternResolver(this.resourceLoader)
-                    .getResources("classpath:bk/*");
+                    .getResources("classpath:bk*/*");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -56,16 +57,22 @@ public class BookQuestionLoader extends AbstractLoader {
 
         if (m.find()) {
             this.questionBuilder(resource);
-            Resource answerResourceFile = this.getAnswerResourceFile(resource.getFilename());
+            Resource answerResourceFile = null;
+            try {
+                answerResourceFile = this.getAnswerResourceFile(resource.getFile().getParentFile().getName(), resource.getFilename());
+            } catch (IOException e) {
+                throw new RuntimeException("Error while loading answer file: " + resource.getFilename(), e);
+            }
             this.readAnswersFile(answerResourceFile);
         }
     }
 
-    private Resource getAnswerResourceFile(String filename) {
+    private Resource getAnswerResourceFile(String source, String filename) throws IOException {
         String desiredFileName = filename.replace("questions", "answers");
 
         for (Resource resource : this.questionsResource) {
-            if (Objects.requireNonNull(resource.getFilename()).equals(desiredFileName)) {
+            if (Objects.requireNonNull(resource.getFilename()).equals(desiredFileName)
+            && resource.getURI().getPath().contains(source)) {
                 return resource;
             }
         }
@@ -83,13 +90,20 @@ public class BookQuestionLoader extends AbstractLoader {
                 String line = myReader.nextLine();
 
                 if ((canUpdate && line.matches(ANSWER_REGEX)) || !myReader.hasNextLine()) {
-                    this.updateQuestion(this.getQuestionToken(resource.getFilename()), answer.toString());
+                    this.updateQuestion(
+                            resource.getFile().getParentFile().getName(),
+                            this.getQuestionToken(resource.getFilename()),
+                            answer.toString());
+
                     answer = new StringBuilder(line);
                     canUpdate = false;
                 }
 
                 if (!myReader.hasNextLine()) {
-                    this.updateQuestion(this.getQuestionToken(resource.getFilename()), answer.toString());
+                    this.updateQuestion(
+                            resource.getFile().getParentFile().getName(),
+                            this.getQuestionToken(resource.getFilename()),
+                            answer.toString());
                 } else if (!canUpdate && line.matches(ANSWER_REGEX)) {
                     answer = new StringBuilder(line.trim());
                     canUpdate = true;
@@ -120,8 +134,8 @@ public class BookQuestionLoader extends AbstractLoader {
         return result.trim();
     }
 
-    private void updateQuestion(String questionToken, String answer) {
-        Question question = this.searchForQuestion(this.extractQuestionNumberFromAnswer(answer), questionToken);
+    private void updateQuestion(String source, String questionToken, String answer) {
+        Question question = this.searchForQuestion(source, this.extractQuestionNumberFromAnswer(answer), questionToken);
         List<String> correctAlternatives = this.extractAlternativesFromAnswer(answer);
 
         if (question == null) {
@@ -177,11 +191,14 @@ public class BookQuestionLoader extends AbstractLoader {
         return result.trim();
     }
 
-    private Question searchForQuestion(String answer, String questionToken) {
+    private Question searchForQuestion(String source, String answer, String questionToken) {
         Question result = null;
         int counter = 0;
         String questionLabel = String.format("%s_%s", questionToken, "questions");
-        List<Question> chapterQuestions = this.questions.stream().filter(question -> question.getLabels().contains(questionLabel)).collect(Collectors.toList());
+        List<Question> chapterQuestions = this.questions.stream()
+                .filter(question -> question.getLabels().contains(questionLabel))
+                .filter(question -> question.getSource().contains(source))
+                .collect(Collectors.toList());
 
         while (result == null && counter < chapterQuestions.size()) {
             Question currentQuestion = chapterQuestions.get(counter);
@@ -212,7 +229,11 @@ public class BookQuestionLoader extends AbstractLoader {
                 if ((line.matches(QUESTION_TITLE_REGEX) && lineTypeEnum == LineTypeEnum.ALTERNATIVES)
                         || !myReader.hasNextLine()) {
 
-                    this.createQuestion(resource.getFilename(), title, alternatives);
+                    this.createQuestion(
+                            resource.getFile().getParentFile().getName(),
+                            resource.getFilename(),
+                            title,
+                            alternatives);
 
                     // Reset entries
                     title = new StringBuilder(line.trim());
@@ -240,7 +261,7 @@ public class BookQuestionLoader extends AbstractLoader {
         }
     }
 
-    private void createQuestion(String fileName, StringBuilder title, List<QuestionOption> alternatives) {
+    private void createQuestion(String folder, String fileName, StringBuilder title, List<QuestionOption> alternatives) {
         if (alternatives.size() < 4) {
             throw new NotEnoughAlternativesException(
                     String.format("Question does not have enough alternatives: %s", title));
@@ -250,6 +271,7 @@ public class BookQuestionLoader extends AbstractLoader {
         question.setTitle(title.toString().trim());
         question.setQuestionOptionList(alternatives);
         question.addLabel(fileName);
+        question.setSource(folder);
 
         this.questions.add(question);
     }

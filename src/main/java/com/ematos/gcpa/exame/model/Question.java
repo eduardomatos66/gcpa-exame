@@ -29,6 +29,7 @@ public class Question {
     private String subject;
     @Column(length = 3000)
     private String explanation;
+    private String source;
 
     @ElementCollection
     private List<QuestionOption> questionOptionList;
@@ -36,10 +37,17 @@ public class Question {
     @ElementCollection
     private Set<String> labels;
 
+    private void setLabels(String label) {}
+
     public void addLabel(String label) {
         if (this.labels == null) {
             this.labels = new HashSet<>();
         }
         this.labels.add(label);
     }
+
+    public void removeLabel(String label) {
+        this.labels.remove(label);
+    }
+
 }

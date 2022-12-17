@@ -26,6 +26,11 @@ public class QuestionService {
         return this.questionRepository.findAll();
     }
 
+    @GetMapping
+    public int getQuestionsAmount() {
+        return this.getQuestions().size();
+    }
+
     public Question getQuestionById(Long questionId) {
         Optional<Question> optionalQuestion = this.questionRepository.findById(questionId);
 
@@ -71,7 +76,7 @@ public class QuestionService {
         }
 
         question.setQuestionOptionList(options);
-        question.setLabels(labels);
+        labels.forEach(question::addLabel);
     }
 
     public List<Question> getAmountQuestions(Integer questionsNumber) {
@@ -93,6 +98,12 @@ public class QuestionService {
     public List<Question> getAllQuestionsWithLabel(String label) {
         return this.questionRepository.findAll().stream()
                 .filter(question -> question.getLabels().contains(label))
+                .collect(Collectors.toList());
+    }
+
+    public List<Question> getAllQuestionsWithLabels(List<String> labels) {
+        return this.questionRepository.findAll().stream()
+                .filter(question -> question.getLabels().containsAll(labels))
                 .collect(Collectors.toList());
     }
 

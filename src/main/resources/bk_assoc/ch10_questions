@@ -129,8 +129,7 @@ B. Messages in Pub/Sub topics are encoded to allow binary data to be used in pla
 C. It is required to add padding characters to the end of the message to make all messages the same length.
 
 D. The decode function maps data from a dictionary data structure to a list data structure.
-16. Which of these commands will deploy a Python cloud function called
-pub_sub_function_test?
+16. Which of these commands will deploy a Python cloud function called pub_sub_function_test?
 
 A. gcloud functions deploy pub_sub_function_test
 

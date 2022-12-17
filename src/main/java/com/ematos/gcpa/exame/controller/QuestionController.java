@@ -12,7 +12,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @RestController
-@RequestMapping(path="question")
+@RequestMapping(path="questions")
 @AllArgsConstructor
 @CrossOrigin
 public class QuestionController extends AbstractController {
@@ -29,7 +29,7 @@ public class QuestionController extends AbstractController {
     @GetMapping(path="/amount")
     @ResponseStatus(value = HttpStatus.OK)
     public int getQuestionsAmount() {
-        return this.questionService.getQuestions().size();
+        return this.questionService.getQuestionsAmount();
     }
 
     @GetMapping(path="/multipleResponseQuestions")
@@ -77,6 +77,7 @@ public class QuestionController extends AbstractController {
     @GetMapping(path = "exam")
     @ResponseStatus(value = HttpStatus.OK)
     public List<Question> getQuestionAmountWithLabel(@RequestParam Optional<String> label,
+                                                     @RequestParam Optional<List<String>> labels,
                                                      @RequestParam Optional<Integer> questionsNumber) {
         List<Question> questionList;
 
@@ -86,6 +87,8 @@ public class QuestionController extends AbstractController {
             questionList = this.questionService.getAllQuestionsWithLabel(label.get());
         } else if (questionsNumber.isPresent()) {
             questionList = this.questionService.getAmountQuestions(questionsNumber.get());
+        } else if (labels.isPresent()) {
+            questionList = this.questionService.getAllQuestionsWithLabels(labels.get());
         } else {
             // Default number of question on exam.
             questionList = this.questionService.getAmountQuestions(50);
