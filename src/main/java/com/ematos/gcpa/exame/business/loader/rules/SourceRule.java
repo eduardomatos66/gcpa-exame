@@ -23,8 +23,10 @@ public class SourceRule {
             label = "Architect";
         } else if (source.contains("bk_assoc")) {
             label = "Associate";
-        } else if (source.contains("question")) {
+        } else if (source.contains("assoc")) {
             label = "Associate";
+        } else if (source.contains("arch")) {
+            label = "Architect";
         }
         question.addLabel(label);
     }

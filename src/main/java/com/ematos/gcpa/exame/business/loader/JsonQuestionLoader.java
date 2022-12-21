@@ -26,7 +26,7 @@ public class JsonQuestionLoader extends AbstractLoader {
         try {
             this.questionsResource = ResourcePatternUtils
                     .getResourcePatternResolver(this.resourceLoader)
-                    .getResources("classpath:questions/*.json");
+                    .getResources("classpath:questions/assoc/*.json");
         } catch (IOException e) {
             e.printStackTrace();
         }

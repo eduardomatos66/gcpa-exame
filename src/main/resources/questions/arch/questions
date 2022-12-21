@@ -1,0 +1,1129 @@
+<p>1. Because you do not know every possible future use for the data TerramEarth collects, you have decided to build a system that captures and stores all raw data in case you need it later. How can you most cost-effectively accomplish this goal?</p>
+A. Have the vehicles in the field stream the data directly into BigQuery.
+B. Have the vehicles in the field pass the data to Cloud Pub/Sub and dump it into a Cloud Dataproc cluster that stores data in Apache Hadoop Distributed File System (HDFS) on persistent disks.
+C. Have the vehicles in the field continue to dump data via FTP, adjust the existing Linux machines, and use a collector to upload them into Cloud Dataproc HDFS for storage.
+D. Have the vehicles in the field continue to dump data via FTP, and adjust the existing Linux machines to immediately upload it to Cloud Storage with gsutil.</p>
+Answers: D is correct because several load-balanced Compute Engine VMs would suffice to ingest 9 TB per day, and Cloud Storage is the cheapest per-byte storage offered by Google. Depending on the format, the data could be available via BigQuery immediately, or shortly after running through an ETL job. Thus, this solution meets business and technical requirements while optimizing for cost.
+https://cloud.google.com/bigquery/quotas#streaming_inserts
+https://cloud.google.com/blog/products/data-analytics/10-tips-for-building-long-running-clusters-using-cloud-dataproc
+https://cloud.google.com/blog/products/gcp/fastest-track-to-apache-hadoop-and-spark-success-using-job-scoped-clusters-on-cloud-native-architecture
+<p>2. Today, TerramEarth maintenance workers receive interactive performance graphs for the last 24 hours (86,400 events) by plugging their maintenance tablets into the vehicle. The support group wants support technicians to view this data remotely to help troubleshoot problems. You want to minimize the latency of graph loads. How should you provide this functionality?</p>
+A. Execute queries against data stored in a Cloud SQL.
+B. Execute queries against data indexed by vehicle_id.timestamp in Cloud Bigtable.
+C. Execute queries against data stored on daily partitioned BigQuery tables.
+D. Execute queries against BigQuery with data stored in Cloud Storage via BigQuery federation.</p>
+Answers: B is correct because Cloud Bigtable is optimized for time-series data. It is cost-efficient, highly available, and low-latency. It scales well. Best of all, it is a managed service that does not require significant operations work to keep running.
+https://cloud.google.com/bigtable/docs/schema-design-time-series#time-series-cloud-bigtable
+https://cloud.google.com/bigquery/external-data-sources
+<p>3. Your agricultural division is experimenting with fully autonomous vehicles. You want your architecture to promote strong security during vehicle operation. Which two architecture characteristics should you consider?</p>
+A. Use multiple connectivity subsystems for redundancy.
+B. Require IPv6 for connectivity to ensure a secure address space.
+C. Enclose the vehicle’s drive electronics in a Faraday cage to isolate chips.
+D. Use a functional programming language to isolate code execution cycles.
+E. Treat every microservice call between modules on the vehicle as untrusted.
+F. Use a Trusted Platform Module (TPM) and verify firmware and binaries on boot.</p>
+Answers: E is correct because this improves system security by making it more resistant to hacking, especially through man-in-the-middle attacks between modules.
+F is correct because this improves system security by making it more resistant to hacking, especially rootkits or other kinds of corruption by malicious actors.
+https://en.wikipedia.org/wiki/Trusted_Platform_Module
+<p>4. Which of TerramEarth’s legacy enterprise processes will experience significant change as a result of increased Google Cloud Platform adoption?</p>
+A. OpEx/CapEx allocation, LAN change management, capacity planning
+B. Capacity planning, TCO calculations, OpEx/CapEx allocation
+C. Capacity planning, utilization measurement, data center expansion
+D. Data center expansion,TCO calculations, utilization measurement</p>
+Answers: B is correct because all of these tasks are big changes when moving to the cloud. Capacity planning for cloud is different than for on-premises data centers; TCO calculations are adjusted because TerramEarth is using services, not leasing/buying servers; OpEx/CapEx allocation is adjusted as services are consumed vs. using capital expenditures.
+https://assets.kpmg/content/dam/kpmg/pdf/2015/11/cloud-economics.pdf
+<p>5. You analyzed TerramEarth’s business requirement to reduce downtime and found that they can achieve a majority of time saving by reducing customers’ wait time for parts. You decided to focus on reduction of the 3 weeks’ aggregate reporting time. Which modifications to the company’s processes should you recommend?</p>
+A. Migrate from CSV to binary format, migrate from FTP to SFTP transport, and develop machine learning analysis of metrics.
+B. Migrate from FTP to streaming transport, migrate from CSV to binary format, and develop machine learning analysis of metrics.
+C. Increase fleet cellular connectivity to 80%, migrate from FTP to streaming transport, and develop machine learning analysis of metrics.
+D. Migrate from FTP to SFTP transport, develop machine learning analysis of metrics, and increase dealer local inventory by a fixed factor.</p>
+Answers: C is correct because using cellular connectivity will greatly improve the freshness of data used for analysis from where it is now, collected when the machines are in for maintenance. Streaming transport instead of periodic FTP will tighten the feedback loop even more. Machine learning is ideal for predictive maintenance workloads.
+<p>6. Your company wants to deploy several microservices to help their system handle elastic loads. Each microservice uses a different version of software libraries. You want to enable their developers to keep their development environment in sync with the various production services. Which technology should you choose?</p>
+A. RPM/DEB
+B. Containers
+C. Chef/Puppet
+D. Virtual machines</p>
+Answers: B is correct because using containers for development, test, and production deployments abstracts away system OS environments, so that a single host OS image can be used for all environments. Changes that are made during development are captured using a copy-on-write filesystem, and teams can easily publish new versions of the microservices in a repository.
+<p>7. Your company wants to track whether someone is present in a meeting room reserved for a scheduled meeting. There are 1000 meeting rooms across 5 offices on 3 continents. Each room is equipped with a motion sensor that reports its status every second. You want to support the data upload and collection needs of this sensor network. The receiving infrastructure needs to account for the possibility that the devices may have inconsistent connectivity. Which solution should you design?</p>
+A. Have each device create a persistent connection to a Compute Engine instance and write messages to a custom application.
+B. Have devices poll for connectivity to Cloud SQL and insert the latest messages on a regular interval to a device specific table.
+C. Have devices poll for connectivity to Cloud Pub/Sub and publish the latest messages on a regular interval to a shared topic for all devices.
+D. Have devices create a persistent connection to an App Engine application fronted by Cloud Endpoints, which ingest messages and write them to Cloud Datastore.</p>
+Answers: C is correct because Cloud Pub/Sub can handle the frequency of this data, and consumers of the data can pull from the shared topic for further processing.
+https://cloud.google.com/sql/
+https://cloud.google.com/pubsub/
+<p>8. Your company wants to try out the cloud with low risk. They want to archive approximately 100 TB of their log data to the cloud and test the analytics features available to them there, while also retaining that data as a long-term disaster recovery backup. Which two steps should they take?</p>
+A. Load logs into BigQuery.
+B. Load logs into Cloud SQL.
+C. Import logs into Stackdriver.
+D. Insert logs into Cloud Bigtable.
+E. Upload log files into Cloud Storage.</p>
+Answers: A is correct because BigQuery is the fully managed cloud data warehouse for analytics and supports the analytics requirement.
+E is correct because Cloud Storage provides the Coldline storage class to support long-term storage with infrequent access, which would support the long-term disaster recovery backup requirement.
+https://cloud.google.com/bigquery/
+https://cloud.google.com/stackdriver/
+https://cloud.google.com/storage/docs/storage-classes#coldline
+https://cloud.google.com/sql/
+https://cloud.google.com/bigtable/
+<p>9. You set up an autoscaling instance group to serve web traffic for an upcoming launch. After configuring the instance group as a backend service to an HTTP(S) load balancer, you notice that virtual machine (VM) instances are being terminated and re-launched every minute. The instances do not have a public IP address. You have verified that the appropriate web response is coming from each instance using the curl command. You want to ensure that the backend is configured correctly. What should you do?</p>
+A. Ensure that a firewall rule exists to allow source traffic on HTTP/HTTPS to reach the load balancer.
+B. Assign a public IP to each instance, and configure a firewall rule to allow the load balancer to reach the instance public IP.
+C. Ensure that a firewall rule exists to allow load balancer health checks to reach the instances in the instance group.
+D. Create a tag on each instance with the name of the load balancer. Configure a firewall rule with the name of the load balancer as the source and the instance tag as the destination.</p>
+Answers: C is correct because health check failures lead to a VM being marked unhealthy and can result in termination if the health check continues to fail. Because you have already verified that the instances are functioning properly, the next step would be to determine why the health check is continuously failing.
+https://cloud.google.com/load-balancing/docs/health-check-concepts
+https://cloud.google.com/load-balancing/docs/https/
+<p>10. Your organization has a 3-tier web application deployed in the same network on Google Cloud Platform. Each tier (web, API, and database) scales independently of the others. Network traffic should flow through the web to the API tier, and then on to the database tier. Traffic should not flow between the web and the database tier. How should you configure the network?</p>
+A. Add each tier to a different subnetwork.
+B. Set up software-based firewalls on individual VMs.
+C. Add tags to each tier and set up routes to allow the desired traffic flow.
+D. Add tags to each tier and set up firewall rules to allow the desired traffic flow.</p>
+Answers: D is correct because as instances scale, they will all have the same tag to identify the tier. These tags can then be leveraged in firewall rules to allow and restrict traffic as required, because tags can be used for both the target and source.
+https://cloud.google.com/vpc/docs/using-vpc
+https://cloud.google.com/vpc/docs/routes
+https://cloud.google.com/vpc/docs/add-remove-network-tags
+<p>11. Your organization has 5 TB of private data on premises. You need to migrate the data to Cloud Storage. You want to maximize the data transfer speed. How should you migrate the data?</p>
+A. Use gsutil.
+B. Use gcloud.
+C. Use GCS REST API.
+D. Use Storage Transfer Service.</p>
+Answers: A is correct because gsutil gives you access to write data to Cloud Storage.
+https://cloud.google.com/storage/docs/gsutil
+https://cloud.google.com/sdk/gcloud/
+https://cloud.google.com/storage/docs/json_api/v1/how-tos/upload
+https://cloud.google.com/storage/docs/uploading-objects
+https://cloud.google.com/storage-transfer/docs/overview
+<p>12. You are designing a mobile chat application. You want to ensure that people cannot spoof chat messages by proving that a message was sent by a specific user. What should you do?</p>
+A. Encrypt the message client-side using block-based encryption with a shared key.
+B. Tag messages client-side with the originating user identifier and the destination user.
+C. Use a trusted certificate authority to enable SSL connectivity between the client application and the server.
+D. Use public key infrastructure (PKI) to encrypt the message client-side using the originating user’s private key.</p>
+Answers: D is correct because PKI requires that both the server and the client have signed certificates, validating both the client and the server.
+<p>13. You are designing a large distributed application with 30 microservices. Each of your distributed microservices needs to connect to a database backend. You want to store the credentials securely. Where should you store the credentials?</p>
+A. In the source code
+B. In an environment variable
+C. In a key management system
+D. In a config file that has restricted access through ACLs</p>
+Answers: C is correct because key management systems generate, use, rotate, encrypt, and destroy cryptographic keys and manage permissions to those keys.
+https://cloud.google.com/kms/
+<p>For this question, refer to the Mountkirk Games case study.
+https://cloud.google.com/certification/guides/cloud-architect/casestudy-mountkirkgames-rev2</p>
+<p>14. Mountkirk Games wants to set up a real-time analytics platform for their new game. The new platform must meet their technical requirements. Which combination of Google technologies will meet all of their requirements?</p>
+A. Kubernetes Engine, Cloud Pub/Sub, and Cloud SQL
+B. Cloud Dataflow, Cloud Storage, Cloud Pub/Sub, and BigQuery
+C. Cloud SQL, Cloud Storage, Cloud Pub/Sub, and Cloud Dataflow
+D. Cloud Pub/Sub, Compute Engine, Cloud Storage, and Cloud Dataproc</p>
+Answers: B is correct because:
+-Cloud Dataflow dynamically scales up or down, can process data in real time, and is ideal for processing data that arrives late using Beam windows and triggers.
+-Cloud Storage can be the landing space for files that are regularly uploaded by users’ mobile devices.
+-Cloud Pub/Sub can ingest the streaming data from the mobile users.
+BigQuery can query more than 10 TB of historical data.
+https://cloud.google.com/sql/docs/quotas#fixed-limits
+https://beam.apache.org/documentation/programming-guide/#triggers
+https://cloud.google.com/solutions/using-apache-hive-on-cloud-dataproc
+https://beam.apache.org/documentation/programming-guide/#windowing
+https://cloud.google.com/bigquery/external-data-sources
+<p>15. Mountkirk Games has deployed their new backend on Google Cloud Platform (GCP). You want to create a thorough testing process for new versions of the backend before they are released to the public. You want the testing environment to scale in an economical way. How should you design the process?</p>
+A. Create a scalable environment in GCP for simulating production load.
+B. Use the existing infrastructure to test the GCP-based backend at scale.
+C. Build stress tests into each component of your application and use resources from the already deployed production backend to simulate load.
+D. Create a set of static environments in GCP to test different levels of load—for example, high, medium, and low.</p>
+Answers: A is correct because simulating production load in GCP can scale in an economical way.
+https://cloud.google.com/community/tutorials/load-testing-iot-using-gcp-and-locust
+https://github.com/GoogleCloudPlatform/distributed-load-testing-using-kubernetes
+<p>16.
+A. Cloud Storage, Cloud Dataflow, Compute Engine
+B. Cloud Storage, App Engine, Cloud Load Balancing
+C. Container Registry, Google Kubernetes Engine, Cloud Load Balancing
+D. Cloud Functions, Cloud Pub/Sub, Cloud Deployment Manager</p>
+Answers: C is correct because:
+-Google Kubernetes Engine is ideal for deploying small services that can be updated and rolled back quickly. It is a best practice to manage services using immutable containers.
+-Cloud Load Balancing supports globally distributed services across multiple regions. It provides a single global IP address that can be used in DNS records. Using URL Maps, the requests can be routed to only the services that Mountkirk wants to expose.
+-Container Registry is a single place for a team to manage Docker images for the services.
+<p>17. Your customer is moving their corporate applications to Google Cloud Platform. The security team wants detailed visibility of all resources in the organization. You use Resource Manager to set yourself up as the org admin. What Cloud Identity and Access Management (Cloud IAM) roles should you give to the security team?</p>
+A. Org viewer, Project owner
+B. Org viewer, Project viewer
+C. Org admin, Project browser
+D. Project owner, Network admin</p>
+Answers: B is correct because:
+-Org viewer grants the security team permissions to view the organization’s display name.
+-Project viewer grants the security team permissions to see the resources within projects.
+https://cloud.google.com/resource-manager/docs/access-control-org#using_predefined_roles
+<p>18. To reduce costs, the Director of Engineering has required all developers to move their development infrastructure resources from on-premises virtual machines (VMs) to Google Cloud Platform. These resources go through multiple start/stop events during the day and require state to persist. You have been asked to design the process of running a development environment in Google Cloud while providing cost visibility to the finance department. Which two steps should you take?</p>
+A. Use persistent disks to store the state. Start and stop the VM as needed.
+B. Use the –auto-delete flag on all persistent disks before stopping the VM.
+C. Apply VM CPU utilization label and include it in the BigQuery billing export.
+D. Use BigQuery billing export and labels to relate cost to groups.
+E. Store all state in local SSD, snapshot the persistent disks, and terminate the VM.
+F. Store all state in Cloud Storage, snapshot the persistent disks, and terminate the VM.</p>
+Answers: A is correct because persistent disks will not be deleted when an instance is stopped.
+D is correct because exporting daily usage and cost estimates automatically throughout the day to a BigQuery dataset is a good way of providing visibility to the finance department. Labels can then be used to group the costs based on team or cost center.
+<p>19. Your company has decided to make a major revision of their API in order to create better experiences for their developers. They need to keep the old version of the API available and deployable, while allowing new customers and testers to try out the new API. They want to keep the same SSL and DNS records in place to serve both APIs. What should they do?</p>
+A. Configure a new load balancer for the new version of the API.
+B. Reconfigure old clients to use a new endpoint for the new API.
+C. Have the old API forward traffic to the new API based on the path.
+D. Use separate backend services for each API path behind the load balancer.</p>
+Answers: D is correct because an HTTP(S) load balancer can direct traffic reaching a single IP to different backends based on the incoming URL.
+https://cloud.google.com/load-balancing/docs/https/url-map
+https://cloud.google.com/load-balancing/docs/backend-service
+https://cloud.google.com/load-balancing/docs/https/global-forwarding-rules
+<p>20. The database administration team has asked you to help them improve the performance of their new database server running on Compute Engine. The database is used for importing and normalizing the company’s performance statistics. It is built with MySQL running on Debian Linux. They have an n1-standard-8 virtual machine with 80 GB of SSD zonal persistent disk. What should they change to get better performance from this system in a cost-effective manner?</p>
+A. Increase the virtual machine’s memory to 64 GB.
+B. Create a new virtual machine running PostgreSQL.
+C. Dynamically resize the SSD persistent disk to 500 GB.
+D. Migrate their performance metrics warehouse to BigQuery.</p>
+Answers: C is correct because persistent disk performance is based on the total persistent disk capacity attached to an instance and the number of vCPUs that the instance has. Incrementing the persistent disk capacity will increment its throughput and IOPS, which in turn improve the performance of MySQL.
+https://cloud.google.com/compute/docs/disks/#pdspecs
+https://cloud.google.com/compute/docs/disks/performance
+<p>1. You are developing an application to handle banking transactions such as credits and debits. The application requirements state you need to ensure all transactions are processed and that they are processed in the same order they are received. You also need to ensure each transaction is processed exactly once. Which GCP services should you use to ensure exactly-once first in first out the processing of transactions?</p>
+A. Use Cloud Pub/Sub for FIFO and Cloud SQL for exactly-once processing.
+B. Use Cloud Pub/Sub for FIFO and Cloud Monitoring for exactly-once processing.
+C. Use Cloud Pub/Sub for FIFO and exactly-once processing.
+D. Use Cloud Pub/Sub for FIFO and Cloud DataFlow for exactly-once</p>
+Answers: D
+<p>2. Your company data centre is running out of space, and you have been asked to identify the best way to transfer 100 TB of audit logs to Cloud Storage. You want to follow Google-recommended practices. What should you do?</p>
+A. Use a transfer appliance to migrate data and decrypt the data in Cloud Storage using a transfer appliance rehydrator.
+B. Use a transfer appliance to migrate data and decrypt the data in Cloud Storageusing a Cloud Dataprep.
+C. Use gsutil to upload data to Cloud Storage using resumable transfers.
+D. Use gsutil to streaming upload to Cloud Storage.</p>
+Answers: A
+<p>3. Your company runs a very successful social media application and plans to migrate to Google Cloud. Your company needs to store a variety of data such as customer session state, images, VM boot volumes, VM data volumes, application logs etc. Which combination of GCP services should you use?</p>
+A. 1. Use Local SSD for storing customer session state. 2. Use Cloud Storage Bucket with Lifecycle managed rules for application logs, images, VM boot volumes and VM data volumes.
+B. 1. Use Memcache backed by Cloud SQL for storing customer session state. 2. Use instances with local SSDs for storing VM boot volumes and VM data volumes. 3. Use Cloud Storage Bucket with Lifecycle managed rules for storing application logs and images.
+C. 1. Use Memcache backed by Cloud Datastore for storing customer session state. 2. Use Cloud Storage Bucket with Lifecycle managed rules for application logs, images, VM boot volumes and VM data volumes.
+D. 1. Use Memcache backed by Persistent Disk SSDs for storing customer session state. 2. Use instances with local SSDs for storing VM boot volumes and VM data volumes. 3. Use Cloud Storage
+Bucket with Lifecycle managed rules for storing application logs and images.</p>
+Answers: C
+<p>4. Your company would like to trial Google Cloud Platform while minimizing cost and has asked you to suggest a managed compute service that automatically scales to zero so that you do not incur costs in the absence of activity outside the regular business hours. What should you recommend?</p>
+A. AppEngine flexible environment
+B. Compute Engine
+C. Cloud Functions
+D. Kubernetes Engine</p>
+Answers: C
+<p>5. You are managing a secure application that runs on several VMs, autoscales based on traffic and handles customer PII data. Your security team has mandated that all but essential traffic between instances is blocked. How should you design the network taking into consideration the autoscaling nature of the application – which prevents you from explicitly using Static IPs?</p>
+A. Configure Cloud DNS to allow just the essential traffic between these VMs.
+B. UpdateVMs service accounts to allow traffic to and from other VMs.
+C. Add network tags to VMs and set up firewall rules based on these network tags to allow just the essential traffic.
+D. Move VMs to separate VPCs.</p>
+Answers: C
+<p>6. Your Team Lead has asked you for your suggestion on configuring a GKE cluster to scale cluster nodes up and down based on CPU utilization. What should you suggest?</p>
+A. Enable autoscaling on Managed Instance Group (MIG) for the GKE cluster. Enable Horizontal Pod Autoscaler based on CPU utilization.
+B. Enable autoscaling on Managed Instance Group (MIG) for the GKE cluster. Update deployment to set appropriate values for maxUnavailable and maxSurge.
+C. Enable GKE Cluster Autoscaler. Enable Horizontal Pod Autoscaler based on CPU utilization.
+D. Enable GKE Cluster Autoscaler. Update deployment to set appropriate values for maxUnavailable and maxSurge.</p>
+Answers: C
+<p>7. Your company stores its customer data in several Google Cloud projects and uses BigQuery as its enterprise data warehouse. Although data is stored in different projects, your finance team has requested you to consolidate all querying costs in a single project. The security team has suggested enabling query only access, but not edit access, to the datasets for analytics users. What should you do?</p>
+A. In the GCP Billing Project, grant BigQuery dataViewer role to the analytics user group. 2. In projects that contain the data, grant BigQuery user role to the analytics user group.
+B. In the GCP Billing Project, grant BigQuery dataViewer role to the analytics user group. 2. In projects that contain the data, grant BigQuery jobUser role to the analytics user group.
+C. In the GCP Billing Project, grant BigQuery user role to the analytics user group. 2. In projects that contain the data, grant BigQuery dataViewer role to the analytics user group.
+D. In the GCP Billing Project, grant BigQuery jobUser role to the analytics user group. 2. In projects that contain the data, grant BigQuery dataViewer role to the analytics user group.</p>
+Answers: D
+<p>8. A business-critical application deployed to Google Kubernetes Engine (GKE) is experiencing issues connecting to Cloud SQL database. The primary pods use a sidecar container to establish a connection to the database. You are asked you to carry out a post-mortem of incident. What should you do?</p>
+A. Ensure the sidecar container still has Container Registry Editor role.
+B. Check GKE &amp; Cloud SQL logs in Cloud Logging console.
+C. Restart all primary pods. If the issue persists, rollback Cloud SQL to the latest full backup.
+D. Restart the database.</p>
+Answers: B
+<p>9. Your company runs an application in compute engine for collecting users monthly subscription fees. The application pushes the logs of each user’s credit card details to Cloud Pub/Sub for subsequent payment processing. How should you configure the IAM access between Cloud Pub/Sub and Compute Engine VMs?</p>
+A. Modify VM access scopes to enable Cloud Pub/Sub IAM roles.
+B. Grant the required Cloud Pub/Sub IAM roles to the VM service account.
+C. Modify application in Compute Engine to instead call a Cloud Function that has the appropriate Cloud Pub/Sub IAM roles.
+D. Enable OAuth 2.0 for Cloud Pub/Sub and configure the Compute Engine VMs to provide a valid access token.</p>
+Answers: B
+<p>10. You developed bug fixes for a mission-critical application running on App Engine standard service. Your change management board has advised caution and validate the bug fixes with live traffic on a small set of users before replacing the current version. What should you do?</p>
+A. Using Instance Group Updater (IGU), deploy a partial rollout. After validating, deploy a full rollout.
+B. Deploy the fix as a new App Engine Application in the same project and split traffic between the two applications using HTTP(s) load balancer.
+C. Deploy the fix as a new App Engine Application in a new VPC and split traffic between the two applications using HTTP(s) load balancer.
+D. Deploy a new version in the App Engine application and use traffic splitting to distribute traffic across the old and new versions.</p>
+Answers: C
+<p>11. Your company has a hybrid architecture with workloads that run primarily from the data centre and failover to GCP when needed. The failover process requires moving large files from the data centre to GCP in a short period. Your IT Director has asked you to ensure the disaster recovery is resilient, and you identified the network connection between your data centre and GCP
+network as a possible single point of failure. How should you design the network connection between the data centre and the GCP network to establish a secure and redundant connection?</p>
+A. Use Dedicated Interconnect to transfer the large files to Google Cloud Platform. Configure Cloud VPN to take over if the transfer appliance fails.
+B. Use a Transfer Appliance to transfer the large files to Google Cloud Platform. Configure Cloud VPN to take over if the transfer appliance fails.
+C. Use a Transfer Appliance to transfer the large files to Google Cloud Platform. Configure Direct Peering to take over if the transfer appliance fails.
+D. Use Dedicated Interconnect to transfer the large files to Google Cloud Platform. Configure Direct Peering to take over if the transfer appliance fails.</p>
+Answers: A
+<p>12. You are deploying a GPS tracking application on App Engine Standard. The GPS tracking application uses Cloud SQL as the backend. Some of the queries are running very slow, and your Team Lead has asked you to explore setting up a caching layer to speed up the application. What should you do?</p>
+A. Use Memorystore for Memcached and set service level to dedicated. Create a key from the hash of the query. Modify application logic to check the key in the cache before querying Cloud SQL. If the key doesn’t exist, query Cloud SQL and populate cache before returning the result to the application.
+B. Use Memorystore for Memcached and set service level to shared. Use App Engine Cron Service to populate the cache with keys containing query results every minute. Modify application logic to check the key in the cache before querying Cloud SQL.
+C. Use Memorystore for Memcached and set service level to shared. Create a key from the hash of the query. Modify application logic to check the key in the cache before querying Cloud SQL.
+D. Use Memorystore for Memcached and set service level to dedicated. Use App Engine Cron Service to populate the cache with keys containing query results every minute. Modify application logic to check the key in the cache before querying Cloud SQL. If the key doesn’t exist, query Cloud SQL and populate cache before returning the result to the application.</p>
+Answers: A
+<p>13. A mission-critical application has scaling issues, and your company has decided to migrate from on-premises to GKE to fix this issue. The application, when deployed to GKE, must serve requests on HTTPS and scales up/down based traffic. What should you do?</p>
+A. Use Kubernetes Ingress Resource and enable Compute Engine Managed Instance Group (MIG) autoscaling.
+B. Use Kubernetes Ingress Resource and enable GKE Cluster Autoscaling as well as Horizontal Pod Autoscaling.
+C. Use Kubernetes Service of type LoadBalancer and enable GKE Cluster Autoscaling as well as Horizontal Pod Autoscaling.
+D. Use Kubernetes Service of type LoadBalancer and enable Compute Engine Managed Instance Group (MIG) autoscaling.</p>
+Answers: B
+<p>14. You are migrating an application to Google Cloud. The application relies on Microsoft SQL Server, and due to the mission-critical nature of the workload, the application should have no downtime in case of zonal outages with GCP. How should you configure the database?</p>
+A. Migrate to a regional Cloud Spanner instance.
+B. Migrate the SQL Server database onto two Google Compute Engine instances in different zones and enable SQL Server Always-On-Availability- Groups with Windows failover clustering.
+C. Migrate the SQL Server database onto two Google Compute Engine instances in different subnets and enable SQL Server Always-On-Availability-Groups with Windows failover clustering.
+D. Migrate to a high availability enabled Cloud SQL instance.</p>
+Answers: B
+<p>15. A critical application recently suffered a regional outage causing your company loss of valuable revenue. You have been asked for a recommendation on improving the existing testing and disaster recovery processes, and preventing such occurrences in Google Cloud. What should you recommend?</p>
+A. Automate provisioning of GCP services using custom gcloud scripts. Monitor and debug tests using Activity Logs.
+B. Automate provisioning of GCP services using deployment manager templates. Monitor and debug tests using Activity Logs.
+C. Automate provisioning of GCP services using custom gcloud scripts. Monitor and debug tests using Cloud Logging and Cloud Monitoring.
+D. Automate provisioning of GCP services using deployment manager templates. Monitor and debug tests using Cloud Logging and Cloud Monitoring.</p>
+Answers: D
+<p>16. Your company runs several successful mobile games from your on-premises data centre and plans to use GCP for machine learning to identify improvements and new opportunities. The existing games generate 10 TB of analytics data each day. Your company currently stores three months analytics data (approx.: 900TB) in a highly available NAS in your data centre and needs to transfer this data to GCP as part of the initial data load and as well as transfer data generated daily. Your data centre is connected to the network on a 100 MBps line. What should you do?</p>
+A. Use a transfer appliance to transfer archived analytics data. Work with your telco partner and networks team to establish a Dedicated Interconnect connection to Google Cloud and upload files daily.
+B. Compress all files and upload using the gsutil.
+C. Use a transfer appliance to transfer archived analytics data. Set up multiple Cloud VPN tunnels and upload files daily.
+D. Use a transfer appliance to transfer archived analytics data. Set up a single Cloud VPN tunnel and upload files daily.</p>
+Answers: A
+<p>18. Your Cloud Security team has asked you to centralize the collection of all VM system logs and all admin activity logs in your project. What should you do?</p>
+A. Admin activity logs are collected automatically by Cloud Logging for most services. To collect system logs, you need to install Cloud Logging agent on each VM.
+B. Install a Cloud Logging agent on a separate VM. Direct the VMs, admin activity logs and VM system logs to send all logs to it.
+C. Install a custom log forwarder on a separate VM and direct the VMs to send all logs to it.
+D. Cloud Logging automatically collects the two sets of logs.</p>
+Answers: A
+<p>19. Your company develops portable software that is used by customers all over the world. Current and previous versions of software can be downloaded from a dedicated website running on compute engine in US-Central. Some customers have complained about high latency when downloading the software. You want to minimize latency for all your customers. You want to follow Google recommended practices. How should you store the files?</p>
+A. Save current and all previous versions of portable software files in Multiple Multi-Regional Cloud Storage buckets, one bucket per multi-region.
+B. Save current and all previous versions of portable software files in multiple Regional Cloud Storage buckets, one bucket per zone per region.
+C. Save current and all previous versions of portable software files in a single Regional Cloud Storage bucket, one bucket per zone of the region.
+D. Save current and all previous versions of portable software files in a Multi-Regional Cloud Storage bucket.</p>
+Answers: A
+<p>21. Regulatory requirements mandate your company to retain PII data of customers from an acquired company for at least four years. You want to put a solution in place to securely retain this data and delete when permitted by the regulations. Which should you do?</p>
+A. Import the acquired PII data to Cloud Storage and use object. lifecycle management rules to delete files when they expire.
+B. Import the acquired PII data to Cloud Storage and use App Engine Cron Service with Cloud Functions to enable daily deletion of all expired data.
+C. De-Identify PII data using the Cloud Data Loss Prevention API and store it forever.
+D. Store PII data in Google Sheets and manually delete records daily as they expire.</p>
+Answers: A
+<p>22. You developed an application recognizes famous landmarks from uploaded photos. You want to run a free trial for 24 hours and open up the application to all users, including users that don’t have a Google account. What should you do?</p>
+A. Generate a signed URL on a Cloud Storage bucket with expiration set to 24 hours and have users upload their photos using this signed URL.
+B. Deploy the application to Google Compute Engine and terminate the instances after 24 hours. Use Cloud Identity to authenticate users.
+C. Deploy the application to Google Compute Engine and use Cloud Identity to authenticate users.
+D. Enable users to upload their photos to a public Cloud Storage bucket and set a password on the bucket after the trial.</p>
+Answers: A
+<p>23. Your company recently acquired a competitor, and you have been tasked with migrating one of their legacy applications into your company’s Google Cloud project. You noticed the legacy application has several os dependencies and the scale-up is delayed due to long startup time. You want to deploy the application on compute engine and make use of managed instance group so that it can scale based on traffic. You also want to minimize the startup time so that scale up happens quicker. What should you do?</p>
+A. Create a startup script to install os dependencies and automate the creation of Managed Instance Group (MIG) using terraform.
+B. Use the Deployment Manager to automate the creation of Managed Instance Group (MIG). Use Ansible to install os dependencies.
+C. Create a custom GCP VM image with all os dependencies preinstalled. Use the Deployment Manager to automate the creation of Managed Instance Group (MIG) with the custom image.
+D. Use Puppet to automate the creation of Managed Instance Group (MIG) and installation of os dependencies.</p>
+Answers: C
+<p>25. Your company operates a very successful mobile app that lets users superimpose stock images of their favourite pets with their uploaded images. You use a combination of Google Cloud Storage and Vision AI to achieve this. Recently, the photo uploads from mobile user devices to Google Cloud storage have started throwing HTTP errors with status codes of 429 and 5xx. What should you do to fix this issue?</p>
+A. Use Cloud Storage gPRC endpoints.
+B. Enable Geo-redundancy by moving Cloud Storage bucket from Regional to Multi-regional.
+C. Make requests to Cloud Storage only if its status is healthy.
+D. Retry failures with exponential backoff.</p>
+Answers: D
+<p>26. Your auditors require you to supply them the number of queries run by each user in BigQuery over the last 12 months. You want to do this as efficiently as possible. What should you do?</p>
+A. In Cloud Audit Logs, apply a filter on BigQuery query operation to get the required information.
+B. Use Google Data Studio BigQuery connector to access data from your BigQuery tables within Google Data Studio. Create dimensions, metrics and reports to obtain this information.
+C. Execute bq show command to list all jobs and execute bq Is for each job. Aggregate the output by user_id and obtain the information.
+D. Execute a query on BigQuery JOBS table to get this information.</p>
+Answers: A
+<p>27. An application you deployed to Google Cloud uses a single Cloud SQL for MySQL instance in us-west1-a zone. What should you do to ensure high availability?</p>
+A. Create a MySQL failover replica in us-east1 (different region).
+B. Create a MySQL failover replica in us-west1-b (same region but different zone).
+C. Create a MySQL read replica in us-east1 (different region).
+D. Create a MySQL read replica in us-west1-b (same region but different zone).</p>
+Answers: B
+<p>28. Your company runs a parcel tracking application on App Engine Standard service. The application requires ACID transaction support and uses Cloud Datastore as its persistence layer. You have been asked to identify an efficient way to retrieve multiple parcels (datastore root entities) based on the relevant tracking IDs (datastore identifiers) while minimizing overhead in the calls from App Engine to Datastore. What should you do?</p>
+A. Create a Key object for each tracking ID. Perform multiple get operations – one for each tracking ID.
+B. Create a Key object for each tracking ID. Perform a single batch get operation.
+C. Generate a query filter for each tracking ID. Perform multiple query operations-one for each entity.
+D. Generate a query filter to include all tracking IDs. Perform a single batch query operation.</p>
+Answers: B
+<p>29. You need to install a legacy software on a compute engine instance that has no access to the internet. Your networks team have not yet created a VPN connection between Google network and the on-premises network. How can you transfer the software binary from on-premises to Google Cloud so that you can install the legacy software on the VM?</p>
+A. From the on-premises network. upload the file to Cloud Source Repositories. Provision the VM with an internal IP address in a subnet with Private Google Access enabled and run gsutil to copy the file.
+B. From the on-premises network, upload the file to a bucket in Cloud Storage. Enable a firewall rule to block all but traffic from Cloud Storage IP range and run gsutil to copy the file.
+C. From the on-premises network, upload the file to a bucket in Cloud Storage. Provision the VM with an internal IP address in a subnet with Private Google Access enabled and run gsutil to copy the file.
+D. From the on-premises network, upload the file to Cloud Source Repositories. Enable a firewall rule to block all but traffic from Cloud Source Repositories IP range and run gsutil to copy
+the file.</p>
+Answers: C
+<p>30. You are designing an application that handles customer PII data, and your compliance department has asked you to ensure the solution is compliant with the European Union’s GDPR. What should you do?</p>
+A. Limit your application to native GCP services &amp; APIs that are signed off for GDPR compliance.
+B. Design a robust testing strategy using Cloud Security Scanner to pick up GDPR compliance gaps in GCP services.
+C. Google complies with the GDPR in relation processing of customer personal data in all Google Cloud Platform. Your company should also make sure your web application meets GDPR data protection compliance strategy.
+D. Turn on GDPR compliance setting for each GCP service you plan to use.</p>
+Answers: C
+<p>31. Your company which operates care homes country-wide has decided to migrate its batch workloads to GCP. The batch workloads are not time-critical and can be restarted if interrupted. The local regulations require you to use services that are HIPAA compliant. Which GCP services should your company use while ensuring service costs are minimized?</p>
+A. Use preemptible compute instances. Stop using GCP Services/APIs that are not compliant with HIPAA and disable them altogether.
+B. Use standard compute instances. Stop using GCP Services/APIs that are not compliant with HIPAA.
+C. Use standard compute instances. Stop using GCP Services/APIs that are not compliant with HIPAA and disable them altogether.
+D. Use preemptible compute instances. Stop using GCP Services/APls that are not compliant with HIPAA.</p>
+Answers: A
+<p>32. Your company has started its Cloud migration journey. The first phase of migration involves moving over internal (staff-only) applications to Google Cloud. These internal applications depend on Active Directory (AD) for user sign-in, but the Active Directory is not scheduled to be migrated until next year. You want to minimize the effort. What should you do?</p>
+A. Set up a new replica AD domain controller in a Google Compute Engine (GCE) instance and configure Google Cloud Directory Sync (GCDS) to replicate on-prem AD to the replica in GCE.
+B. Configure Google Cloud Directory Sync (GCDS) to sync AD usernames to cloud identities in GCP and configure applications to use SAML SSO with Cloud Identity as the Identity Provider (IdP).
+C. Configure Admin Directory API to validate credentials against the AD domain controller.
+D. Configure the identity provider in Cloud Identity-Aware Proxy to use the on-prem AD domain controller.</p>
+Answers: B
+<p>33. Your company runs mobile gaming servers and lets individual app developers host their games. Some of the games have been hugely popular, causing the gaming servers to go offline. Your company wants to capture vast quantities of key performance indicators from the gaming servers and monitor these KPls in real-time with low latency to identify the games which are taking down the servers. What should you do?</p>
+A. Store KPIs in Google Bigtable and visualize KPIs in Google Data Studio.
+B. Save KPls in Cloud Datastore and visualize KPls in Cloud Datalab.
+C. Store KPIs as custom metrics in Cloud Monitoring, and build dashboards in Cloud Monitoring to visualize KPls.
+D. Push KPI files to Cloud Storage hourly, use BigQuery load jobs to ingest them and visualize KPls in Google Data Studio.</p>
+Answers: C
+<p>34. Your company is partway through migration to Google Cloud. All compute workloads are scheduled to be migrated to Google Compute Engine this month, but they all depend on Active Directory (AD) which is scheduled isn’t scheduled for migration until next year. How should you configure the firewall rules so that all compute engine instances can reach your data centre to connect to the Active Directory while denying all other outbound traffic from compute engine instances?</p>
+A. 1. Create an egress rule with priority 2000 to allow AD traffic for all instances. 2. Rely on the implied deny egress rule with priority 200 to block all other traffic.
+B. 1. Create an egress rule with priority 200 to allow AD traffic for all instances. 2. Rely on the implied deny egress rule with priority 2000 to block all other traffic.
+C. 1. Create an egress rule with priority 2000 to allow AD traffic for all instances. 2. Create an egress rule with priority 200 to block all other traffic.
+D. 1. Create an egress rule with priority 200 to allow AD traffic for all instances. 2. Create an egress rule with priority 2000 to block all other traffic.</p>
+Answers: D
+<p>35. All internal applications in your company depend on a legacy staff Single Sign On (SSO) solution for authentication and authorization. The SSO application is deployed in a regional managed instance group (MIG), exposes public HTTPS REST endpoints and relies on a Cloud SQL instance to validate user information. How should you test the resilience of this system?</p>
+A. Work with a third-party company specializing in web scraping to compare and detect users credentials exposed in public breaches.
+B. Configure Intrusion Detection Management (IDM) and Intrusion Prevention Management (IPM) to detect and prevent unauthorized and suspicious logins.
+C. Update the existing system to add Cloud SQL read replica in a different zone to make the system immune from GCP zone failures and work with your operations team to validate the failover works as expected.
+D. Work with your operations team and shut down all instances in a zone to simulate a disaster scenario and check if the failover works.</p>
+Answers: D
+<p>36. You deployed an application on Google Compute Engine, but scaling the application is problematic because it requires a consistent set of hostnames. You plan to migrate this application to GKE to overcome the scaling issue. What GKE feature should you use to enable a consistent set of hostnames?</p>
+A. StatefulSets
+B. RBAC (Role-based access control) Cluster Role and Cluster Role Binding
+C. Persistent Volumes and Claims
+D. Use hostname environment variable inside containers</p>
+Answers: A
+<p>37. Your company’s stock market recommendations application has garnered good feedback among clients, and your CEO wants to use this as a launchpad to develop an even better machine learning-driven recommendations application. The CTO has asked you for your recommendation on how to improve the machine learning results over time. You want to follow Google recommended practices. What should you do?</p>
+A. Retain as much data as possible, including historical all recommendations and use this data to train machine learning models.
+B. Use Cloud Monitoring to monitor the performance of existing ML Engine, and tune as necessary.
+C. Deploy Machine learning models on newer &amp; more powerful CPU architectures as they become available.
+D. Migrate to TPUs that offer better performance.</p>
+Answers: A
+<p>38. You are migrating an application from an on-premises network to Google Cloud. The application should be resistant to regional failures, so your team has decided to deploy the application across two regions within the same VPC and fronted by an external HTTP(s) Load balancer. The workload depends on Active Directory, which is still hosted in the on-premises network. How should you configure the VPN between GCP Network and the on-premises network?</p>
+A. Enable network peering between GCP VPC and on-prem network.
+B. Deploy a regional VPN Gateway and make sure both regions in use have at least one VPN tunnel to the on-prem network.
+C. Deploy a global VPN Gateway with redundant VPN tunnels from all regions in the VPC to the on-prem network.
+D. Tweak IAM rules to enable VPC sharing &amp; expose VPC to on-prem network.</p>
+Answers: B
+<p>39. Your team would like to start using Google Kubernetes Engine (GKE) for deploying an application. A colleague has provided you with a Kubernetes deployment file. You enabled the Kubernetes Engine API, and you now need to deploy the application. What should you do?</p>
+A. Create a Kubernetes cluster by running gcloud container clusters create. Create a Kubernetes deployment by running kubectl apply -f .
+B. Create a Kubernetes cluster by running kubectl container clusters create. Automate the deployment using a deployment manager template.
+C. Create a Kubernetes cluster by running gcloud container clusters create. Automate the deployment using a deployment manager template.
+D. Create a Kubernetes cluster by running kubectl container clusters create. Use kubectl to create the deployment. Create a Kubernetes deployment by running kubectl apply -f .</p>
+Answers: A
+<p>40. Your company has accumulated over hundreds of terabytes of marketing analytics data, and you have been asked to identify a database for an OLAP tool that can handle this volume of data. Which database would you recommend for this analytics data?</p>
+A. BigQuery
+B. Cloud Firestore in Datastore mode
+C. Cloud SQL
+D. Cloud Storage
+E. Cloud Spanner</p>
+Answers: A
+<p>41. You deployed multiple applications in a GKE cluster; however, one application is not responding to requests. All pods of the deployment that underpins the troublesome application keep restarting every 10 seconds. You have been asked to inspect the logs and identify the issue. What should you do?</p>
+A. In Cloud Logging, inspect logs of all compute engine instances from the GKE node pool.
+B. Inspect Serial Port logs of all compute engine instances from the GKE node pool.
+C. In Cloud Logging, inspect logs of all pods that serve the troublesome application.
+D. Connect to a VM in the node pool, use kubectl exec -it</p>
+Answers: C
+<p>42. You deployed an application on Google Kubernetes Engine by running kubectl apply -f deployment.yaml and kubectl apply -f service.yaml. These have created a deployment called demo-deployment and a service called demo-service. You have now been asked to perform an update while minimizing the downtime to this application. You want to follow Google recommended practices. What should you do?</p>
+A. Execute a rolling update of the GKE compute cluster Managed Instance Group (MIG).
+B. Update service.yaml file with the new container image. To deploy the update, delete the existing service and create a new service: kubectl delete service/demo-service and kubectl create -f service.yaml.
+C. Update deployment.yaml file with the new container image. To deploy the update, delete the existing deployment and create a new deployment: kubectl delete deployment/demo-deployment and kubectl create -f deployment.yaml.
+D. Deploy the update by updating image on the existing deployment: kubectl set image deployment/demo-deployment .</p>
+Answers: D
+<p>43. Your company wants to migrate a mission-critical application from your data centre to Google cloud. The application must be immune to regional outages. How should you deploy the application?</p>
+A. Migrate the application to two Compute Engine VMs in different regions within the same project. Use HTTP(s) load balancer to failover from one instance to another.
+B. Migrate the application to a single Compute Engine VM and use HTTP(s) load balancer to failover from one instance to another.
+C. Migrate the application to two Compute Engine Managed Instance Groups (MIG) in different regions within the same project. Use HTTP(s) load balancer to failover from one MIG to another.
+D. Migrate the application to two Compute Engine Managed Instance Groups (MIG) in different regions in different projects. Use HTTP(s) load balancer to failover from one MIG to another.</p>
+Answers: C
+<p>44. Your company is designing a new application that requires robust and reliable task scheduling. Which GCP services should you use?</p>
+A. Set up RabbitMQ on a single compute engine instance. Use Cron service provided by Google Kubernetes Engine (GKE) to publish messages directly to RabbitMQ topic. Deploy an application in Compute Engine to subscribe to the topic and process messages as they arrive.
+B. Use Cron service provided by Google Kubernetes Engine (GKE) to publish messages directly to a Cloud Pub/Sub topic. Deploy an application in Compute Engine to subscribe to the topic and process messages as they arrive.
+C. Set up RabbitMQ on a single compute engine instance. Use App Engine cron service to publish messages directly to RabbitMQ topic. Deploy an application in Compute Engine to subscribe to the topic and process messages as they arrive.
+D. Use App Engine cron service to publish messages directly to a Cloud Pub/Sub topic. Deploy an application in Compute Engine to subscribe to the topic and process messages as they arrive.</p>
+Answers: D
+<p>45. You have configured all applications running on App Engine Flex to push their logs to separate BigQuery tables for storage. Your company wants to minimize costs and has asked you to implement a solution for purging logs older than 45 days. What should you do?</p>
+A. Set expiration time on all tables to 45 days.
+B. The default expiration settings in BigQuery automatically delete logs older than 45 days.
+C. Remove logs older than 45 days by running a custom bq script.
+D. Update the tables to be partitioned by ingestion date and set partition expiration to 45 days.</p>
+Answers: D
+<p>46. Your company needs to migrate a compute workload to App Engine service. The workload still relies on an on-premises database, but the security team has set up firewall rules that prevent the on-premises database from being publicly accessible. What should you do?</p>
+A. Use App Engine Standard service and connect to the on-premises database through Cloud VPN tunnel.
+B. Use App Engine Flexible service and connect to the on-premises database through Cloud VPN tunnel.
+C. Use App Engine Flexible service and enable the App Engine firewall rules to allow access to the on-premises database.
+D. Use App Engine Standard service and enable the App Engine firewall rules to allow access to the on-premises database.</p>
+Answers: B
+<p>47. Your company has retained 20 GB of audit logs in a NAS drive in the data centre and would like to migrate these to Cloud Storage. The compliance department requires you to encrypt the files using your customer-supplied encryption keys. How can you achieve this?</p>
+A. Create the bucket and upload files to it using gsutil and supply the encryption key using the –encryption-key parameter.
+B. Upload the files using gsutil and supply the encryption key using the –encryption-key parameter.
+C. Modify gcloud configuration to include the encryption key. Upload the files using gsutil.
+D. Modify .boto configuration to include the encryption key. Upload the files using gsutil.</p>
+Answers: D
+<p>48. Your mission-critical stock market recommendations application requires in-transit encryption end to end and relies on URL path-based routing. The application has users all over the world. Your company wants to migrate this application to Google cloud and has asked for your recommendation? Which GCP load balancer architecture would you recommend?</p>
+A. Use SSL Proxy Load Balancer with Global Forwarding Rules.
+B. Use URL Maps with Google cross-region Load Balancer.
+C. Use URL Maps with Google HTT(s) Load Balancer.
+D. Use SSL Proxy Load Balancer with Managed Instance Groups (MIG).</p>
+Answers: C
+<p>49. Your company has deployed a stateless application on a single Google Compute Engine instance. The application is used heavily by all employees during business hours, and there is minimal usage at other times. The application is experiencing slowness and performance issues during peak business hours. You have been asked by your manager to address the performance issues. What should you do?</p>
+A. 1. Use gcloud compute images create to create an image of the persistent disk. 2. Use gcloud compute instance-templates create to create an instance template from the image. 3. Create a Managed Instances Group (MIG) based on the instance template and enable autoscaling.
+B. 1. Use gcloud compute disks snapshot to create a snapshot of the persistent disk. 2. Use gcloud compute instance-templates create to create an instance template from the snapshot. 3. Create a Managed Instances Group (MIG) based on the instance template and enable autoscaling.
+C. 1. Use gcloud compute instance-templates create to create an instance template from the persistent disk. 2. Use gcloud compute images create to create an image of the template. 3. Create a Managed Instances Group (MIG) based on the image and enable autoscaling.
+D. 1. Use gcloud compute disks snapshot to create a snapshot of the persistent disk. 2. Use gcloud compute images create to create an image from the snapshot. 3. Create a Managed Instances Group (MIG) based on the image and enable autoscaling.</p>
+Answers: A
+<p>50. You host your company’s static website in the App Engine Flex service. You are leveraging Google’s Cloud CDN (Content Delivery Network) to cache content close to your users. Your company wants to optimise the CDN costs and has asked you to identify a way to improve the cache hit ratio. What should you do?</p>
+A. Update cache keys to remove the protocol (HTTP/HTTPS).
+B. Move static content to a Cloud Storage Bucket, set up a load balancer for the bucket and direct requests from Google CDN to the load balancer.
+C. Set cache expiration time to a lower value.
+D. Set caching location header HTTP: Cache-Region to a GCP region closest to users.</p>
+Answers: A
+<p>1. Your company wants to migrate all on-premises applications to Google Cloud and plans to do this in several phases over the next two years. During this period, workloads split between the on-premises data centre and Google Cloud need to communicate with each other. Your GCP network has a single VPC. How should you set up the network to enable communication between applications running in Google cloud and on-premises data centre?</p>
+A. Configure both Primary and Secondary IP ranges of the VPC to not overlap with the on-premises VLAN.
+B. Configure the VPC in GCP to use the same IP range as on-premises VLAN.
+C. Configure the Secondary IP range of the VPC in GCP to use the same IP range as on-premises VLAN and use a non-overlapping range for the Primary range.
+D. Configure the Primary IP range of the VPC in GCP to use the same IP range as on-premises VLAN and use a non-overlapping range for the Secondary range.</p>
+Answers: A
+<p>10. Your company offers online news subscriptions for customers and processes their payments in a PCI-DSS compliant application running on Google cloud. Local regulations require you to store these logs for one year. Your compliance team has asked you for your recommendation on removing payment card data before storing the logs. What should you do?</p>
+A. Use Cloud Function to modify the log entry to redact payment card data.
+B. Use the SHA1 algorithm to hash the log.
+C. Encrypt all data using a master key.
+D. Use Cloud Data Loss Prevention (DLP) API.</p>
+Answers: D
+<p>11. Your on-premises data centre is at full capacity, but your company has forecasted considerable growth in Apache spark and Hadoop jobs. The existing jobs require lots of operational support, and your company doesn’t have resources, human resources or hardware, to accommodate the forecasted growth. You have been asked to recommend services in Google Cloud that your company could leverage to process these jobs while minimizing the cost, changes and operational overhead. Which GCP service(s) should you recommend?</p>
+A. Google Cloud Dataproc.
+B. Google Kubernetes Engine (GKE).
+C. Google Cloud Dataflow.
+D. Google Compute Engine (GCE).</p>
+Answers: A
+<p>12. New releases of an application that you manage are taking longer than expected, and you want to speed up the deployments. The application is deployed on GKE using this Dockerfile:</p>
+<p><code>FROM ubuntu:20.04</code>
+<code>COPY - /src</code>
+<code>RUN apt-get update Fy &amp;&amp; apt-get upgrade -y</code>
+<code>RUN apt-get install -y python python-pip python-dev</code>
+<code>RUN pip install -r requirements_new.txt</code>
+<code>What should you do? (Select 2 answers)</code></p>
+A. Update GKE node pool to use larger machine types.
+B. Change the order of steps to copy source files after installing dependencies.
+C. Add RUN apt-get remove python to the Dockerfile to remove python after running pip install.
+D. Installing dependencies is slowing down the docker build. Remove all dependencies from requirements_new.bxt.
+E. Use a smaller image like the Alpine version instead of the full Ubuntu image.</p>
+Answers: B E
+<p>13. Your team developed a custom binary to install an application. Your change management team has asked you to install the binary after two weeks. You want to transfer the binary file to Cloud Shell instance today and access it in two weeks from any directory. Where should you store the binary file on Cloud Shell instance?</p>
+A. /opt
+B. /usr/bin
+C. SHOME/bin
+D. /var/log</p>
+Answers: C
+<p>14. Your company owns a mission-critical application that is used extensively for handling online credit card payments. Your data centre is due for a hardware refresh, and the company has instead decided to migrate all applications to Google Cloud. Your compliance team requires the application to be compliant with PCI DSS regulations. You want to know if Google Kubernetes Engine is suitable for hosting your application. What should you do?</p>
+A. In addition to the Kubernetes Engine and GCP, which are PCI-DSS compliant, the application itself should also be compliant with the regulations.
+B. Google Cloud Platform is PCI-DSS compliant; therefore, any applications hosted on it are automatically compliant.
+C. Kubernetes Engine is multi-tenant and not PCI DSS compliant.
+D. Migrate the solution to App Engine Standard, which is the only GCP compute platform certified for PCI DSS.</p>
+Answers: A
+<p>15. Your company plans to migrate several production applications to Google Cloud. You want to follow Google Recommended Practices to simplify IAM access controls for the whole organization. These are 20+ departments, each with different IAM requirements. You wish to set up these IAM controls centrally for ease of management. How should you design the resource hierarchy?</p>
+A. Set up a single organization with multiple folders, one for each department.
+B. Set up multiple organizations, one organization for each department.
+C. Set up multiple folders within multiple organizations, one organization for each department.
+D. Set up a single organization with multiple projects, one for each department.</p>
+Answers: A
+<p>16. Your company is currently using a bespoke logging utility that gathers logs from all on-premises virtual machines and stores them in NAS. Your company plans to provision several new cloud-based products in Google Cloud, and the initial analysis has determined the existing logging utility is not compatible with some of the new cloud products. What should you do to ensure you can capture errors and view historical log data easily?</p>
+A. Review Application Logging best practices.
+B. Review the logging requirements and use existing logging utility.
+C. Patch the current logging utility to the latest version, and take advantage of new features.
+D. Install Google Cloud logging agent on all VMs.</p>
+Answers: D
+<p>17. Your company has a hybrid network architecture with workloads running primarily off the on-premises data centre and GCP as the failover location. One of the applications uses an on-premises MySQL database, and you have set up a Cloud SQL replica to replicate MySQL database to Google Cloud platform. You have Cloud Monitoring Alarms to monitor replication lag (latency) and replication loss (packet loss) for the replication from on-premises MySQL database to Cloud SQL. Both alarms have recently triggered, and your operations team have asked you to fix the issue. What should you do? (Select Two)</p>
+A. When replication fails, restore Google Cloud SQL to a working backup.
+B. Update MySQL replication to use UDP protocol.
+C. Configure multiple VPN tunnels to take over if Dedicated Interconnect fails.
+D. Set up Google Cloud Dedicated Interconnect between the on- premises network and the GCP network.
+E. Send the replication logs to Cloud Storage, use Cloud Function to replicate them to the Cloud SQL replica.</p>
+Answers: C D
+<p>18. Your company’s auditors carry out an annual audit every year and have asked you to provide them with all the IAM policy changes in Google Cloud since the last audit. You do not want to compromise on the security, and you want to expedite and streamline the audit analysis. How should you share the information requested by auditors?</p>
+A. Write a Cloud Function to poll relevant logs in Cloud Logging, extract the necessary data and push data to Cloud SQL Set up IAM rules to enable the audit team to query data from Cloud SQL instance.
+B. Set up a sink destination to Google Cloud Storage bucket and export relevant logs from Cloud Logging. Set up IAM rules to enable the audit team access to log files in the bucket.
+C. Set up alerts in Cloud Monitoring for each IAM policy change and send an email to the audit team.
+D. Set up a sink destination to BigQuery and export relevant logs from Cloud Logging. In BigQuery, create views with the necessary data and restrict them to the audit team with ACLs.</p>
+Answers: D
+<p>19. Your company has installed millions of loT devices in numerous towns and cities all over the world. The loT devices record chemical and radiation pollution levels every minute and push the readings to Google Cloud. Which GCP service should you use to store these readings?</p>
+A. Google BigQuery
+B. Google Cloud Storage
+C. Google Cloud Bigtable
+D. Google Cloud SQL</p>
+Answers: C
+<p>2. You work for an accountancy firm that supports accounting needs of several FTSE- 100 companies. Your customers expect high-quality agile service without compromising on release speed. Your company places a high value on being responsive to the requests and meeting the needs of customers small and big alike, without compromising on the security. Your company prides itself on placing security at the forefront of all other requirements. Taking into consideration the security requirements, how should you proceed with deploying a new update to the widely used accountancy application? (Choose 2 answers)</p>
+A. Update CI/CD pipeline to deploy changes only if unit-testing between components is successful.
+B. Update CI/CD pipeline to ensure the application uses signed binaries from trusted repositories.
+C. Ask the security team to review every code commit.
+D. Update CI/CD pipeline to run a static source code security scan and deploy changes only if the scan doesn’t show up issues.
+E. Update CI/CD pipeline to run a security vulnerability scan and deploy changes only if the scan doesn’t show up issues.</p>
+Answers: D E
+<p>20. Your company wants to migrate its payroll and accounting solution from on-premises data centre to Google cloud. The finance department has requested the disruption be kept to a minimum as this application is heavily used for preparing the annual accounts. The existing security principles prevent you from storing passwords in Google Cloud. How should you authenticate users of finance department while minimizing the disruption?</p>
+A. Run Google Cloud Directory Sync to create user identities in Google.
+B. Require users to update their Google password to be same as their corporate password.
+C. Replicate passwords from AD to Google Identity with G Suite Password Sync.
+D. Use SAML to federate authentication to the on-premises Identity Provider (IdP).</p>
+Answers: D
+<p>21. You work for a world’s leading global business publication which has over a million daily customers. Customers can get in touch with your customer service team either on phone, email or chat. You are redesigning the chat application on Google Cloud, and you want to ensure chat messages can’t be spoofed any anyone. What should you do?</p>
+A. Add HTTP headers to the messages to identify the originating user and the destination.
+B. Use Public Key Infrastructure (PKI) to set up 2 Way SSL between client-side and server-server.
+C. Use block-based encryption with a complex shared key to encrypt messages on client-side before relaying them over the network.
+D. Encrypt the message on client-side with the user’s private key.</p>
+Answers: B
+<p>22. You recently deployed an update to a payroll application running on Google App Engine service, and several users started complaining about the slow performance. What should you do?</p>
+A. Rollback to the previous version. Roll forward to the new version at midnight when there is less traffic and look through Cloud Logging to debug the issue in the production environment. If necessary, enable Cloud Trace in your application for debugging.
+B. Work with your telco partner to debug the performance issue.
+C. Rollback to the previous version. Then, deploy the new version in a non-production environment and look through Cloud Logging to debug the issue. If necessary, enable Cloud Trace in your application for debugging.
+D. Identify the cause in VPC flow logs before rolling back to the previous version.</p>
+Answers: C
+<p>23. Your company needs to move large quantities of analytics data every day from the on-premises data centre to Google Cloud. For the data transfers to happen within the agreed SLA, you require a network connection that is at least 20 Gbps. How should you design the connection between your on-premises network and GCP to enable this transfer within SLA?</p>
+A. Use Dedicated Interconnect between the on-premises network and the GCP network.
+B. Use Dedicated Interconnect between the on-premises network and the GCP CDN edge.
+C. Use a single Cloud VPN tunnel between the on-premises network and the GCP network.
+D. Use a single Cloud VPN tunnel between the on-premises network and the GCP CDN edge.</p>
+Answers: A
+<p>24. Local health care regulations require your company to persist raw logs from all applications across all GCP projects for 5 years. What should you do?</p>
+A. Export logs from all projects to Google Cloud Storage.
+B. Export logs from all projects to BigQuery.
+C. Store logs in each project for 5 years.
+D. Store logs in each project as per the default retention policies.</p>
+Answers: A
+<p>25. Your company developed an enhancement to a popular weather charting application. The enhancement offers several new features which the company hopes will establish itself as the market leader in weather charting. The enhancement has been validated internally by testing team and business users. The change management board is keen on testing these features with new customers in the production environment while allowing existing users to be served by the old version. Additionally, to prevent impact to existing users, you have been asked to identify how this can be implemented while retaining the existing DNS records and TLS certificates. What should you do?</p>
+A. Configure the Load Balancer for URL path-based routing and route to the appropriate version for each API path.
+B. Add a new load balancer to serve traffic for the new version.
+C. Configure requests from existing customers to use the new version endpoint.
+D. Redirect requests on the old version to the new version.</p>
+Answers: A
+<p>26. Your company plans to migrate an existing application to Google Cloud. The application relies on URL path-based routing for its functionality. A requirements analyst has collected the following additional requirements from various teams. 1. The business owners of the application consider this as mission-critical for the work, and the application should scale based on traffic. 2. The application support team requires multiple isolated test environments to replicate live issues. 3. The enterprise architect has recommended basing the solution on open-source technology to allow portability to other Cloud providers in future. 4. The operations team have advised enabling continuous integration/delivery and being able to deploy application bundles using dynamic templates. 5. The application must retain its logs for 10 years while optimizing the storage costs. As the Cloud migration architect of your company, which combination of services should you consider for this application?</p>
+A. GKE, Cloud Storage, Jenkins, and Cloud Load Balancing.
+B. GKE, Cloud Storage, Jenkins, and Helm.
+C. GKE, Cloud Logging and Cloud Deployment Manager.
+D. GKE, Cloud Logging and Cloud Load Balancing.</p>
+Answers: B
+<p>27. Your company stores logs from all applications and all projects in a centralized location. You are the Cyber Security Team Lead, and you have been asked to identify ways to prevent bad actors from tampering these logs. What can you do to verify that the logs are authentic?</p>
+A. Store logs in multiple locations.
+B. Sign the log entry digitally and store the signature.
+C. Store log entries in JSON format in a Cloud Storage Bucket.
+D. Store logs in a database such as Cloud SQL or Cloud Spanner. Use IAM and ACLs to restrict who can modify the data.</p>
+Answers: B
+<p>28. You have deployed several batch jobs on preemptible Google Compute Engine Linux virtual machines. The batch jobs run overnight and can be restarted if interrupted. When interrupted, you want the instance to run a script to shutdown the batch job properly. What should you do?</p>
+A. Configure a shutdown script with xinetd service in Linux. Add a metadata tag with key as shutdown-script-url and value as service url.
+B. When provisioning the VM, add a metadata tag with key as shutdown-script and value as the path to a local shutdown script.
+C. Add a shutdown script to /etc/rc.6.d/directory.
+D. Configure a shutdown script with xinetd service in Linux.</p>
+Answers: B
+<p>29. Your company has hybrid network architecture with workloads running primarily off the on-premises data centre and GCP as the failover location. One of the applications uses an on-premises MySQL database, and you have set up a Cloud SQL replica to replicate MySQL database to Google Cloud platform. At peak times, the updates to MySQL database are massive, and you need to ensure these changes can be reliably replicated to Cloud SQL. Your network administrator has recommended private address space communication between On-premises network and the GCP network. What network topology should you use?</p>
+A. Use Cloud VPN.
+B. Set up a custom VPN server on a Google Compute Engine instance to connect to the on-premises network. Route all traffic through this server.
+C. Use TLS &amp; NAT translation gateway.
+D. Use Dedicated Interconnect.</p>
+Answers: D
+<p>3. Your company has accumulated vast quantities of logs in Cloud Storage over the last 4 years. Local regulations require your company to persist logs for 90 days. Your company wants to cut costs by deleting logs older than 90 days. You want to minimize operational overhead and implement a solution that works for existing logs and new log entries. What should you do?</p>
+A. Write a custom script to retrieve all logs (IS -Irt gs:///**) in the bucketand delete logs older than 90 days. Schedule the script using cron.
+B. Enable a lifecycle management rule to delete logs older than 90 days by pushing the lifecycle configuration in JSON format to the bucket using gsutil.
+C. Write a custom script to retrieve top-level logs (t5 -It gs:///**) in the bucket and delete logs older than 90 days. Schedule the script using cron.
+D. Enable a lifecycle management rule to delete logs older than 90 days by pushingthe lifecycle configuration in XML format to the bucket using gsutil.</p>
+Answers: B
+<p>30. You have recently deconstructed a huge monolith application into multiple microservices. At the application layer, all microservices are stateless and rely on a Cloud SQL instance to store and retrieve data. You have been asked by the security team to securely store the credentials to enable secure communication between the microservices and Cloud SQL instance. Where should you store them?</p>
+A. Store the database credentials in application source code.
+B. Store the database credentials as environment variables in each microservice.
+C. Store the database credentials in a file in Cloud Storage and restrict access through object ACL
+D. Store the database credentials in GCP Secrets Management.</p>
+Answers: D
+<p>31. Your company owns several brands for online news publications and plans to migrate them to Google Cloud. All news publication applications have the same architecture – a web tier, an application (API) tier and a database tier – all in the same VPC. Each brand has a separate web tier, but all brands share the same application tier and database tier. You are the network administrator for your company, and you are asked to enable communication from Web tiers to application tier and from application tier to database tier. The security team has forbidden communication between web tiers and database tier. What should you do?</p>
+A. Add network tags to each tier. Configure firewall rules based on network tags to allow the desired traffic.
+B. Install a firewall service on the individual VMs and configure to allow the desired traffic.
+C. Add network tags to each tier. Configure firewall routes based on network tags to allow the desired traffic.
+D. Set up different subnets for each tier.</p>
+Answers: A
+<p>32. Your company installs and services elevators and escalators. The elevators and escalators have several sensors that record several discrete items of information every second. Your company wants to use this information to detect service/maintenance needs accurately. What type of database should you use to store these items of information?</p>
+A. NoSQL
+B. Relational.
+C. Comma Separated File.
+D. NAS.</p>
+Answers: A
+<p>33. Your testing team recently signed off a new release, and you have now deployed this to production, however, almost immediately, you started noticing performance issues which were not visible in the test environment. How can you adjust your test and deployment procedures to avoid such issues in future?</p>
+A. Carry out testing in test and staging environments with production-like volume.
+B. Split the change into smaller units and deploy one unit at a time to identify what causes performance issues.
+C. Deploy less number of changes to production.
+D. Enable new version to 1% of users before rolling out to all users.</p>
+Answers: A
+<p>34. All your company’s workloads currently run from an on-premises data centre. The existing hardware is due for a refresh in 3 years, and your company has commissioned several teams to explore various cloud platforms. Your team is in charge of exploring Google Cloud, and you would like to carry out proof of concept work for migration of some workloads to GCP. Your manager has been asked for your suggestion on minimizing costs while enabling the proof of concept work to continue without committing for longer-term use. What should your recommendation be?</p>
+A. Use free tier where possible and sustained use discounts. Recruit a GCP cost management expert to help minimize operational cost.
+B. Use free tier where possible and committed use discounts. Train the whole team to be aware of cost optimization techniques.
+C. Use free tier where possible and sustained use discounts. Train the whole team to be aware of cost optimization techniques.
+D. Use free tier where possible and committed use discounts. Recruit a GCP cost management expert to help minimize operational cost.</p>
+Answers: C
+<p>35. You recently migrated an application from on-premises Kubernetes cluster to Google Kubernetes Cluster. The application is forecasted to receive unpredictable/spiky traffic from next week, and your Team Lead has asked you to enable the GKE cluster node pool to scale on demand but not exceed more than 10 nodes. How should you configure the cluster?</p>
+A. Delete the existing cluster, create new GKE cluster by running: gcloud container clusters create weatherapp_cluster -enable-autoscaling -min-nodes=1 — max-nodes=10 and deploy the application to the new cluster.
+B. Update existing GKE cluster to enable autoscaling and set min and max nodes by running: gcloud container clusters update weatherapp_cluster -enable-autoscaling -min-nodes=1 –max-nodes=10
+C. Add tags to the instance to enable autoscaling and set max nodes to 10 by running: gcloud compute instances add-tags – tags enable-autoscaling – max-nodes-10
+D. Resize the GKE cluster node pool to have 10 nodes, enough to handle spikes in traffic by running: gcloud container clusters resize weatherapp_cluster -size 10</p>
+Answers: B
+<p>36. Your company specializes in clickstream analytics and uses advanced machine learning to identify opportunities for further growth. Your company recently won a contract to carry out these analytics for a leading retail platform. The retail platform has a large user base all over the world and generates up to 10,000 clicks per second during sale periods. What GCP service should you use to store these clickstream event messages?</p>
+A. Google Cloud Datastore.
+B. Google Cloud Bigtable.
+C. Google Cloud SQL.
+D. Google Cloud Storage.</p>
+Answers: B
+<p>37. Your company recently migrated an application from the on-premises data centre to Google Cloud by lifting and shifting the VMs and the database. The application on Google Cloud uses 3 Google Compute Engine instances – 2 for the python application tier and 1 for MySQL database with 80GB disk. The application has started experiencing performance issues. Your operations team noticed both the CPU and memory utilization on MySQL database are low, but the throughput and network IOPS is maxed out. What should you do to increase the performance?</p>
+A. Resize SSD persistent disk dynamically to 400 GB.
+B. Increase CPU &amp; RAM to 64 GB to compensate for throughput and network IOPS.
+C. Migrate the database to Cloud SQL for PostgreSQL.
+D. Use BigQuery instead of MySQL.</p>
+Answers: A
+<p>38. Your company is a leading online news media organization that has customers all over the world. The number of paying subscribers is over 2 million, and the free subscribers stand at 9 million. The user engagement team has identified 7.6 million active users among the free subscribers. It plans to send them an email with links to the current monthly and quarterly promotions to convert them into paying subscribers. The user engagement team is unsure on the click-through rate and has asked for a cost-efficient solution that can scale to handle anything between 100 clicks to 1 million clicks per day. What should you do?</p>
+A. 1. Save user data in Cloud SQL. 2. Serve the web tier on a single Google Compute Engine Instance.
+B. 1. Save user data in Cloud Datastore. 2. Serve the web tier on App Engine Standard Service.
+C. 1. Save user data in Cloud BigTable. 2. Serve the web tier on a fleet of Google Compute Engine Instances in a MIG.
+D. 1. Save user data in SSD Persistent Disks. 2. Serve the web tier on GKE.</p>
+Answers: B
+<p>39. You just migrated an application to Google Compute Engine. You deployed it across several regions – with an HTTP(s) Load Balancer and Managed Instance Groups (MIG) in each region that provision instances across multiple zones with just internal IP addresses. You noticed the instances are being terminated and relaunched every 45 seconds. The instance itself comes up within 20 seconds and is responding to cURL requests on localhost. What should you do the fix the issue?</p>
+A. Modify the instance template to add public IP addresses to the VMs, terminate all existing instances, update Load Balancer configuration to contact instances on public IP.
+B. Add a load balancer tag to each instance. Set up a firewall rule to allow traffic from the Load Balancer to all instances with this tag.
+C. Make sure firewall rules allow health check traffic to the VM instances.
+D. Check load balancer firewall rules and ensure it can receive HTTP(s) traffic.</p>
+Answers: C
+<p>4. A mission-critical application has experienced outage recently due to a new release. The release is automatically deployed by a continuous deployment pipeline for a project stored in Github repository. Currently, a commit when merged to the main branch triggers the deployment pipeline, which deploys the new release to the production environment. Your change management committee has asked you if it is possible to verify (test) the release artefacts before deploying them to production. What should you do?</p>
+A. Continue using the existing CI/CD solution to deploy new releases to the production, but enable a mechanism to roll back quickly, e.g. Blue/Green deployments etc.
+B. Continue using the existing CI/CD solution to deploy new releases to the production environment and carry out testing with live-traffic.
+C. Configure the CI/CD solution to monitor tags in the repository. Deploy non-production tags to staging environments. After testing the changes, create production tags and deploy them to the production environment.
+D. Use App Engine’s traffic splitting feature to enable the new version for 1% of users before rolling it out to all users.</p>
+Answers: C
+<p>40. Your company enabled set Identity and Access Management (IAM) policies at different levels of the resource hierarchy – VMs, projects, folders and organization. You are the security administrator for your company, and you have been asked to identify the effective policy that applies for a particular VM. What should your response be?</p>
+A. The effective policy for the VM is the policy assigned directly to the VM and restricted by the policies of its parent resource.
+B. The effective policy for the VM is a union of the policy assigned to the VM and the policies it inherits from its parent resource.
+C. The effective policy for the VM is the policy assigned directly to the VM.
+D. The effective policy for the VM is an intersection of the policy assigned to the VM and the policies it inherits from its parent resource.</p>
+Answers: B
+<p>41. You have recently migrated an on-premise MySQL database to a Linux Compute Engine instance in Google Cloud. A sudden burst of traffic has seen the free space in MySQL server go down from 72% to 2%. What can you do to remediate the problem while minimizing the downtime?</p>
+A. Increase the size of the SSD persistent disk and verify the change by running fdisk command.
+B. Increase the size of the SSD persistent disk. Resize the disk by running resize2fs.
+C. Add a new larger SSD disk and move the database files to the new disk. Shut down the compute engine instance. Increase the size of SSD persistent disk and start the instance.
+D. Restore snapshot of the existing disk to a bigger disk, update the instance to use new disk and restart the database.</p>
+Answers: B
+<p>42. You have recently deconstructed a huge monolith application into numerous microservices. Most requests are processed within the SLA, but some requests take a lot of time. As the application architect, you have been asked to identify which microservices take the longest. What should you do?</p>
+A. Send metrics from each microservice at each request start and request end to custom Cloud Monitoring metrics.
+B. Decrease timeouts on each microservice so that requests fail faster and are retried.
+C. Update your application with Cloud Trace and break down the latencies at each microservice.
+D. Look for APIs with high latency in Cloud Monitoring Insights.</p>
+Answers: C
+<p>43. Your company developed a new weather forecasting application and deployed it in Google cloud. The application is deployed on autoscaled MIG across two zones, and the compute layer relies on a Cloud SQL database. The company launched a trial on a small group of employees and now wishes to expand this trial to a larger group, including unauthenticated public users. You have been asked to ensure the application response is within the SLA. What resilience testing strategy should you use to achieve this?</p>
+A. Capture the trial traffic and replay several instances of it simultaneously until all layers autoscale. Then, start terminating resources in one of the zones randomly.
+B. Simulate user traffic until one of the application layer autoscales. Then, start chaos engineering by terminating resources randomly across both zones.
+C. Start sending more traffic to the application until all layers autoscales. Then, start chaos engineering by terminating resources randomly across both zones.
+D. Estimate the expected traffic and update the minimum size of the Managed Instance Group (MIG) to handle 200% of the expected traffic.</p>
+Answers: C
+<p>44. You designed a mission-critical application to have no single point of failure, yet the application suffered an outage recently. The post-mortem analysis has identified the failed component as the database layer. The Cloud SQL instance has a failover replica, but the replica was not promoted to primary. Your operations team have asked your recommendation for preventing such issues in future. What should you do?</p>
+A. Snapshot database more frequently.
+B. Migrate database to an instance with more CPU.
+C. Carry out planned failover periodically.
+D. Migrate to a different database.</p>
+Answers: C
+<p>45. Your company has accumulated 200 TB of logs in the on-premises data centre. Your bespoke data warehousing analytics application, which processes these logs and runs in the on-premises data centre, doesn’t autoscales and is struggling to cope up with the massive volume of data. Your infrastructure architect has estimated the data centre to run out of space in 12 months. Your company would like to move the archive logs to Google Cloud for long term storage and explore a replacement solution for its analytics needs. What would you recommend? (Choose two answers)</p>
+A. Migrate logs to Cloud SQL for long term storage and analytics.
+B. Migrate log files to Cloud Logging for long term storage.
+C. Migrate log files to Google Cloud Storage for long term storage.
+D. Import logs from Google Cloud Storage to Google BigQuery for analytics.
+E. Import logs to Google Cloud Bigtable for analytics.</p>
+Answers: C D
+<p>46. Your company holds multiple petabytes of data which includes historical stock prices for all stocks from all world financial markets. Your company now wants to migrate this data to Cloud. The financial analysts at your company have years of SQL experience, work round the clock and heavily depend on the historical data for predicting future stock prices. The chief analyst has asked you to ensure data is always available and minimize the impact on their team. Which GCP service should you use to store this data?</p>
+A. Google Cloud Storage.
+B. Google Cloud SQL.
+C. Google BigQuery.
+D. Google Cloud Datastore.</p>
+Answers: C
+<p>47. Your company on-premises data centre is running out of space, and your CTO thinks the cost of migrating and running all development environments in Google Cloud Platform is cheaper than the capital expenditure required to expand the existing data centre. The development environments are currently subject to multiple stop, start and reboot events throughout the day and persist state across restarts. How can you design this solution on Google Cloud Platform while enabling your CTO view operational costs on an ongoing basis?</p>
+A. Export detailed Google cloud billing data to BigQuery and visualize cost reports in Google Data Studio.
+B. Use Google Comput Engine VMs with Local SSD disks to store state across restarts.
+C. Run gcloud compute instances set-disk-auto-delete on SSD persistent disks before stopping/rebooting the VM.
+D. Use Google Comput Engine VMs with persistent disks to store state across restarts.
+E. Apply labels on VMs to export their costs to BigQuery dataset.</p>
+Answers: A D
+<p>48. Your company specializes in clickstream analytics and uses cutting edge Al-driven analysis to identify opportunities for further growth. Most customers have their clickstream analytics evaluated in a batch every hour, but some customers pay more to have their clickstream analytics evaluated in real-time. Your company would now like to migrate the analytics solution from the on-premises data centre to Google Cloud and is keen on selecting a service that offers both batch processing for hourly jobs and live processing (real-time) for stream jobs. Which GCP service should you use for this requirement while minimizing cost?</p>
+A. Google Cloud Dataproc.
+B. Google Compute Engine with Google BigQuery.
+C. Google Kubernetes Engine with Bigtable.
+D. Google Cloud Dataflow.</p>
+Answers: D
+<p>49. Your company recently acquired a health care start-up. Both your company and the acquired start-up have accumulated terabytes of reporting data in respective data centres. You have been asked for your recommendation on the best way to detect anomalies in the reporting data. You wish to use services on Google Cloud platform to achieve this. What should your recommendation be?</p>
+A. Upload reporting data of both companies to a Cloud Storage bucket, point
+B. Datalab at the bucket and clean data as necessary.
+C. Configure Cloud Dataprep to connect to your on-premises reporting systems and clean data as necessary.
+D. Upload reporting data of both companies to a Cloud Storage bucket, explore the bucket data in Cloud Dataprep and clean data as necessary.
+E. Configure Cloud Datalab to connect to your on-premises reporting systems and clean your data as necessary.</p>
+Answers: D
+<p>5. Your company has a deadline to migrate all on-premises applications to Google Cloud Platform. Due to stringent timelines, your company decided to “lift and shift” all applications to Google Compute Engine. Simultaneously, your company has commissioned a small team to identify a better cloud-native solution for the migrated applications. You are the Team Lead, and one of your main requirements is to identify suitable compute services that can scale automatically and require minimal operational overhead (no-ops). Which GCP Compute Services should you use? (Choose two)</p>
+A. Use Google App Engine Standard.
+B. Use Google Kubernetes Engine (GKE).
+C. Use Managed Instance Groups (MIG) Compute Engine instances.
+D. Use Google Compute Engine with custom VM images.
+E. Use custom container orchestration on Google Compute Engine.</p>
+Answers: C
+<p>50. You have a business-critical application deployed in a non-autoscaling Managed Instance Group (MIG). The application is currently not responding to any requests. Your operations team analyzed the logs and discovered the instances keep restarting every 30 seconds. Your Team Lead would like to login to the instance to debug the issue. What should you do to enable your Team Lead login to the VMs?</p>
+A. Disable autoscaling and add your Team Lead’s SSH key to the project-wide SSH Keys.
+B. Carry out a rolling restart on the Managed Instance Group (MIG).
+C. Disable Managed Instance Group (MIG) health check and add your
+D. Team Lead’s SSH key to the project-wide SSH keys.
+E. Grant your Team Lead Project Viewer IAM role.</p>
+Answers: D
+<p>6. You enabled a cron job on a Google Compute Engine to trigger a python API that connects to Google BigQuery to query data. The script complains that it is unable to connect to BigQuery. How should you fix this issue?</p>
+A. Install gcloud SDK, gsutil, and bq components on the VM.
+B. Provision a new VM with BigQuery access scope enabled, and migrate both the cron job and python API to the new VM.
+C. Configure the Python API to use a service account with relevant BigQuery access enabled.
+D. Update Python API to use the latest BigQuery API client library.</p>
+Answers: C
+<p>7. You deployed an application in App Engine Standard service that uses indexes in Datastore for every query your application makes. You recently discovered a runtime issue in the application and attributed this to missing Cloud Datastore Indexes. Your manager has asked you to create new indexes in Cloud Datastore by deploying a YAML configuration file. How should you do it?</p>
+A. Upload the YAML configuration file to a Cloud Storage bucket and point the index configuration in App Engine application to this location.
+B. Run gcloud datastore indexes create .
+C. In GCP Datastore Admin console, delete current configuration YAML file and upload a new configuration YAML file.
+D. Send a request to the App Engine’s built-in HTTP modules to update the index configuration file for your application.</p>
+Answers: B
+<p>8. You configured a CI/CD pipeline to deploy changes to your production application, which runs on GCP Compute Engine Managed Instance Group with auto-healing enabled. A recent deployment has caused a loss of functionality in the application. Debugging could take a long time, and downtime is a loss of revenue for your company. What should you do?</p>
+A. Deploy the old codebase directly on the VM using custom scripts.
+B. Revert changes in Github repository and let the CI/CD pipeline deploy the
+C. previous codebase to the production environment.
+D. Fix the issue directly on the VM.
+E. Modify the Managed Instance Group (MIG) to use the previous instance template, terminate all instances and let autohealing bring back the instances on the previous template.</p>
+Answers: E
+<p>9. Your company has deployed a wide range of application across several Google Cloud projects in the organization. You are a security engineer within the Cloud Security team, and an apprentice has recently joined your team. To gain a better understanding of your company’s Google cloud estate, the apprentice has asked you to provide them access which lets them have detailed visibility of all projects in the organization. Your manager has approved the request but has asked you to ensure the access does not let them edit/write access to any resources. Which IAM roles should you assign to the apprentice?</p>
+A. Organization Owner and Project Owner roles.
+B. Organization Viewer and Project Owner roles.
+C. Organization Viewer and Project Viewer roles.
+D. Organization Owner and Project Viewer roles.</p>
+Answers: C
+<p>1. Your company won a new contract from the Highways agency to setup speed monitor devices on all residential streets. The project manager anticipates the installation of 20 million speed monitoring devices over the next two years. Each speed monitoring device is equipped with motion sensors that get activated when a vehicle passes by. The device picks up vehicle speed and number plate on each reading and should send the data back into a central database. Some of the sensors are installed in areas with inconsistent connectivity, and some sensors may lose connectivity due to nearby road works. How should you design the data ingestion for this system?</p>
+A. Configure each sensor to check the connectivity to Cloud Pub/Sub and insert data in a shared topic.
+B. Configure each sensor to create a persistent connection (tunnel) to a Google Compute VM and send data to a custom application running on the VM.
+C. Configure each sensor to create a persistent connection (tunnel) to an App Engine application, and send data to the application and let is save in Cloud Datastore.
+D. Configure each sensor to check the availability of Cloud SQL and insert data in a Cloud SQL table based on the device identifier.</p>
+Answers: A
+<p>2. Your company has external audits every 12 months, and this year’s audit has uncovered an insecure (non-HTTPS) application running on a GCE virtual machine with SSH port open to the public. This finding has resulted in your company failing cyber essentials certification and losing valuable revenue. Your compliance department has identified the network (VPC) this instance runs in and has asked for your assistance in identifying who created the network. What should you do?</p>
+A. In Cloud Logging Console, identify the user that created the VM.
+B. Look for Create VM entries under Data Access category in the Activity page.
+C. SSH to the instance and identify who previously logged in to the system, and check with them.
+D. In Cloud Logging Console, search for the Create Insert entry under GCE Network logs.</p>
+Answers: D
+<p>3. You have deployed a time tracking application in the US-Central region on a Google compute engine Linux virtual machine. Some of your clients in the US-East region have been complaining about slowness, and you have decided to spin up a new compute engine instance in the US-East region in a different project. To do this, you need to create a copy of the Linux virtual machine from US-Central and deploy in US-East region. You have many enhancements in the pipeline, and each time you update the application in US-Central, you also need to consistently and effortlessly replace the copy in US-East region. How should you do it?</p>
+A. Generate a snapshot of the boot disk in US-Central, share it with US-East. When spinning up the VM instance in US-East, use the shared snapshot for the boot disk.
+B. Copy and stream the boot disk from US-Central to a new VM instance in US-East.
+C. Generate an image of the boot disk in US-Central with Linux dd command and use this image when spinning up the VM instance in US-East.
+D. Generate a snapshot of the boot disk and use it to create an image in US-Central. Share the image with other project and use this image when spinning up the VM instance in US-East.</p>
+Answers: D
+<p>5. Your team manages several different microservices which all use different versions of operating systems, software libraries and programming languages. You want to reliably spin up development environments from these microservices and keep them in sync with the respective production environments. You are not keen on making any changes to the code. What should you use?</p>
+A. Ansible/Chef/Puppet.
+B. Cloud Monitoring and Logging.
+C. Containers.
+D. Virtual Machines.</p>
+Answers: C
+<p>6. Your company is migrating all applications from the on-premises data centre to Google Cloud, and one of the applications is dependent on Websockets protocol and session affinity. You want to ensure this application can be migrated to Google Cloud platform and continue serving requests without issues. What should you do?</p>
+A. Modify application code to not depend on session affinity.
+B. Review the design with the security team.
+C. Discuss load balancer options with the relevant teams.
+D. Modify application code to use HTTP streaming.</p>
+Answers: C
+<p>7. Your company specializes in helping clients detect if any pages on their website do not align to the specified standards. To do this, your company has deployed a custom C. + application in your on-premises data centre that crawls all the web pages of a customer’s website, compares the headers and template to the expected standard and stores the result before repeating the same for other customers. This testing takes a lot of time and has resulted in it missing out on the SLA several times recently. The application team is aware of the slow processing time and knows the fix is to run the application on multiple virtual machines to balance the load, but there is no free space in the data centre. You have been asked to identify if it is possible to migrate this application to Google cloud, ensuring it can scale automatically with little to no changes to the application code. What GCP service should you recommend?</p>
+A. Unmanaged Instance Groups on Google Compute Engine.
+B. App Engine, Cloud Logging and Cloud Monitoring.
+C. Google Cloud Dataproc.
+D. Managed Instance Groups on Google Compute Engine with autoscaling.</p>
+Answers: D
+<p>1. For this question, refer to the Mountkirk Games case study.
+Your company is an industry-leading ISTQB certified software testing firm, and Mountkirk Games has recently partnered with your company for designing their new testing strategy. Given the experience with scaling issues in the existing solution, Mountkirk Games is concerned about the ability of the new backend to scale based on traffic and has asked for your opinion on how to design their new test strategy to ensure scaling issues do not repeat. What should you suggest?</p>
+A. Modify the test strategy to scale tests well beyond the current approach.
+B. Update the test strategy to replace unit tests with end to end integration tests.
+C. Modify the test strategy to run tests directly in production after each new release.
+D. Update the test strategy to test all infrastructure components in Google Cloud Platform.</p>
+Answer: A
+<p>10. For this question, refer to the Mountkirk Games case study.
+Mountkirk Games anticipates its new game to be hugely popular and expects this to generate vast quantities of time series data. Mountkirk Games is keen on selecting a managed storage service for this time-series data. What GCP service would you recommend?</p>
+A. Cloud Bigtable.
+B. Cloud Spanner.
+C. Cloud Firestore.
+D. Cloud Memorystore.</p>
+Answer: A
+<p>11. For this question, refer to the Mountkirk Games case study.
+Mountkirk Games has redesigned parts of its game backend into multiple microservices that operate as HTTP (REST) APIs. Taking into consideration the technical requirements for the game backend platform as well as the business requirements, how should you design the game backend on Google Cloud platform?</p>
+A. Use a Layer 4 (TCP) Load Balancer and Google Compute Engine VMs in a Managed Instances Group (MIG) with instances in multiple zones in multiple regions.
+B. Use a Layer 4 (TCP) Load Balancer and Google Compute Engine VMs in a Managed Instances Group (MIG) with instances restricted to a single zone in multiple regions.
+C. Use a Layer 7 (HTTPS) Load Balancer and Google Compute Engine VMs in a Managed Instances Group (MIG) with instances in multiple zones in multiple regions.
+D. Use a Layer 7 (HTTPS) Load Balancer and Google Compute Engine VMs in a Managed Instances Group (MIG) with instances restricted to a single zone in multiple regions.</p>
+Answer: C
+<p>12. For this question, refer to the Mountkirk Games case study.
+Taking into consideration the technical requirements for the game backend platform as well as the game analytics platform, where should you store data in Google Cloud platform?</p>
+A. 1. For time-series data, use Cloud SQL. 2. For historical data queries, use Cloud Bigtable.
+B. 1. For time-series data, use Cloud SQL. 2. For historical data queries, use Cloud Spanner.
+C. 1. For time-series data, use Cloud BigTable. 2. For historical data queries, use BigQuery.
+D. 1. For time-series data, use Cloud BigTable. 2. For historical data queries, use Cloud BigQuery. 3. For transactional data, use Cloud Spanner.</p>
+Answer: D
+<p>13. For this question, refer to the Mountkirk Games case study.
+Your company is an industry-leading ISTQB certified software testing firm, and Mountkirk Games has recently partnered with your company for designing their new testing strategy. Mountkirk Games is concerned at the potential disruption caused by solar storms to its business. A solar storm last month resulted in downgraded mobile network coverage and slow upload speeds for a vast majority of mobile users in the Mediterranean. As a result, their analytics platform struggled to cope with the late arrival of data from these mobile devices. Mountkirk Games has asked you for your suggestions on avoiding such issues in future. What should you recommend?</p>
+A. Update the test strategy to include fault injection software and introduce latency instead of faults.
+B. Update the test strategy to test from multiple mobile phone emulators from all GCP regions.
+C. Update the test strategy to introduce random amounts of delay before processing the uploaded analytics files.
+D. Update the test strategy to gather latency information from 1% of users and use this to simulate latency on production-like volume.</p>
+Answer: C
+<p>14. For this question, refer to the TerramEarth case study.
+TerramEarth wants to preemptively stock replacement parts and reduce the unplanned downtime of their vehicles to less than one week. The CTO sees an Al-driven solution being the future of this prediction. Still, for the time being, the planis to have the analysts carry out the analysis by querying all data from a central location and make predictions. Which of the below designs would give the analysts the ability to query data from a central location?</p>
+A. HTTP(s) Load Balancer, GKE on Anthos, Pub/Sub, Dataflow, BigQuery.
+B. HTTP(s) Load Balancer, GKE on Anthos, Dataflow, BigQuery.
+C. HTTP(s) Load Balancer, GKE on Anthos, BigQuery.
+D. App Engine Flexible, Pub/Sub, Dataflow, BigQuery.
+E. App Engine Flexible, Pub/Sub, Dataflow, Cloud SQL.</p>
+Answer: A
+<p>15. For this question, refer to the TerramEarth case study.
+You work for a consulting firm that specializes in providing next-generation digital services and has recently been contracted by TerramEarth to design and develop APIs that would enable TerramEarth to decrease unplanned downtime to less than one week. Given the short period for the project, TerramEarth wants you to focus on delivering APIs that meet their business requirements rather than spend time developing a custom framework that fits the needs of all APIs and their edge case scenarios. What should you do?</p>
+A. Expose APIs on Google App Engine through Google Cloud Endpoints for dealers and partners.
+B. Expose APIs on Google App Engine to the public.
+C. Expose Open API Specification compliant APIs on Google App Engine to the public.
+D. Expose APIs on Google Kubernetes Engine to the public.
+E. Expose Open API Specification compliant APIs on Google Kubernetes Engine to dealers and partners.</p>
+Answer: A
+<p>16. For this question, refer to the TerramEarth case study.
+You work for a consulting firm that specializes in providing next-generation digital services and has recently been contracted by TerramEarth to help them enhance their APIs. One of their APIs used for retrieving vehicle is being used successfully by analysts to predict unplanned downtime and preemptively stock replacement parts. TerramEarth has asked you to enable delegated authorization for 3rd parties so that the dealer network can use this data to better position new products and services. What should you do?</p>
+A. Use OAuth 2.0 to delegate authorization.
+B. Use SAML 2.0 to delegate authorization.
+C. Open up the API to IP ranges of the dealer network.
+D. Enable each deader to share their credentials with their trusted partner.</p>
+Answer: A
+<p>17. For this question, refer to the TerramEarth case study.
+TerramEarth would like to reduce unplanned downtime for all its vehicles and preemptively stock replacement parts. To do this, TerramEarth has partnered with another firm to loT enable all vehicles in the field but is concerned that its existing data ingestion solution is not capable of handling the massive increase in ingested data. TerramEarth has asked you to design the data ingestion layer to support this requirement. What should you do?</p>
+A. Ingest data to Google Cloud Storage directly.
+B. Ingest data through Google Cloud Pub/Sub.
+C. Ingest data to Google BigQuery through streaming inserts.
+D. Continue ingesting data via existing FTP solution.</p>
+Answer: B
+<p>18. TerramEarth would like to reduce unplanned downtime for all its vehicles and preemptively stock replacement parts. To do this, TerramEarth has partnered with another firm to loT enable all vehicles in the field. TerramEarth is concerned that its existing data ingestion solution may not satisfy all use cases. Early analysis has shown the FTP uploads are highly unreliable in areas with poor network connectivity and this frequently causes the FTP upload to restart from the beginning. On occasions, this has resulted in analysts querying old data and failing to predict unplanned downtimes accurately. How should you design the data ingestion layer to make it more reliable while ensuring data is made available to analysts as quickly as possible?</p>
+A. 1. Replace the existing FTP server with a cluster of FTP servers on a single GKE cluster. 2. After receiving the files, push them to Multi-Regional Cloud Storage bucket. 3. Modify the ETL process to pick up files from this bucket.
+B. 1. Replace the existing FTP server with multiple FTP servers running in GKE clusters in multiple regions. 2. After receiving the files, push them a Multi-Regional Cloud Storage bucket in the same region. 3. Modify the ETL process to pick up files from this bucket.
+C. 1. Use Google HTTP(s) APIs to upload files to multiple Multi-Regional Cloud Storage Buckets. 2. Modify the ETL process to pick up files from these buckets.
+D. 1. Use Google HTTP(s) APIs to upload files to multiple Regional Cloud Storage Buckets. 2. Modify the ETL process to pick up files from these buckets.</p>
+Answer: D
+<p>19. For this question, refer to the TerramEarth case study.
+TerramEarth would like to reduce unplanned downtime for all its vehicles and preemptively stock replacement parts. To do this, TerramEarth has partnered with another firm to loT enable all vehicles in the field. The telemetry data from vehicles is stored in the respective region buckets in the US, Asia and Europe. The feedback from most service centres and dealer networks indicates vehicle hydraulics fail after 69000 miles, and this has knock-on effects such as disabling the dynamic adjustment in the height of the vehicle. The vehicle design team has approached you to provide them with all raw telemetry data to analyze and determine the cause of this failure. You need to run this job on all the data. How should you do this while minimizing costs?</p>
+A. Transfer telemetry data from all Regional Cloud Storage buckets to another bucket in a single zone. Launch a Dataproc job in the same zone.
+B. Transfer telemetry data from all Regional Cloud Storage buckets to another bucket in a single region. Launch a Dataproc job in the same region.
+C. Run a Dataproc job in each region to extract, pre-process and tar (compress) the data. Transfer this data to a Multi-Regional Cloud Storage bucket. Launch a Dataprocjob.
+D. Run a Dataproc job in each region to extract, pre-process and tar (compress) the data. Transfer this data to a Regional Cloud Storage bucket. Launch a Dataproc job.</p>
+Answer: D
+<p>2. For this question, refer to the Mountkirk Games case study.
+Your company is an industry-leading ISTQB certified software testing firm, and Mountkirk Games has recently partnered with your company for designing their new testing strategy. Mountkirk Games has recently migrated their backend to GCP and uses continuous deployment to automate releases. Few of their releases have recently caused a loss of functionality within the application, a few other releases have had unintended performance issues. You have been asked to come up with a testing strategy that lets you properly test all new releases while also giving you the ability to test particular new release to scaled-up production-like traffic to detect performance issues. Mountkirk games want their test environments to scale cost-effectively. How should you design the test environments?</p>
+A. Design the test environments to scale based on simulated production traffic.
+B. Make use of the existing on-premises infrastructure to scale based on simulated production traffic.
+C. Stress tests every single GCP service used by the application individually.
+D. Create multiple static test environments to handle different levels of traffic, e.g. small, medium, big.</p>
+Answer: A
+<p>20. TerramEarth would like to reduce unplanned downtime for all its vehicles and preemptively stock replacement parts. To do this, TerramEarth has partnered with another firm to loT enable all vehicles in the field. The CTO sees an Al-driven solution being the future of this prediction and wants to store all telemetry data in a cost-efficient way while the team works on building a blueprint for a machine learning model in a year. The CTO has asked you to facilitate cost-efficient storage of the telemetry data. Where should you store this data?</p>
+A. Compress the telemetry data in half-hourly snapshots on the vehicle loT device and push to a Nearline Google Cloud Storage bucket.
+B. Use a real-time (streaming) dataflow job to compress the incoming data and store in BigQuery.
+C. Use a real-time (streaming) dataflow job to compress the incoming data and store in Cloud Bigtable.
+D. Compress the telemetry data in half-hourly snapshots on the vehicle loT device and push to a Coldline Google Cloud Storage bucket.</p>
+Answer: D
+<p>21. For this question, refer to the TerramEarth case study.
+The feedback from all TerramEarth service centres and dealer networks indicates vehicle hydraulics fail after 69000 miles, and this has knock-on effects such as disabling the dynamic adjustment in the height of the vehicle. The vehicle design team wants the raw data to be analyzed, and operational parameters tweaked in response to various factors to prevent such failures. How can you facilitate this feedback loop to all the connected and unconnected vehicles while minimizing costs?</p>
+A. Engineers from vehicle design team analyze the raw telemetry data and determine patterns that can be used by algorithms to identify operational adjustments and tweak the drive train parameters automatically.
+B. Use a custom machine learning solution in on-premises to identify operational adjustments and tweak the drive train parameters automatically.
+C. Run a real-time (streaming) Dataflow job to identify operational adjustments and use Firebase Cloud Messaging to push the optimisations automatically.
+D. Use Machine learning in Google Al Platform to identify operational adjustments and tweak the drive train parameters automatically.</p>
+Answer: D
+<p>22. For this question, refer to the TerramEarth case study.
+TerramEarth would like to reduce unplanned downtime for all its vehicles and preemptively stock replacement parts. To do this, TerramEarth has partnered with another firm to loT enable all vehicles in the field. The vehicle telemetry data is saved in Cloud Storage for long term storage and is also pushed to BigQuery to enable analytics and train ML models. A recent automotive industry regulation in the EU prohibits TerramEarth from holding this data for longer than 3 years. What should you do?</p>
+A. Enable a bucket lifecycle management rule to delete objects older than 36 months. Update the default table expiration for BigQuery Datasets to 36 months.
+B. Enable a bucket lifecycle management rule to set the Storage Class to NONE for objects older than 36 months. Set BigQuery table expiration time to 36 months.
+C. Enable a bucket lifecycle management rule to delete objects older than 36 months. Use partitioned tables in BigQuery and set the partition expiration period to 36 months.
+D. Enable a bucket lifecycle management rule to set the Storage Class to NONE for objects older than 36 months. Use partitioned tables in BigQuery and set the partition expiration period to 36 months.</p>
+Answer: C
+<p>23. TerramEarth has recently partnered with another firm to loT enable all vehicles in the field. Connecting all vehicles has resulted in a massive surge in ingested telemetry data, and
+TerramEarth is concerned at the spiralling storage costs of storing this data in Cloud Storage for long term needs. The Machine Learning &amp; Predictions team at TerramEarth has suggested data older than 1 year is of no use and can be purged. Data older than 30 days is only used in exceptional circumstances for training models but needs to be retained for audit purposes. What should you do?</p>
+A. Implement Google Cloud Storage lifecycle management rule to transition objects older than 30 days from Standard to Coldline Storage class. Implement another rule to Delete objects older than 1 year in Coldline Storage class.
+B. Implement Google Cloud Storage lifecycle management rules to transition objects older than 30 days from Coldline to Nearline Storage class. Implement another rule to transition objects older than 90 days from Coldline to Nearline Storage class.
+C. Implement Google Cloud Storage lifecycle management rules to transition objects older than 90 days from Standard to Nearline Storage class. Implement another rule to transition objects older than 180 days from Nearline to Coldline Storage class.
+D. Implement Google Cloud Storage lifecycle management rule to transition objects older than 30 days from Standard to Coldline Storage class. Implement another rule to Delete objects older than 1 year in Nearline Storage class.</p>
+Answer: A
+<p>24. For this question, refer to the TerramEarth case study.
+You work for a consulting firm that specializes in providing next-generation digital services and has recently been contracted by TerramEarth to help redesign their data warehousing platform. Taking into consideration its business requirements, technical requirements and executive statement, what replacement would recommend for their data warehousing needs?</p>
+A. Use BigQuery and enable table partitioning.
+B. Use a single Compute Engine instance with machine type n1-standard-96 (96 CPUs, 360 GB memory).
+C. Use BigQuery with federated data sources.
+D. Use two Compute Engine instances – a non-preemptible instance with machine type n1-standard-96 (96 CPUs, 360 GB memory) and a preemptible instance with machine type n1-standard-32 – (32 CPUs, 120 GB memory).</p>
+Answer: A
+<p>25. You work for a consulting firm that specializes in providing next-generation digital services and has recently been contracted by TerramEarth to help redesign their data warehousing platform. Your redesigned solution includes Cloud Pub/Sub, Cloud Dataflow and BigQuery and is expected to satisfy both their business and technical requirements. But the service centres and maintenance departments have expressed concerns at the quality of data being ingested. You have been asked to modify the design to provide an ability to clean and prepare data for analysis and machine learning before saving data to BigQuery. You want to minimize cost. What should you do?</p>
+A. Sanitize the data during the ingestion process in a real-time (streaming) Dataflow job before inserting into BigQuery.
+B. Use Cloud Scheduler to trigger Cloud Function that reads data from BigQuery, cleans it and updates the tables.
+C. Run a query to export the required data from existing BigQuery tables and save the data to new BigQuery tables.
+D. Run a daily job in Dataprep to sanitize data in BigQuery tables.</p>
+Answer: A
+<p>26. For this question, refer to the TerramEarth case study.
+You work for a consulting firm that specializes in providing next-generation digital services and has recently been contracted by TerramEarth to help them enhance their data warehousing solution. TerramEarth would like to reduce unplanned downtime for all its vehicles and preemptively stock replacement parts. To do this, TerramEarth wants to enable all its analysts the ability to query vehicle telemetry data in real-time and visualize this data in dashboards. What should you do?</p>
+A. 1. Stream telemetry data from vehicles to Cloud Pub/Sub. Use Dataflow and BigQuery streaming inserts to store data in BigQuery. 2. Develop dashboards in Google Data Studio.
+B. 1. Upload telemetry data from vehicles to Cloud Storage Bucket. Use Dataflow and BigQuery streaming inserts to store data in BigQuery. 2. Develop dashboards in Google Data Studio.
+C. 1. Upload telemetry data from vehicles to Cloud Storage Bucket. Use Cloud Functions to transfer this data to partitioned tables in Cloud Dataproc Hive Cluster. 2. Develop dashboards in Google Data Studio.
+D. 1. Stream telemetry data from vehicles to partitioned tables in Cloud Dataproc Hive Cluster. 2. Use Pig scripts to chart data.</p>
+Answer: C
+<p>27. For this question, refer to the TerramEarth case study.
+TerramEarth would like to reduce unplanned downtime for all its vehicles and preemptively stock replacement parts. To do this, TerramEarth wants to enable all its analysts the ability to query vehicle telemetry data in real-time. However, TerramEarth is concerned with the reliability of its existing ingestion mechanism. In a recent incident, vehicle telemetry data from all vehicles got mixed up, and the vehicle design team were unable to identify which data belonged to a particular vehicle. TerramEarth and has asked you for your suggestion on enabling reliable ingestion of telemetry data. What should you suggest they use?</p>
+A. Use Cloud loT with Cloud HSM keys.
+B. Use Cloud loT with per-device public/private key authentication.
+C. Use Cloud loT with project-wide SSH keys.
+D. Use Cloud loT with specific SSH keys.</p>
+Answer: B
+<p>28. For this question, refer to the TerramEarth case study.
+TerramEarth needs to store all the raw telemetry data to use it as training data for machine learning models. How should TerramEarth store this data while minimizing cost and minimizing the changes to the existing processes?</p>
+A. Configure the loT devices on vehicles to stream the data directly into BigQuery.
+B. Configure the loT devices on vehicles to stream the data to Cloud Pub/Sub and save to Cloud Dataproc HDFS on persistent disks for long term storage.
+C. Continue receiving data via existing FTP process and save to Cloud Dataproc HDFS on persistent disks for long term storage.
+D. Continue receiving data via existing FTP process and upload to Cloud Storage.</p>
+Answer: D
+<p>29. For this question, refer to the Dress4Win case study.
+A recent security breach has resulted in Dress4Win engaging an external security investigations firm to investigate the incident. The security firm has suggested disabling all but essential access, including disabling external SSH access to their Google Cloud VMs while they analyze the log files expected to take about 4 weeks. An external security researcher has provided a tip-off about a possible security loophole. The development team has implemented a fix to address the loophole and want this deployed as soon as possible; however, the operations team is unable to deploy as they can’t SSH to the VMs. They need to check out the new release, build new docker images, push images to GCR, update GKE deployment to use the new image and delete public objects in a Cloud Storage bucket. You have been asked to identify a way to enable the operations team to deploy the fix immediately without enabling external SSH access. What should you do?</p>
+A. Grant the relevant IAM roles to the operations team and ask them to access services through Google Cloud Shell.
+B. Ask the operations team to SSH to Google Compute Instances through VPN tunnel from a bastion host on the on-premises data centre.
+C. Enable external SSH access, deploy the fix and disable it again.
+D. Build an API for deployment that invoke relevant APIs of GCP Services in use to perform the deployment and have the operations team invoke the deployment API.</p>
+Answer: A
+<p>3. For this question, refer to the Mountkirk Games case study.
+You work for a company which specializes in setting up resilient architectures in Cloud Platforms, and Mountkirk games have contracted your company to help them set up their Cloud Architecture. You have been passed these requirements: –
+Services should be immune to regional GCP outages and where possible services across all regions should be exposed through a single IP address.
+– The compute layer should not be publicly reachable. Instead, the requests to compute workloads should be directed through well-defined frontend services.
+– Mountkirk Games has already decomposed existing complex interfaces into multiple microservices. Where possible, Mountkirk Games prefers to maintain the immutable nature of these microservice deployments.
+– Mountkirk Games places a high value on being agile and reacting to change by deploying changes quickly and reliably. and rollback changes at short notice.
+– Enable Caching for Static Content.
+Taking into consideration these requirements, which GCP services would you recommend?</p>
+A. Google Cloud Dataflow, Google Compute Engine, Google Cloud Storage.
+B. Google App Engine Google Cloud Storage Google Network Load Balancer.
+C. Cloud CDN, Google Kubernetes Engine, Google Container Registry, Google HTTP(S) Load Balancer.
+D. Cloud CDN, Google Cloud Pub/Sub, Google Cloud Functions, Google Cloud Deployment Manager.</p>
+Answer: C
+<p>30. For this question, refer to the Dress4Win case study.
+Dress4Win has accumulated 2 TB of database backups, images and logs files in their on-premises data centre and wants to transfer this data to Google Cloud. What should you do?</p>
+A. Use a custom gsutil script to copy the files to a Nearline Storage bucket.
+B. Use a custom gsutil script to copy the files to a Multi-Regional Storage bucket.
+C. Transfer the files to Coldline Storage bucket using a Storage Transfer Service job.
+D. Transfer the files to Multi-Regional Storage bucket using a Storage Transfer Service job.</p>
+Answer: C
+<p>31. For this question, refer to the Dress4Win case study.
+You work for a company which specializes in setting up resilient and cost-efficient architectures in Cloud Platforms, and Dress4Win have contracted your company to help them set up their Cloud Architecture. Dress4Win has several VMs running Windows Server 2008 R2 and RedHat Linux and feels some of the machines were overprovisioned. You have been asked for your recommendation on what machine types they should migrate to in Google Cloud. What should you suggest?</p>
+A. Migrate to GCP machine types that are a close match to the existing physical machine in terms of the number of CPUs and Memory. Then, scale up or scale down the machine size as needed.
+B. Migrate to GCP machine types that have the highest RAM to CPU ratio (highmem instance types).
+C. Start with the smallest instances and scale up to a larger machine type until the performance is of the desired standard.
+D. Migrate to custom machines in GCP with the same number of vCPUs and Memory as the existing virtual machines. Then, scale up or scale down the machine size as needed.</p>
+Answer: C
+<p>32. For this question, refer to the Dress4Win case study.
+The operations team at Dress4Win have been involved in addressing numerous incidents recently. The operations team believe they could have done a better job if they had better monitoring on their systems and were notified quicker when applications experienced issues. One of the main reasons for delays in the investigation was that logs for each system were stored locally, and they had trouble combining logs from multiple systems to get a unified view of the application. Dress4Win want to avoid a repeat of these issues when they migrate their systems to Google Cloud. What GCP services should they use?</p>
+A. Cloud Monitoring, Cloud Trace, Cloud Debugger.
+B. Cloud Logging Cloud Monitoring, Cloud Trace and Cloud Debugger.
+C. Error Reporting, Cloud Logging and Cloud Monitoring.
+D. Cloud Logging, Cloud Debugger, Error Reporting.</p>
+Answer: C
+<p>33. For this question, refer to the Dress4Win case study.
+The CTO of Dress4Win has signed off on the budget for migration to Google Cloud and has asked teams to get familiar with Google Cloud. The DevOps team manages the deployment of all applications but is inexperienced when it comes to Google Cloud. You are the applications architect and have been approached by the DevOps team to suggest an application they can start migrating to Google Cloud with minimal changes. Their objective is to become familiar with its features, understand the deployment methodologies and develop documentation. What should you recommend?</p>
+A. Migrate an application that has several external dependencies.
+B. Migrate an application that has no dependencies or minimal internal dependencies.
+C. Migrate the MySQL database used for storing user data, inventory and static data.
+D. Migrate the three RabbitMQ servers.</p>
+Answer: B
+<p>34. For this question, refer to the Dress4Win case study.
+Dress4Win is partway through the migration to Google Cloud, and their next focus is on migration their MySQL database to Google Cloud. The operations team is concerned that this may adversely impact their production performance and cause unplanned downtime. How should you migrate the database to Google Cloud while allaying their anxiety over the impact to live traffic?</p>
+A. Shutdown MySQL server to take a full backup, export it to Cloud Storage, and create a Cloud SQL for MySQL instance from it.
+B. Replicate data from on-premises MySQL database to a Cloud SQL for MySQL replica. Once replication is complete, modify all applications to write to Cloud SQL for MySQL.
+C. Create a new Cloud SQL for MySQL instance in Google Cloud Platform. Update all applications to write to both on the on-premises MySQL database and Cloud SQL database. Then, delete the on-premises database.
+D. Shutdown MySQL server to take a full backup and export it to Cloud Datastore. Update all applications to write to Cloud Datastore.</p>
+Answer: B
+<p>35. For this question, refer to the Dress4Win case study.
+Dress4Win is partway through the migration to Google Cloud, and their next focus is on migrating their monitoring solution to Google Cloud. A VPN tunnel has already been configured to enable network traffic between the on-premises data centre and GCP network. The operations team have now created several uptime checks in Cloud monitoring to monitor the services in both Google Cloud and on-premises data centre. All uptime checks for services in Google cloud are healthy, while all uptime checks for services in the on-premises data centre are unhealthy. The operations team have logged into the on-premise VMs and found the applications to be healthy. They have approached you for your assistance in identifying and fixing the issue. What should you advise them?</p>
+A. Ask the operation team to install Cloud monitoring agents on all on-premise VMs.
+B. Update on-premises firewall rules to allow traffic from IP Address range of uptime servers.
+C. Update all on-premises application load balancers to pass through requests when User-Agent HTTP header is GoogleStackdriverMonitoring-imeChecks(https://cloud.google.com/monitoring).
+D. Update all on-premises application servers to serve requests when User-Agent HTTP header is GoogleStackdriverMonitoring- /ptimeChecks(https://cloud.google.com/monitoring).</p>
+Answer: B
+<p>36. For this question, refer to the Dress4Win case study.
+Dress4Win has partnered with a group of upmarket retailers to identify the next generation of models for their clothing lines. The new scheme allows users who have bought the retailers modelling samples to try them on and upload their images. Users signing up to the scheme have to agree to their images being shared with the retailer. You are an app developer at Dress4Win, and you want to ensure that images are stored securely, and users can easily retrieve, update and delete their images with minimal latency. How should you configure the system?</p>
+A. 1. Use Google Cloud Storage to save images. 2. Use Firestore (in Datastore mode) to map the customer ID and the location of their images in Google Cloud Storage.
+B. 1. Use Google Cloud Storage to save images. 2. Tag each image with key as customer_id and value as the value of unique customer ID.
+C. 1. Use Persistent SSDs to save images. Add monitoring to receive alerts when storage is full and more SSDs. 2. Name the files based on customer ID and a random suffix.
+D. 1. Use Persistent SSDs to save images. Add monitoring to receive alerts when storage is full and more SSDs. 2. Map the customer ID and the location of their images on SSDs in Cloud SQL.</p>
+Answer: A
+<p>37. For this question, refer to the Dress4Win case study.
+Your company is an industry-leading ISTQB certified software testing firm, and Dress4Win has recently partnered with your company for designing their new testing strategy. Dress4Win’s existing end to end tests cover all their endpoints running in their on-premises data centre, and they have asked you for your suggestion on the changes needed in the test plan to ensure no new issues crop up when they migrate to Google Cloud. What should you suggest?</p>
+A. Update the test plan to include stress testing of GCP infrastructure.
+B. Update the test plan to include additional unit tests and load tests on production-like traffic.
+C. Update the test plan to modify end to end tests for GCP environment.
+D. Update the test plan to add canary tests to assess the impact of new releases in the production environment.</p>
+Answer: C
+<p>38. For this question, refer to the Dress4Win case study.
+You work for a company which specializes in setting up resilient and cost-efficient architectures in Cloud Platforms, and Dress4Win have contracted your company to help them lower their Cloud Opex costs. You identified terabytes of audit data in Google Cloud Storage bucket, and this accounts for 22% of all Cloud costs. Although regulations require Dress4Win to retain their audit logs for 10 years, they are only used if there is an investigation into the company’s finances by the financial ombudsman. What should you do to reduce the storage costs?</p>
+A. Transition the data to Coldline Storage class.
+B. Transition the data to Nearline Storage class.
+C. Migrate the data to BigTable.
+D. Migrate the data to BigQuery.</p>
+Answer: A
+<p>39. For this question, refer to the Dress4Win case study.
+Dress4Win’s revenue from its Asian markets has dipped by over 50% in the previous quarter. The simulation testing from various locations in Asia has revealed that 62% of all tests have failed with timeout issues or slow responses. Dress4Win suspects this is because of the latency between its US-based data centre and the customers in Asia. Dress4Win wants to avoid such issues with its new Google Cloud backed solution. What should it do?</p>
+A. Configure the Global HTTP(s) load balancer to forward the request to managed instance groups.
+B. Set up a custom regional software load balancer in each region. Configure the Global HTTP(s) load balancer to send requests to the region closest to traffic and configure the software load balancer to forward the request in round-robin pattern to an instance in each zone.
+C. Configure the Global HTTP(s) load balancer to forward the request to the nearest region. Provision a VM instance in each zone to protect from zone failures.
+D. Set up a custom regional software load balancer in each region. Configure the Global HTTP(s) load balancer to send requests to the region closest to traffic andconfigure the software load balancer to forward the requests to a regional managed instance group.</p>
+Answer: A
+<p>4. For this question, refer to the Mountkirk Games case study.
+You work for a company which specializes in setting up resilient architectures in Cloud Platforms, and Mountkirk games have contracted your company to help them address few niggling issues in their Cloud Platform. Cloud Monitoring dashboards set up by MountKirk Games indicate 1% of its game users are being displayed Service Unavailable page upon trying to login with their credentials and 6.7% users take over 2 minutes to log in. You analyzed the code and found that this error page is displayed when an internal user management service throws HTTP 503 error. You suspect the issue might be with autoscaling. What should you do next?</p>
+A. Ensure the database used for managing user profiles is not down.
+B. Ensure you the scaleup hasn’t hit the project quota limits.
+C. Review recent releases to check for performance issues.
+D. Ensure performance testing is not happening in the live environment.</p>
+Answer: B
+<p>41. You work for a company which specializes in setting up resilient and cost-efficient architectures in Cloud Platforms, and Dress4Win have contracted your company to help them migrate to Google Cloud. Taking into consideration the business and technical requirements, where and how should you deploy the services?</p>
+A. 1. Use Cloud Marketplace to provision Tomcat and Nginx on Google Compute Engine. 2. Replace MySQL with Cloud SQL for MySQL. 3. Use the Deployment Manager to provision Jenkins on Google Compute Engine.
+B. 1. Use Cloud Marketplace to provision Tomcat and Nginx on Google Compute Engine. 2. Use Cloud Marketplace to provision MySQL server. 3. Use the Deployment Manager to provision Jenkins on Google Compute Engine.
+C. 1. Migrate applications from Tomcat/Nginx to Google App Engine Standard. 2. Replace on-premises MySQL with Cloud Datastore. 3. Use Cloud Marketplace to provision Jenkins on Google Compute Engine.
+D. 1. Migrate applications from Tomcat/Nginx to Google App Engine Standard. 2. Use Cloud Marketplace to provision MySQL Server. 3. Use Cloud Marketplace to provision Jenkins on Google Compute Engine.</p>
+Answer: A
+<p>42. For this question, refer to the Dress4Win case study.
+You work for a company which specializes in setting up resilient and cost-efficient architectures in Cloud Platforms, and Dress4Win have contracted your company to help migrate to Google Cloud. The CTO at Dress4Win is keen on migrating the existing solution to Google Cloud as soon as possible. Where a “lift and shift” approach is not possible, the CTO is prepared to sign off an additional budget to redesign the required components to work in a Cloud-native way. Which of the below should you recommend Dress4Win do?</p>
+A. Migrate the Tomcat/Nginx applications to App Engine Standard service.
+B. Configure RabbitMQ on a regional unmanaged instance group with an instance in each zone.
+C. Replace Hadoop/Spark servers with Cloud Dataproc cluster.
+D. Use custom machine types to deploy bastion hosts, security scanners and Jenkins for continuous integration.</p>
+Answer: C
+<p>43. For this question, refer to the Dress4Win case study.
+Dress4Win failed to provide visibility into all administrative actions on the components/artefacts in its production solution that handle customer PII data. This has resulted in Dress4Win failing an audit and subsequently losing revenue. Dress4Win have contracted your company, which specializes in setting up resilient and cost-efficient architectures in Cloud Platforms, to help migrate their solution to Google Cloud and has asked you to identify what can be done in Google Cloud to satisfy the audit requirements. All modifications to the configuration and the metadata of individual components or GCP services that handle PII data are in the scope of the audit. What should you do?</p>
+A. Enable Cloud Trace on all web applications, identify the user identities and write them to logs.
+B. Set up a dashboard in Cloud Monitoring based on the default metrics captured.
+C. Enable Cloud Identity-Aware Proxy (IAP) on all web applications.
+D. Pick up this information from Cloud Logging Console and Activity Page in GCP.</p>
+Answer: D
+<p>44. For this question, refer to the Dress4Win case study.
+Dress4Win relies on the Active Directory structure (users and groups) to enable secure access to applications and VMs. While the current approach works, it is cumbersome and has not been maintained over the years resulting in a proliferation of groups in AD. The team that manages AD is unaware of the purpose of more than half of all AD groups, and they now assign applications directly to users instead of using AD groups. You are asked to recommend the simplest design to handle identity and access management when the solution moves to Google Cloud. What should you do?</p>
+A. Create custom IAM roles with the relevant access and grant them to the relevant Google Groups. Encrypt objects with Customer Supplied Encryption Key (CSEK) when uploading to Cloud Storage bucket.
+B. Create custom IAM roles with the relevant access and grant them to the relevant Google Groups. Enable the default encryption feature in Cloud Storage to encrypt all uploads automatically.
+C. Grant the predefined IAM roles to the relevant Google Groups. Rely on the encryption at rest by default feature of Google Cloud
+D. Storage to encrypt objects at rest. Grant the predefined IAM roles to the relevant Google Groups. Encrypt objects with Customer Supplied Encryption Key (CSEK) when uploading to Cloud Storage bucket.</p>
+Answer: C
+<p>45. For this question, refer to the Dress4Win case study.
+Dress4Win Cloud migration project manager has prepared a plan to start the migration work in 4 months. Your Team Lead is keen on driving strategic architectural changes in the existing on-premises solution to simplify the migration work to Google Cloud while aligning with the business requirements. What can you do to enable this?</p>
+A. Replace RabbitMQ servers with on-prem Google Pub/Sub.
+B. Migrate MySQL to a version supported by Cloud SQL for MySQL.
+C. Resize all VMs to match the sizing of predefined machine types in Google Cloud.
+D. Migrate applications to GKE on-prem.</p>
+Answer: D
+<p>5. For this question, refer to the Mountkirk Games case study.
+You have been hired as a Cloud Security Administrator at Mountkirk Games to improve the security landscape in their GCP platform. You notice that the development team and testing team work together to deliver new features, and they must have access to each other’s environments. A concerning observation is that they both also have access to staging and production environments and you are worried that they may accidentally break production applications. Further talks with the development team have revealed that one of the staging environments used for performance testing needs to import data from the production environment every night. What should you do to isolate production environments from all others?</p>
+A. Deploy development and test resources to one project. Deploy staging and production resources to another project.
+B. Deploy development and test resources in one VPC. Deploy staging and production resources in another VPC.
+C. Deploy development and test resources in one subnet. Deploy staging and production resources in another subnet.
+D. Deploy development, test, staging and production resources in their respective projects.</p>
+Answer: D
+<p>6. For this question, refer to the Mountkirk Games case study.
+Taking into consideration the technical requirements outlined in Mountkirk Games case study, what combination of services would you recommend for their batch and real-time analytics platform?</p>
+A. Kubernetes Engine, Container Registry, Cloud Pub/Sub, and Cloud SQL Cloud Storage, Cloud Pub/Sub, Dataflow, and BigQuery.
+B. Cloud SQL for MySQL, Cloud Pub/Sub, and Dataflow.
+C. Cloud Dataproc, Cloud Datalab, Cloud SQL and Dataflow.
+D. Cloud Pub/Sub, Cloud Storage, and Cloud Dataproc.</p>
+Answer: A
+<p>7. For this question, refer to the Mountkirk Games case study.
+Taking into consideration the technical requirements outlined in Mountkirk Games case study, what steps should you execute when migrating the batch and real-time game analytics solution to Google Cloud Platform? (Choose two)</p>
+A. Assess the impact of moving the current batch ETL code to Cloud Dataflow.
+B. Denormalize data in BigQuery for better performance.
+C. Migrate data from MySQL to Cloud SQL for MySQL.
+D. Carry out performance testing in Clou SQL with 10 TB of analytics data.
+E. Implement measures to defend against DDoS &amp; SQL injection attacks when uploading files to Cloud Storage.</p>
+Answer: A B
+<p>8. For this question, refer to the Mountkirk Games case study.
+Taking into consideration the technical requirements for the game backend platform as well as the business requirements, how should you design the game backend on Google Cloud platform?</p>
+A. Use Google Compute Engine preemptible instances with Network Load Balancer.
+B. Use Google Compute Engine non-preemptible instances with Network Load Balancer.
+C. Use Google Compute Engine preemptible instances in a Managed Instances
+D. Group (MIG) with autoscaling and Global HTTP(s) Load Balancer.
+E. Use Google Compute Engine non-preemptible instances in a Managed Instances Group (MIG) with autoscaling and Global HTTP(s) Load Balancer.</p>
+Answer: E
+<p>9. For this question, refer to the Mountkirk Games case study.
+The CTO of Mountkirk Games is concerned that the existing Cloud solution may lack the flexibility to embrace the next wave of transformations in cloud computing and technology advancements. He has asked you for your recommendation on implementing changes now that would help the business in future. What should you recommend?</p>
+A. Store more data and use it as training data for machine learning.
+B. Migrate to GKE for better autoscaling.
+C. Enable CI/CD integration to improve deployment velocity, agility and reaction to change.
+D. Restructure the tables in MySQL database with a schema versioning tool to make it easier to support new features in future.
+E. Patch servers frequently and stay on the latest supported patch levels and kernel version.</p>
+Answer: A

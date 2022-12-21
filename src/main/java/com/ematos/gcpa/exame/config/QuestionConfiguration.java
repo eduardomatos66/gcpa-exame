@@ -1,8 +1,8 @@
 package com.ematos.gcpa.exame.config;
 
-import com.ematos.gcpa.exame.business.loader.AbstractLoader;
 import com.ematos.gcpa.exame.business.loader.BookQuestionLoader;
 import com.ematos.gcpa.exame.business.loader.JsonQuestionLoader;
+import com.ematos.gcpa.exame.business.loader.SiteArchQuestionLoader;
 import com.ematos.gcpa.exame.model.Question;
 import com.ematos.gcpa.exame.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,9 +36,11 @@ public class QuestionConfiguration {
 
         JsonQuestionLoader jsonQuestionLoader = new JsonQuestionLoader(resourceLoader);
         BookQuestionLoader bookQuestionLoader = new BookQuestionLoader(resourceLoader);
+        SiteArchQuestionLoader siteArchQuestionLoader = new SiteArchQuestionLoader(resourceLoader);
 
         questions.addAll(jsonQuestionLoader.getQuestions());
         questions.addAll(bookQuestionLoader.getQuestions());
+        questions.addAll(siteArchQuestionLoader.getQuestions());
 
         this.questionRepository.saveAll(questions);
         LOG.warning("QUESTIONS CREATED: " + questions.size());
