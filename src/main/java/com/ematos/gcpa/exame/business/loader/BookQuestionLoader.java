@@ -4,11 +4,13 @@ import com.ematos.gcpa.exame.exception.NotEnoughAlternativesException;
 import com.ematos.gcpa.exame.exception.QuestionNotExistentException;
 import com.ematos.gcpa.exame.model.Question;
 import com.ematos.gcpa.exame.model.QuestionOption;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.io.support.ResourcePatternUtils;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
@@ -59,7 +61,7 @@ public class BookQuestionLoader extends AbstractLoader {
             this.questionBuilder(resource);
             Resource answerResourceFile = null;
             try {
-                answerResourceFile = this.getAnswerResourceFile(resource.getFile().getParentFile().getName(), resource.getFilename());
+                answerResourceFile = this.getAnswerResourceFile(new File(((ClassPathResource) resource).getPath()).getParentFile().getName(), resource.getFilename());
             } catch (IOException e) {
                 throw new RuntimeException("Error while loading answer file: " + resource.getFilename(), e);
             }
@@ -72,7 +74,7 @@ public class BookQuestionLoader extends AbstractLoader {
 
         for (Resource resource : this.questionsResource) {
             if (Objects.requireNonNull(resource.getFilename()).equals(desiredFileName)
-            && resource.getURI().getPath().contains(source)) {
+            && new File(((ClassPathResource) resource).getPath()).getPath().contains(source)) {
                 return resource;
             }
         }
@@ -91,7 +93,7 @@ public class BookQuestionLoader extends AbstractLoader {
 
                 if ((canUpdate && line.matches(ANSWER_REGEX)) || !myReader.hasNextLine()) {
                     this.updateQuestion(
-                            resource.getFile().getParentFile().getName(),
+                            new File(((ClassPathResource) resource).getPath()).getParentFile().getName(),
                             this.getQuestionToken(resource.getFilename()),
                             answer.toString());
 
@@ -101,7 +103,7 @@ public class BookQuestionLoader extends AbstractLoader {
 
                 if (!myReader.hasNextLine()) {
                     this.updateQuestion(
-                            resource.getFile().getParentFile().getName(),
+                            new File(((ClassPathResource) resource).getPath()).getParentFile().getName(),
                             this.getQuestionToken(resource.getFilename()),
                             answer.toString());
                 } else if (!canUpdate && line.matches(ANSWER_REGEX)) {
@@ -230,7 +232,7 @@ public class BookQuestionLoader extends AbstractLoader {
                         || !myReader.hasNextLine()) {
 
                     this.createQuestion(
-                            resource.getFile().getParentFile().getName(),
+                            new File(((ClassPathResource) resource).getPath()).getParentFile().getName(),
                             resource.getFilename(),
                             title,
                             alternatives);

@@ -6,10 +6,12 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.json.simple.parser.JSONParser;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.io.support.ResourcePatternUtils;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -53,7 +55,7 @@ public class JsonQuestionLoader extends AbstractLoader {
             String key = jsonNode.get("key").asText();
             String title = jsonNode.get("title").asText();
             question.setTitle(String.format("[%s] %s", key, title));
-            question.setSource(resource.getFile().getParentFile().getName());
+            question.setSource(new File(((ClassPathResource) resource).getPath()).getParentFile().getName());
 
             JsonNode subject = jsonNode.get("subject");
             if (subject != null) {
