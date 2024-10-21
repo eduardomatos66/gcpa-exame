@@ -24,6 +24,10 @@
             <input v-model="numberOfQuestions" style="text-align: center; font-size: 20px;"/>
           </div>
           <div style="margin-top: 20px">
+            <p>Level:</p>
+            <v-select  v-model="selectedLevel" :items="questionLabels" :options="this.questionLabels" />
+          </div>
+          <div style="margin-top: 20px">
             <p>Label:</p>
             <v-select  v-model="selectedLabel" :items="questionLabels" :options="this.questionLabels" />
           </div>
@@ -93,7 +97,8 @@ export default {
     startQuiz: false,
     questions: [],
     questionLabels: ['All'],
-    selectedLabel: 'All'
+    selectedLabel: 'All',
+    selectedLevel: 'Associate'
   }),
   components: {
     Report

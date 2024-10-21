@@ -1,13 +1,29 @@
 package com.ematos.gcpa.exame.model;
 
-import lombok.*;
-import javax.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.Hibernate;
+
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
-
-@Data
+@Getter
+@Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -30,14 +46,13 @@ public class Question {
     @Column(length = 3000)
     private String explanation;
     private String source;
+    private String level;
 
     @ElementCollection
     private List<QuestionOption> questionOptionList;
 
     @ElementCollection
     private Set<String> labels;
-
-    private void setLabels(String label) {}
 
     public void addLabel(String label) {
         if (this.labels == null) {
@@ -50,4 +65,16 @@ public class Question {
         this.labels.remove(label);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Question question = (Question) o;
+        return id != null && Objects.equals(id, question.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }
